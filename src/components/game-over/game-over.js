@@ -19,7 +19,7 @@ class GameOver extends Component {
       <div>
         <Collection people={this.props.people} />
       </div>
-    );
+    )
   }
 }
 
@@ -37,20 +37,37 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameOver);
 
+function slugParse(string) {
+  return string.toLowerCase()
+    .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+    .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+    .replace(/^-+|-+$/g, '')  // remove leading, trailing -
+}
+
 const Collection = ({people}) => {
   return (
-    <div>
+    <div className="row people-collection">
       {people.map((person) =>
         <Person key={person.name} person={person} />
       )}
     </div>
-  );
-};
+  )
+}
 
 const Person = ({person}) => {
+  const slug = slugParse(person.name);
   return (
-    <div>
-      {person.name}
+    <div className={`${slug} person col-xs-3 text-center`}>
+      <p>
+        <img
+          src={`/images/${slug}.png`}
+          title={person.name}
+          alt={person.name}
+        />
+      </p>
+      <h4>
+        {person.name}
+      </h4>
     </div>
-  );
-};
+  )
+}
