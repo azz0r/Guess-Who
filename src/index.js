@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { configureStore } from './store';
 import App from './components/app/app';
-// import Wrestlers from './data/wrestlers.json';
+import './index.css';
+import {Provider} from 'react-redux';
+import configureStore from './store/configure-store';
 
 const store = configureStore();
 

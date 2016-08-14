@@ -1,12 +1,12 @@
 {
   "name": "app",
-  "version": "1.0.0",
+  "version": "12.0.0",
   "private": true,
   "main": "./app.js",
   "contributors": [
     {
       "name": "Aaron Lote",
-      "email": "aaron.lote@gmail.com",
+      "email": "aaron.lote@bt.com",
       "web": "http://www.aaronlote.com"
     }
   ]

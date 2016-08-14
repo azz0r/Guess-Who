@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import Container from '../container/container';
 import './app.css';
+import PeopleContainer from '../PeopleContainer';
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <div className="App">
-        <Container />
+        <div className="App-header">
+          Guess Who!
+        </div>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
+        <PeopleContainer />
       </div>
     );
   }
 }
+
+export default App;
