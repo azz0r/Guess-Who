@@ -21,6 +21,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
+    root: path.resolve(__dirname),
     extensions: ['', '.js', '.json'],
     alias: {
       // This `alias` section can be safely removed after ejection.
@@ -31,6 +32,9 @@ module.exports = {
       // if we don't have a good solution, we should just make `babel-runtime`
       // a dependency in generated projects.
       // See https://github.com/facebookincubator/create-react-app/issues/255
+      "components": path.resolve(__dirname, '../', 'src', 'components'),
+      "reducers": path.resolve(__dirname, '../', 'src', 'reducers'),
+      "data": path.resolve(__dirname, '../', 'src', 'data'),
       'babel-runtime/regenerator': require.resolve('babel-runtime/regenerator')
     }
   },

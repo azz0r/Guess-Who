@@ -1,0 +1,13 @@
+{
+  "name": "container",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./container.js",
+  "contributors": [
+    {
+      "name": "Aaron Lote",
+      "email": "aaron.lote@gmail.com",
+      "web": "http://www.aaronlote.com"
+    }
+  ]
+}
