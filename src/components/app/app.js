@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './app.css';
-import PeopleContainer from '../people-container/people-container';
+import PeopleContainer from '../game-over/game-over';
 
 class App extends Component {
   render() {
