@@ -1,11 +1,11 @@
 import React, {PropTypes} from 'react';
-import Person from './Person';
+import Person from './person';
 
 const PeopleList = ({people}) => {
   return (
     <div>
-      {people.map((person) => 
-        <Person key={person.lastname} person={person} />  
+      {people.map((person) =>
+        <Person key={person.name} person={person} />
       )}
     </div>
   );
