@@ -163,11 +163,11 @@ const Questions = ({questions}) => {
 
 const Question = (values) => {
   const append = (typeof(values.value) !== 'boolean')
-    ? values.value
+    ? ` ${values.value}`
     : '';
   return (
     <li className="list-group-item">
-      {values.question} {append}?
+      {values.question}{append}?
     </li>
   )
 }

@@ -1,5 +1,5 @@
 {
-  "male": "Are they male?",
+  "male": "Are they male",
   "hair": "Does your wrestler have hair",
   "hairColor": "Is their hair colour",
   "eyeColor": "Is their eyes colour",
@@ -8,6 +8,6 @@
   "shirt": "Are they wearing a shirt",
   "shirtColor": "Is their shirt",
   "cape": "Are they wearing a cape",
-  "beard": "Do they have a beard?",
+  "beard": "Do they have a beard",
   "beardColor": "Is their beard colour"
 }
