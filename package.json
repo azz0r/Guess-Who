@@ -44,6 +44,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "array-shuffle": "^1.0.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",

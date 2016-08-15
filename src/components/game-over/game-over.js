@@ -1,9 +1,10 @@
 import React, { PropTypes, Component } from 'react';
+import arrayShuffle from 'array-shuffle';
 import './game-over.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as peopleActions from '../../actions/people-actions';
-// import FilterStrings from './filters.json';
+import FilterStrings from './filters.json';
 
 class GameOver extends Component {
 
@@ -64,11 +65,32 @@ class GameOver extends Component {
     * @return {array} of choices for the user
   */
   getQuestions = () => {
-    let questions = [];
+    let
+      questions = [],
+      deduplicatedQuestions = [];
+
     this.fields.forEach((filterName, key) => {
-      questions[filterName] = this.deduplicate(this.choices[filterName])
+      if (filterName === 'name') {
+        return;
+      }
+      deduplicatedQuestions = this.deduplicate(this.choices[filterName])
+
+      if (deduplicatedQuestions.length > 0) {
+        deduplicatedQuestions.forEach((question, key) => {
+          questions.push({
+            question: FilterStrings[filterName],
+            field: filterName,
+            value: question
+          });
+        })
+      }
     })
+    questions = arrayShuffle(questions).slice(0, 5);
     return questions;
+  }
+
+  pickRandomItemsFromArray(collection, amount) {
+    return;
   }
 
   deduplicate = (data) => {
@@ -84,11 +106,17 @@ class GameOver extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
-      <div>
-        <Collection people={this.props.people} />
-        <Choices people={this.props.people} />
+      <div className="row">
+        <div className="col-xs-8">
+          <Collection people={this.props.people} />
+        </div>
+        <div className="col-xs-4">
+          <Questions
+            questions={this.state.questions}
+            people={this.props.people}
+          />
+        </div>
       </div>
     )
   }
@@ -115,10 +143,32 @@ function slugParse(string) {
     .replace(/^-+|-+$/g, '')  // remove leading, trailing -
 }
 
-const Choices = ({people}) => {
+const Questions = ({questions}) => {
   return (
-    <div className="row choices">
+    <div className="row questions">
+      <h4>Choose your question</h4>
+      <div className="col-xs-16">
+        <ul class="list-group">
+          {questions.map((question, key) =>
+            <Question
+              key={key}
+              {...question}
+            />
+          )}
+        </ul>
+      </div>
     </div>
+  )
+}
+
+const Question = (values) => {
+  const append = (typeof(values.value) !== 'boolean')
+    ? values.value
+    : '';
+  return (
+    <li className="list-group-item">
+      {values.question} {append}?
+    </li>
   )
 }
 

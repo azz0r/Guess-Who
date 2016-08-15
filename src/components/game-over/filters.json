@@ -1,13 +1,13 @@
 {
-  "male": "Is your wrestler a male?",
-  "hair": "Does your wrestler have hair?",
-  "hairColor": "Are is their hair ",
-  "eyeColor": "Are their eyes ",
-  "hat": "Are they wearing a hat?",
-  "hatColor": "Is their hat colour ",
-  "shirt": "Are they wearing a shirt? ",
-  "shirtColor": "Is their shirt ",
-  "cape": "Are they wearing a cape?",
+  "male": "Are they male?",
+  "hair": "Does your wrestler have hair",
+  "hairColor": "Is their hair colour",
+  "eyeColor": "Is their eyes colour",
+  "hat": "Are they wearing a hat",
+  "hatColor": "Is their hat colour",
+  "shirt": "Are they wearing a shirt",
+  "shirtColor": "Is their shirt",
+  "cape": "Are they wearing a cape",
   "beard": "Do they have a beard?",
-  "beardColor": "Is their beard "
+  "beardColor": "Is their beard colour"
 }
