@@ -66,27 +66,22 @@ class GameOver extends Component {
   getQuestions = () => {
     let questions = [];
     this.fields.forEach((filterName, key) => {
-      questions[key] = this.deduplicate(this.choices[key])
+      questions[filterName] = this.deduplicate(this.choices[filterName])
     })
-    console.log('questions', questions);
     return questions;
   }
 
   deduplicate = (data) => {
-    console.log('data', data);
+    let result = [];
     if (data && data.length > 0) {
-      var result = [];
-
       data.forEach(function (elem) {
         if (result.indexOf(elem) === -1) {
           result.push(elem);
         }
       });
-
-      return result;
     }
+    return result;
   }
-
 
   render() {
     console.log(this.state);
@@ -121,7 +116,6 @@ function slugParse(string) {
 }
 
 const Choices = ({people}) => {
-  console.log()
   return (
     <div className="row choices">
     </div>
