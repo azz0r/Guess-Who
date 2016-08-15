@@ -3,7 +3,7 @@ import './game-over.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as peopleActions from '../../actions/people-actions';
-import FilterStrings from './filters.json';
+// import FilterStrings from './filters.json';
 
 class GameOver extends Component {
 
@@ -13,16 +13,18 @@ class GameOver extends Component {
 
   componentWillMount() {
     this.fields = this.getFields();
-    let choices = this.getChoices();
-    // remove dead
-    delete choices[0];
+    this.choices = this.getChoices();
     this.setState({
       fields: this.fields,
-      choices,
-      questions: this.getQuestions(choices)
+      choices: this.choices,
+      questions: this.getQuestions()
     })
   }
 
+  /*
+    * Get Available filters with grouped answers
+    * @return {array} returns an array of fields with an array of answers inside
+  */
   getChoices() {
     let fieldsLength = Object.keys(this.props.people[0]).length,
     filtersGroupedByAnswer = [fieldsLength];
@@ -30,9 +32,14 @@ class GameOver extends Component {
     this.fields.forEach((field) => {
       filtersGroupedByAnswer[field] = this.getValues(field);
     });
+    delete filtersGroupedByAnswer[0];
     return filtersGroupedByAnswer;
   }
 
+  /*
+    * Takes an object and generates a new array of the fields on that object
+    * @return {array} returns an array of fields
+  */
   getFields = () => {
     let fields = [];
     for (const key of Object.keys(this.props.people[0])) {
@@ -41,20 +48,28 @@ class GameOver extends Component {
     return fields;
   }
 
+  /*
+    * Get an array of values from the peoples collection
+    * @param  {string} field on the object we want to aggregate
+    * @return {array} returns an array of fields
+  */
   getValues = (field) => {
     return this.props.people.map((object) => {
       return object[field];
     })
   }
 
-  getQuestions = (choices) => {
-    console.log(choices);
-    let newChoices = [];
+  /*
+    * Take the fields and see how many filters we have available for them
+    * @return {array} of choices for the user
+  */
+  getQuestions = () => {
+    let questions = [];
     this.fields.forEach((filterName, key) => {
-      console.log(this.state);
-      newChoices[key] = this.deduplicate(choices[key])
+      questions[key] = this.deduplicate(this.choices[key])
     })
-    console.log('newChoices', newChoices);
+    console.log('questions', questions);
+    return questions;
   }
 
   deduplicate = (data) => {
