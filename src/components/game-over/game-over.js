@@ -148,7 +148,7 @@ const Questions = ({questions}) => {
     <div className="row questions">
       <h4>Choose your question</h4>
       <div className="col-xs-16">
-        <ul class="list-group">
+        <ul className="list-group">
           {questions.map((question, key) =>
             <Question
               key={key}
@@ -176,7 +176,10 @@ const Collection = ({people}) => {
   return (
     <div className="row people-collection">
       {people.map((person) =>
-        <Person key={person.name} person={person} />
+        <Person
+          key={person.name}
+          person={person}
+        />
       )}
     </div>
   )
@@ -188,7 +191,7 @@ const Person = ({person}) => {
     <div className={`${slug} person col-xs-3 text-center`}>
       <p>
         <img
-          src={`/images/${slug}.png`}
+          src={`/static/media/wrestlers/${slug}.png`}
           title={person.name}
           alt={person.name}
         />
