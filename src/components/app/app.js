@@ -13,7 +13,7 @@ class App extends Component {
               <li role="presentation"><a href="#">Github</a></li>
             </ul>
           </nav>
-          <h3 className="text-muted">Game Over</h3>
+          <h3 className="text-muted">Guess Who</h3>
         </div>
 
         <PeopleContainer />
