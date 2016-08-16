@@ -85,12 +85,15 @@ class GameOver extends Component {
         })
       }
     })
-    questions = arrayShuffle(questions).slice(0, 5);
-    return questions;
+    return this.pickRandomItems(questions, 5);
   }
 
-  pickRandomItemsFromArray(collection, amount) {
-    return;
+  onQuestionChosen(question) {
+    console.log(question)
+  }
+
+  pickRandomItems(collection, amount) {
+    return arrayShuffle(collection).slice(0, amount);
   }
 
   deduplicate = (data) => {
@@ -113,8 +116,8 @@ class GameOver extends Component {
         </div>
         <div className="col-xs-4">
           <Questions
+            onQuestionChosen={this.onQuestionChosen}
             questions={this.state.questions}
-            people={this.props.people}
           />
         </div>
       </div>
@@ -143,7 +146,7 @@ function slugParse(string) {
     .replace(/^-+|-+$/g, '')  // remove leading, trailing -
 }
 
-const Questions = ({questions}) => {
+const Questions = ({ questions, onQuestionChosen }) => {
   return (
     <div className="row questions">
       <h4>Choose your question</h4>
@@ -152,21 +155,24 @@ const Questions = ({questions}) => {
           {questions.map((question, key) =>
             <Question
               key={key}
-              {...question}
+              onQuestionChosen={onQuestionChosen}
+              values={question}
             />
           )}
-        </ul>
+        </ul>.bindActionCreators
       </div>
     </div>
   )
 }
 
-const Question = (values) => {
+const Question = ({ values, onQuestionChosen }) => {
   const append = (typeof(values.value) !== 'boolean')
     ? ` ${values.value}`
     : '';
   return (
-    <li className="list-group-item">
+    <li
+      className="list-group-item"
+      onClick={onQuestionChosen.bind(this, values)}>
       {values.question}{append}?
     </li>
   )
