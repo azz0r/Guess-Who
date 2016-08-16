@@ -73,7 +73,8 @@ class GameOver extends Component {
       if (filterName === 'name') {
         return;
       }
-      deduplicatedQuestions = this.deduplicate(this.choices[filterName])
+      deduplicatedQuestions
+        = this.condenseAnswers(this.choices[filterName])
 
       if (deduplicatedQuestions.length > 0) {
         deduplicatedQuestions.forEach((question, key) => {
@@ -96,7 +97,7 @@ class GameOver extends Component {
     return arrayShuffle(collection).slice(0, amount);
   }
 
-  deduplicate = (data) => {
+  condenseAnswers = (data) => {
     let result = [];
     if (data && data.length > 0) {
       data.forEach(function (elem) {
@@ -146,24 +147,22 @@ function slugParse(string) {
     .replace(/^-+|-+$/g, '')  // remove leading, trailing -
 }
 
-const Questions = ({ questions, onQuestionChosen }) => {
-  return (
-    <div className="row questions">
-      <h4>Choose your question</h4>
-      <div className="col-xs-16">
-        <ul className="list-group">
-          {questions.map((question, key) =>
-            <Question
-              key={key}
-              onQuestionChosen={onQuestionChosen}
-              values={question}
-            />
-          )}
-        </ul>.bindActionCreators
-      </div>
+const Questions = (({ questions, onQuestionChosen }) =>
+  <div className="row questions">
+    <h4>Choose your question</h4>
+    <div className="col-xs-16">
+      <ul className="list-group">
+        {questions.map((question, key) =>
+          <Question
+            key={key}
+            onQuestionChosen={onQuestionChosen}
+            values={question}
+          />
+        )}
+      </ul>.bindActionCreators
     </div>
-  )
-}
+  </div>
+)
 
 const Question = ({ values, onQuestionChosen }) => {
   const append = (typeof(values.value) !== 'boolean')
@@ -178,18 +177,16 @@ const Question = ({ values, onQuestionChosen }) => {
   )
 }
 
-const Collection = ({people}) => {
-  return (
-    <div className="row people-collection">
-      {people.map((person) =>
-        <Person
-          key={person.name}
-          person={person}
-        />
-      )}
-    </div>
-  )
-}
+const Collection = (({people}) =>
+  <div className="row people-collection">
+    {people.map((person) =>
+      <Person
+        key={person.name}
+        person={person}
+      />
+    )}
+  </div>
+)
 
 const Person = ({person}) => {
   const slug = slugParse(person.name);
