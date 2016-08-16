@@ -191,7 +191,7 @@ const Person = ({person}) => {
     <div className={`${slug} person col-xs-3 text-center`}>
       <p>
         <img
-          src={`/static/media/wrestlers/${slug}.png`}
+          src={`/static/imgs/${slug}.png`}
           title={person.name}
           alt={person.name}
         />

@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 var paths = require('./paths');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool: 'eval',
@@ -65,7 +66,12 @@ module.exports = {
         loader: 'json'
       },
       {
-        test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)(\?.*)?$/,
+        test: /\.(jpg|png)$/,
+        loader: 'file?name=[path][name].[hash].[ext]',
+        include: paths.appImgs
+      },
+      {
+        test: /\.(ot|svg|woff|woff2)(\?.*)?$/,
         include: [paths.appSrc, paths.appNodeModules],
         loader: 'file',
         query: {
@@ -91,6 +97,9 @@ module.exports = {
     return [autoprefixer];
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: paths.appImgs, to: paths.appBuild + '/static/imgs/' }
+    ]),
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,

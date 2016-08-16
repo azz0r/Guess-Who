@@ -3,6 +3,7 @@ var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var url = require('url');
 var paths = require('./paths');
 
@@ -73,7 +74,12 @@ module.exports = {
         loader: 'json'
       },
       {
-        test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)(\?.*)?$/,
+        test: /\.(jpg|png)$/,
+        loader: 'file?name=[path][name].[hash].[ext]',
+        include: paths.appImgs
+      },
+      {
+        test: /\.(ot|svg|woff|woff2)(\?.*)?$/,
         include: [paths.appSrc, paths.appNodeModules],
         loader: 'file',
         query: {
@@ -101,6 +107,9 @@ module.exports = {
     return [autoprefixer];
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: paths.appImgs, to: paths.appBuild + '/static/imgs/' }
+    ]),
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
