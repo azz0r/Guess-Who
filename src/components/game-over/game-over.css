@@ -2,4 +2,9 @@
   border: 1px solid black;
   padding: 10px;
   width: 100%;
+  transition: all .2s ease-in-out;
+
+}
+.person img:hover {
+  transform: scale(1.1);
 }
