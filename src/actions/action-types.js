@@ -1,1 +1,1 @@
-export const ADD_PERSON = 'ADD_PERSON';
+export const GUESS_TAKEN = 'GUESS_TAKEN';

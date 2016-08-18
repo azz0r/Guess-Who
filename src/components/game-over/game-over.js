@@ -1,10 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import arrayShuffle from 'array-shuffle';
 import './game-over.css';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as peopleActions from '../../actions/people-actions';
+import * as Actions from '../../actions/people-actions';
 import FilterStrings from './filters.json';
+import { connect } from 'react-redux';
 
 class GameOver extends Component {
 
@@ -90,7 +89,9 @@ class GameOver extends Component {
   }
 
   onQuestionChosen(question) {
-    console.log(question)
+    this.props.dispatch(
+      Actions.guessTaken(question)
+    );
   }
 
   pickRandomItems(collection, amount) {
@@ -126,19 +127,9 @@ class GameOver extends Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  return {
-    people: state.people
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(peopleActions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GameOver);
+export default connect(state => ({
+  people: state.people
+}))(GameOver)
 
 function slugParse(string) {
   return string.toLowerCase()

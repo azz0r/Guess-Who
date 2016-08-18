@@ -1,8 +1,8 @@
 import * as types from './action-types';
 
-export const addPerson = (person) => {
+export const guessTaken = (person) => {
   return {
-    type: types.ADD_PERSON,
+    type: types.GUESS_TAKEN,
     person
   };
 }
