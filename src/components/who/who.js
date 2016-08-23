@@ -67,9 +67,11 @@ class Who extends Component {
   }
 
   onQuestionChosen = (question) => {
-    this.props.dispatch(
-      Actions.turnTaken(question)
-    );
+    if (this.props.players[0].currentTurn) {
+      this.props.dispatch(
+        Actions.turnTaken(question)
+      );
+    }
   }
 
   render() {
@@ -80,6 +82,7 @@ class Who extends Component {
         </div>
         <div className="col-xs-4">
           <Questions
+            active={this.props.players[0].currentTurn}
             onQuestionChosen={this.onQuestionChosen}
             questions={this.state.questions}
           />
@@ -94,25 +97,28 @@ export default connect(state => ({
   players: state.players
 }))(Who)
 
-const Questions = (({ questions, onQuestionChosen }) =>
-  <div className="row questions">
-    <h4>Choose your question</h4>
-    <div className="col-xs-16">
-      <ul className="list-group">
-        {questions.map((question, key) =>
-          <Question
-            key={key}
-            onQuestionChosen={onQuestionChosen}
-            values={question}
-          />
-        )}
-      </ul>
+const Questions = (({ active, questions, onQuestionChosen }) => {
+  let activeClass = active ? 'active' : '';
+  return (
+    <div className={`row questions ${activeClass}`}>
+      <h4>Choose your question</h4>
+      <div className="col-xs-16">
+        <ul className="list-group">
+          {questions.map((question, key) =>
+            <Question
+              key={key}
+              onQuestionChosen={onQuestionChosen}
+              values={question}
+            />
+          )}
+        </ul>
+      </div>
     </div>
-  </div>
-)
+  );
+})
 
 const Question = ({ values, onQuestionChosen }) => {
-  const append = (typeof(values.value) !== 'boolean')
+  let append = (typeof(values.value) !== 'boolean')
     ? ` ${values.value}`
     : '';
   return (

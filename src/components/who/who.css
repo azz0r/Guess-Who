@@ -22,5 +22,9 @@
 }
 
 .person.chosen:after {
-    content: '\d7';
+  content: '\d7';
+}
+
+.questions.active li {
+  cursor: pointer;
 }
