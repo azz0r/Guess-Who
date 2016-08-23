@@ -1,10 +1,12 @@
 import React, { PropTypes, Component } from 'react';
 import './who.css';
-import * as Actions from '../../actions/people';
+import * as PeopleActions from '../../actions/people';
+import * as PlayerActions from '../../actions/players';
 import FilterStrings from './filters.json';
 import { connect } from 'react-redux';
 import { slugParse, pickRandomItems, getValues, getFields, condenseArray } from './helpers';
 
+console.log(typeof(PeopleActions.turnTaken), typeof(PlayerActions.turnTaken));
 class Who extends Component {
 
   static propTypes = {
@@ -68,9 +70,10 @@ class Who extends Component {
 
   onQuestionChosen = (question) => {
     if (this.props.players[0].currentTurn) {
-      this.props.dispatch(
-        Actions.turnTaken(question)
-      );
+      this.props.dispatch([
+        PeopleActions.turnConfirmed(question),
+        PlayerActions.turnConfirmed()
+      ])
     }
   }
 
