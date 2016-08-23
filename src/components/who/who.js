@@ -1,18 +1,20 @@
 import React, { PropTypes, Component } from 'react';
-import arrayShuffle from 'array-shuffle';
-import './game-over.css';
+import './who.css';
 import * as Actions from '../../actions/people-actions';
 import FilterStrings from './filters.json';
 import { connect } from 'react-redux';
+import { slugParse, pickRandomItems, getValues, getFields, condenseArray } from './helpers';
 
-class GameOver extends Component {
+class Who extends Component {
 
   static propTypes = {
-    people: PropTypes.array.isRequired
+    dispatch: PropTypes.func.isRequired,
+    people: PropTypes.array.isRequired,
+    players: PropTypes.array.isRequired
   }
 
   componentWillMount() {
-    this.fields = this.getFields();
+    this.fields = getFields(this.props.people[0]);
     this.choices = this.getChoices();
     this.setState({
       fields: this.fields,
@@ -30,33 +32,10 @@ class GameOver extends Component {
     filtersGroupedByAnswer = [fieldsLength];
     // loop the fields and add values to the collection returned
     this.fields.forEach((field) => {
-      filtersGroupedByAnswer[field] = this.getValues(field);
+      filtersGroupedByAnswer[field] = getValues(this.props.people, field);
     });
     delete filtersGroupedByAnswer[0];
     return filtersGroupedByAnswer;
-  }
-
-  /*
-    * Takes an object and generates a new array of the fields on that object
-    * @return {array} returns an array of fields
-  */
-  getFields = () => {
-    let fields = [];
-    for (const key of Object.keys(this.props.people[0])) {
-      fields.push(key);
-    }
-    return fields;
-  }
-
-  /*
-    * Get an array of values from the peoples collection
-    * @param  {string} field on the object we want to aggregate
-    * @return {array} returns an array of fields
-  */
-  getValues = (field) => {
-    return this.props.people.map((object) => {
-      return object[field];
-    })
   }
 
   /*
@@ -72,8 +51,7 @@ class GameOver extends Component {
       if (filterName === 'name') {
         return;
       }
-      deduplicatedQuestions
-        = this.condenseAnswers(this.choices[filterName])
+      deduplicatedQuestions = condenseArray(this.choices[filterName])
 
       if (deduplicatedQuestions.length > 0) {
         deduplicatedQuestions.forEach((question, key) => {
@@ -85,36 +63,21 @@ class GameOver extends Component {
         })
       }
     })
-    return this.pickRandomItems(questions, 5);
+    return pickRandomItems(questions, 5);
   }
 
-  onQuestionChosen(question) {
+  onQuestionChosen = (question) => {
+    console.log(question);
     this.props.dispatch(
       Actions.guessTaken(question)
     );
-  }
-
-  pickRandomItems(collection, amount) {
-    return arrayShuffle(collection).slice(0, amount);
-  }
-
-  condenseAnswers = (data) => {
-    let result = [];
-    if (data && data.length > 0) {
-      data.forEach(function (elem) {
-        if (result.indexOf(elem) === -1) {
-          result.push(elem);
-        }
-      });
-    }
-    return result;
   }
 
   render() {
     return (
       <div className="row">
         <div className="col-xs-8">
-          <Collection people={this.props.people} />
+          <People people={this.props.people} />
         </div>
         <div className="col-xs-4">
           <Questions
@@ -128,15 +91,9 @@ class GameOver extends Component {
 }
 
 export default connect(state => ({
-  people: state.people
-}))(GameOver)
-
-function slugParse(string) {
-  return string.toLowerCase()
-    .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
-    .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
-    .replace(/^-+|-+$/g, '')  // remove leading, trailing -
-}
+  people: state.people,
+  players: state.players
+}))(Who)
 
 const Questions = (({ questions, onQuestionChosen }) =>
   <div className="row questions">
@@ -150,7 +107,7 @@ const Questions = (({ questions, onQuestionChosen }) =>
             values={question}
           />
         )}
-      </ul>.bindActionCreators
+      </ul>
     </div>
   </div>
 )
@@ -168,7 +125,7 @@ const Question = ({ values, onQuestionChosen }) => {
   )
 }
 
-const Collection = (({people}) =>
+const People = (({people}) =>
   <div className="row people-collection">
     {people.map((person) =>
       <Person

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Aaron",
+    "cpu": false,
+    "currentTern": true
+  },
+  {
+    "id": 2,
+    "name": "CPU",
+    "cpu": true,
+    "currentTern": false
+  }
+]

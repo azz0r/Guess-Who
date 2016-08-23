@@ -1,15 +1,15 @@
-import People from '../data/wrestlers.json';
+import defaultState from '../data/people.json';
 
-export default (state = People, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
-    case 'GUESS_TAKEN':
+    case 'FILTER_BY':
       return state.map((person, index) => {
         if (index === action.index) {
           return Object.assign({}, person, {
             chosen: true
           })
         }
-        return person
+        return state
       })
     default:
       return state
