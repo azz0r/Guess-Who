@@ -56,7 +56,7 @@ class Who extends Component {
       if (deduplicatedQuestions.length > 0) {
         deduplicatedQuestions.forEach((question, key) => {
           questions.push({
-            question: FilterStrings[filterName],
+            question: FilterStrings[filterName].question,
             field: filterName,
             value: question
           });

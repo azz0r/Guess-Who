@@ -1,13 +1,46 @@
 {
-  "male": "Are they male",
-  "hair": "Does your wrestler have hair",
-  "hairColor": "Is their hair colour",
-  "eyeColor": "Are their eyes",
-  "hat": "Are they wearing a hat",
-  "hatColor": "Is their hat colour",
-  "shirt": "Are they wearing a shirt",
-  "shirtColor": "Is their shirt",
-  "cape": "Are they wearing a cape",
-  "beard": "Do they have a beard",
-  "beardColor": "Is their beard colour"
+  "male": {
+    "question": "Are they male",
+    "type": "Boolean"
+  },
+  "hair": {
+    "question": "Do they have a bald head",
+    "type": "Boolean"
+  },
+  "hairColor": {
+    "question": "Is their hair colour",
+    "type": "string"
+  },
+  "eyeColor": {
+    "question": "Are their eyes",
+    "type": "String"
+  },
+  "hat": {
+    "question": "Are they wearing a hat",
+    "type": "Boolean"
+  },
+  "hatColor": {
+    "question": "Is their hat colour",
+    "type": "String"
+  },
+  "shirt": {
+    "question": "Are they wearing a shirt",
+    "type": "Boolean"
+  },
+  "shirtColor": {
+    "question": "Is their shirt",
+    "type": "String"
+  },
+  "cape": {
+    "question": "Are they wearing a cape",
+    "type": "Boolean"
+  },
+  "beard": {
+    "question": "Do they have a beard",
+    "type": "Boolean"
+  },
+  "beardColor": {
+    "question": "Is their beard colour",
+    "type": "String"
+  }
 }
