@@ -48,7 +48,7 @@ class Who extends Component {
       deduplicatedQuestions = [];
 
     this.fields.forEach((filterName, key) => {
-      if (filterName === 'name') {
+      if (filterName === 'name' || filterName === 'id') {
         return;
       }
       deduplicatedQuestions = condenseArray(this.choices[filterName])
