@@ -1,4 +1,5 @@
 [{
+	"id": 1,
 	"name": "Roman Reigns",
 	"male": true,
 	"hair": true,
@@ -12,6 +13,7 @@
 	"beard": true,
 	"beardColor": "black"
 }, {
+	"id": 2,
 	"name": "John Cena",
 	"male": true,
 	"hair": true,
@@ -25,6 +27,7 @@
 	"beard": false,
 	"beardColor": false
 }, {
+	"id": 3,
 	"name": "Steve Austin",
 	"male": true,
 	"hair": false,
@@ -39,6 +42,7 @@
 	"beard": true,
 	"beardColor": "blond"
 }, {
+	"id": 4,
 	"name": "Neville",
 	"male": true,
 	"hair": true,
