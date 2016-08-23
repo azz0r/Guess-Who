@@ -8,7 +8,7 @@
     "type": "Boolean"
   },
   "hairColor": {
-    "question": "Is their hair colour",
+    "question": "Is their hair colour ",
     "type": "string"
   },
   "eyeColor": {
@@ -20,7 +20,7 @@
     "type": "Boolean"
   },
   "hatColor": {
-    "question": "Is their hat colour",
+    "question": "Is their hat colour ",
     "type": "String"
   },
   "shirt": {
@@ -28,7 +28,7 @@
     "type": "Boolean"
   },
   "shirtColor": {
-    "question": "Is their shirt",
+    "question": "Is their shirt ",
     "type": "String"
   },
   "cape": {
@@ -40,7 +40,7 @@
     "type": "Boolean"
   },
   "beardColor": {
-    "question": "Is their beard colour",
+    "question": "Is their beard colour ",
     "type": "String"
   }
 }
