@@ -6,7 +6,6 @@ import FilterStrings from './filters.json';
 import { connect } from 'react-redux';
 import { slugParse, pickRandomItems, getValues, getFields, condenseArray } from './helpers';
 
-console.log(typeof(PeopleActions.turnTaken), typeof(PlayerActions.turnTaken));
 class Who extends Component {
 
   static propTypes = {
