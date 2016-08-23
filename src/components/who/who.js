@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import './who.css';
-import * as Actions from '../../actions/people-actions';
+import * as Actions from '../../actions/people';
 import FilterStrings from './filters.json';
 import { connect } from 'react-redux';
 import { slugParse, pickRandomItems, getValues, getFields, condenseArray } from './helpers';
@@ -136,9 +136,10 @@ const People = (({people}) =>
 )
 
 const Person = ({ person }) => {
-  const slug = slugParse(person.name);
+  let slug = slugParse(person.name),
+    chosenClass = person.chosen ? 'chosen' : '';
   return (
-    <div className={`${slug} person col-xs-3 text-center`}>
+    <div className={`${slug} ${chosenClass} person col-xs-3 text-center`}>
       <p>
         <img
           src={`/static/imgs/${slug}.png`}

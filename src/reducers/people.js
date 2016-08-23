@@ -3,13 +3,11 @@ import defaultState from '../data/people.json';
 export default (state = defaultState, action) => {
   switch (action.type) {
     case 'FILTER_BY':
-      return state.map((person, index) => {
+       return state.map((person, index) => {
         if (person[action.question.field] === action.question.value) {
-          return Object.assign({}, person, {
-            chosen: true
-          })
+          person.chosen = true
         }
-        return state
+        return person;
       })
     default:
       return state
