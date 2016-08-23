@@ -1,46 +1,46 @@
 {
   "male": {
-    "question": "Are they male",
+    "question": "Is your character male",
     "type": "Boolean"
   },
   "hair": {
-    "question": "Do they have a bald head",
+    "question": "Is your character bald",
     "type": "Boolean"
   },
   "hairColor": {
-    "question": "Is their hair colour ",
+    "question": "Is your characters hair colour ",
     "type": "string"
   },
   "eyeColor": {
-    "question": "Are their eyes",
+    "question": "Is your characters eye colour ",
     "type": "String"
   },
   "hat": {
-    "question": "Are they wearing a hat",
+    "question": "Is your character wearing a hat",
     "type": "Boolean"
   },
   "hatColor": {
-    "question": "Is their hat colour ",
+    "question": "Is your characters hat colour ",
     "type": "String"
   },
   "shirt": {
-    "question": "Are they wearing a shirt",
+    "question": "Is your character wearing a shirt",
     "type": "Boolean"
   },
   "shirtColor": {
-    "question": "Is their shirt ",
+    "question": "Is your character shirt ",
     "type": "String"
   },
   "cape": {
-    "question": "Are they wearing a cape",
+    "question": "Is your character wearing a cape",
     "type": "Boolean"
   },
   "beard": {
-    "question": "Do they have a beard",
+    "question": "Does your character have a beard",
     "type": "Boolean"
   },
   "beardColor": {
-    "question": "Is their beard colour ",
+    "question": "Is your characters beard ",
     "type": "String"
   }
 }
