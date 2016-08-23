@@ -103,7 +103,6 @@ const Questions = (({ active, questions, onQuestionChosen }) => {
   let activeClass = active ? 'active' : '';
   return (
     <div className={`row questions ${activeClass}`}>
-      <h4>Choose your question</h4>
       <div className="col-xs-16">
         <ul className="list-group">
           {questions.map((question, key) =>
