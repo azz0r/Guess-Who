@@ -72,7 +72,7 @@ class Who extends Component {
     if (this.props.players[0].currentTurn) {
       this.props.dispatch([
         PeopleActions.turnConfirmed(question),
-        PlayerActions.turnConfirmed()
+        PlayerActions.turnConfirmed(true)
       ])
     }
   }
