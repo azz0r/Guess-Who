@@ -4,7 +4,7 @@ export function pickRandomItems(collection, amount) {
   return arrayShuffle(collection).slice(0, amount);
 }
 
-export function slugParse(string) {
+export function slugParse(string = '') {
   return string.toLowerCase()
     .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
     .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
@@ -25,7 +25,7 @@ export function getValues(collection, field) {
 /*
   * Takes an object and generates a new array of the fields on that object
   * @return {array} returns an array of fields
-*/ 
+*/
 export function getFields(obj) {
   let fields = [];
   for (const key of Object.keys(obj)) {

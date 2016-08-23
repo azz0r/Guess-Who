@@ -3,12 +3,12 @@
     "id": 1,
     "name": "Aaron",
     "cpu": false,
-    "currentTern": true
+    "currentTurn": true
   },
   {
     "id": 2,
     "name": "CPU",
     "cpu": true,
-    "currentTern": false
+    "currentTurn": false
   }
 ]

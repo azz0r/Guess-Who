@@ -67,9 +67,8 @@ class Who extends Component {
   }
 
   onQuestionChosen = (question) => {
-    console.log(question);
     this.props.dispatch(
-      Actions.guessTaken(question)
+      Actions.turnTaken(question)
     );
   }
 
@@ -127,16 +126,16 @@ const Question = ({ values, onQuestionChosen }) => {
 
 const People = (({people}) =>
   <div className="row people-collection">
-    {people.map((person) =>
+    {people.map((person, key) =>
       <Person
-        key={person.name}
+        key={key}
         person={person}
       />
     )}
   </div>
 )
 
-const Person = ({person}) => {
+const Person = ({ person }) => {
   const slug = slugParse(person.name);
   return (
     <div className={`${slug} person col-xs-3 text-center`}>

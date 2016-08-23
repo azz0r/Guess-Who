@@ -1,1 +1,1 @@
-export const GUESS_TAKEN = 'GUESS_TAKEN';
+export const FILTER_BY = 'FILTER_BY';
