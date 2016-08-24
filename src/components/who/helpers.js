@@ -1,7 +1,8 @@
 import arrayShuffle from 'array-shuffle';
+import FilterStrings from './filters.json';
 
 export function pickRandomItems(collection, amount) {
-  return arrayShuffle(collection).slice(0, amount);
+  return arrayShuffle(collection).slice(0, 200);//amount);
 }
 
 export function slugParse(string = '') {
@@ -35,13 +36,45 @@ export function getFields(obj) {
 }
 
 export function condenseArray(data) {
-    let result = [];
-    if (data && data.length > 0) {
-      data.forEach(function (elem) {
-        if (result.indexOf(elem) === -1) {
-          result.push(elem);
-        }
-      });
-    }
-    return result;
+  let result = [];
+  if (data && data.length > 0) {
+    data.forEach(function (elem) {
+      if (result.indexOf(elem) === -1) {
+        result.push(elem);
+      }
+    });
   }
+  return result;
+}
+
+
+export function getQuestions(collection, fields) {
+  let fieldsLength = Object.keys(collection[0]).length,
+    choices = [fieldsLength],
+    questions = [],
+    deduplicatedQuestions = [];
+
+  // loop the fields and add values to the collection returned
+  fields.forEach((field) => {
+    choices[field] = getValues(collection, field);
+  });
+  delete choices[0];
+
+  fields.forEach((filterName, key) => {
+    if (filterName === 'name' || filterName === 'id') {
+      return;
+    }
+    deduplicatedQuestions = condenseArray(choices[filterName])
+
+    if (deduplicatedQuestions.length > 0) {
+      deduplicatedQuestions.forEach((question, key) => {
+        questions.push({
+          question: FilterStrings[filterName].question,
+          field: filterName,
+          value: question
+        });
+      })
+    }
+    return questions;
+  })
+}

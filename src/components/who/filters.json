@@ -19,10 +19,6 @@
     "question": "Is your character wearing a hat",
     "type": "Boolean"
   },
-  "hatColor": {
-    "question": "Is your characters hat colour ",
-    "type": "String"
-  },
   "shirt": {
     "question": "Is your character wearing a shirt",
     "type": "Boolean"

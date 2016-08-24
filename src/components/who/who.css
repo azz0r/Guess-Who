@@ -29,6 +29,9 @@
 .list-group-item {
   border: 0;
 }
+.list-group-item a {
+  cursor: pointer;
+}
 a, a:visited {
   color: black;
 }

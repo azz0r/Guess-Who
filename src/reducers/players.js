@@ -5,6 +5,9 @@ export default (state = defaultState, action) => {
     case 'TURN_TAKEN':
       console.log('player', state, action);
       break;
+    case 'CHOSE_PERSON':
+      state.chosenPerson = action;
+      break;
     default:
       break;
     }

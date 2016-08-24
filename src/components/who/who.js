@@ -2,69 +2,23 @@ import React, { PropTypes, Component } from 'react';
 import './who.css';
 import * as PeopleActions from '../../actions/people';
 import * as PlayerActions from '../../actions/players';
-import FilterStrings from './filters.json';
+import * as QuestionActions from '../../actions/questions';
 import { connect } from 'react-redux';
-import { slugParse, pickRandomItems, getValues, getFields, condenseArray } from './helpers';
+import { slugParse } from './helpers';
 
 class Who extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     people: PropTypes.array.isRequired,
-    players: PropTypes.array.isRequired
+    players: PropTypes.array.isRequired,
+    questions: PropTypes.array.isRequired
   }
 
   componentWillMount() {
-    this.fields = getFields(this.props.people[0]);
-    this.choices = this.getChoices();
     this.setState({
-      fields: this.fields,
-      choices: this.choices,
-      questions: this.getQuestions()
+      currentPlayer: this.props.players[0]
     })
-  }
-
-  /*
-    * Get Available filters with grouped answers
-    * @return {array} returns an array of fields with an array of answers inside
-  */
-  getChoices() {
-    let fieldsLength = Object.keys(this.props.people[0]).length,
-    filtersGroupedByAnswer = [fieldsLength];
-    // loop the fields and add values to the collection returned
-    this.fields.forEach((field) => {
-      filtersGroupedByAnswer[field] = getValues(this.props.people, field);
-    });
-    delete filtersGroupedByAnswer[0];
-    return filtersGroupedByAnswer;
-  }
-
-  /*
-    * Take the fields and see how many filters we have available for them
-    * @return {array} of choices for the user
-  */
-  getQuestions = () => {
-    let
-      questions = [],
-      deduplicatedQuestions = [];
-
-    this.fields.forEach((filterName, key) => {
-      if (filterName === 'name' || filterName === 'id') {
-        return;
-      }
-      deduplicatedQuestions = condenseArray(this.choices[filterName])
-
-      if (deduplicatedQuestions.length > 0) {
-        deduplicatedQuestions.forEach((question, key) => {
-          questions.push({
-            question: FilterStrings[filterName].question,
-            field: filterName,
-            value: question
-          });
-        })
-      }
-    })
-    return pickRandomItems(questions, 5);
   }
 
   onQuestionChosen = (question) => {
@@ -83,10 +37,11 @@ class Who extends Component {
           <People people={this.props.people} />
         </div>
         <div className="col-xs-4">
+          <ChosenPerson person={this.state.currentPlayer.chosenPerson} />
           <Questions
-            active={this.props.players[0].currentTurn}
+            active={this.props.players[0].currentTurn && this.state.currentPlayer.chosenPerson}
             onQuestionChosen={this.onQuestionChosen}
-            questions={this.state.questions}
+            questions={this.props.questions}
           />
         </div>
       </div>
@@ -96,7 +51,8 @@ class Who extends Component {
 
 export default connect(state => ({
   people: state.people,
-  players: state.players
+  players: state.players,
+  questions: state.questions
 }))(Who)
 
 const Questions = (({ active, questions, onQuestionChosen }) => {
@@ -124,14 +80,18 @@ const Question = ({ values, onQuestionChosen }) => {
     : '';
   return (
     <li
-      className="list-group-item"
-      onClick={onQuestionChosen.bind(this, values)}>
-      {values.question}{append}?
+      className="list-group-item">
+      <a
+        href="#"
+        onKeyPress={onQuestionChosen.bind(this, values)}
+        onClick={onQuestionChosen.bind(this, values)}>
+        {values.question}{append}?
+      </a>
     </li>
   )
 }
 
-const People = (({people}) =>
+const People = (({ people }) =>
   <div className="row people-collection">
     {people.map((person, key) =>
       <Person
@@ -141,6 +101,14 @@ const People = (({people}) =>
     )}
   </div>
 )
+
+const ChosenPerson = ({ person }) => {
+  return (
+    <div>
+      <h2>Your character</h2>
+    </div>
+  );
+}
 
 const Person = ({ person }) => {
   let slug = slugParse(person.name),
