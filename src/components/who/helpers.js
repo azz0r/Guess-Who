@@ -1,5 +1,4 @@
 import arrayShuffle from 'array-shuffle';
-import FilterStrings from './filters.json';
 
 export function pickRandomItems(collection, amount) {
   return arrayShuffle(collection).slice(0, 200);//amount);
@@ -69,13 +68,7 @@ export function getQuestions(collection) {
 
     if (deduplicatedQuestions.length > 0) {
       deduplicatedQuestions.forEach((question, key) => {
-        if (FilterStrings[filterName]) {
-          questions.push({
-            question: FilterStrings[filterName].question,
-            field: filterName,
-            value: question
-          })
-        }
+
       })
     }
   })

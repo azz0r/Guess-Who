@@ -24,13 +24,17 @@ class Who extends Component {
     if (this.props.players[0].currentTurn) {
       this.props.dispatch([
         PeopleActions.turnConfirmed(question),
-        PlayerActions.turnConfirmed(true)
+        PlayerActions.turnConfirmed(true),
+        QuestionActions.turnConfirmed(question),
       ])
     }
   }
 
   render() {
     let questions = getQuestions(this.props.people);
+    console.log(
+      JSON.stringify(questions)
+    );
     return (
       <div className="row">
         <div className="col-xs-8">

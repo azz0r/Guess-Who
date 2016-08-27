@@ -1,6 +1,6 @@
-const defaultState = []
+import FilterStrings from '../data/questions.json';
 
-export default (state = defaultState, action) => {
+export default (state = FilterStrings, action) => {
   switch (action.type) {
     case 'TURN_TAKEN':
 
