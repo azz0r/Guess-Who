@@ -48,11 +48,12 @@ export function condenseArray(data) {
 }
 
 
-export function getQuestions(collection, fields) {
+export function getQuestions(collection) {
   let fieldsLength = Object.keys(collection[0]).length,
     choices = [fieldsLength],
     questions = [],
-    deduplicatedQuestions = [];
+    deduplicatedQuestions = [],
+    fields = getFields(collection[0]);
 
   // loop the fields and add values to the collection returned
   fields.forEach((field) => {
@@ -68,13 +69,15 @@ export function getQuestions(collection, fields) {
 
     if (deduplicatedQuestions.length > 0) {
       deduplicatedQuestions.forEach((question, key) => {
-        questions.push({
-          question: FilterStrings[filterName].question,
-          field: filterName,
-          value: question
-        });
+        if (FilterStrings[filterName]) {
+          questions.push({
+            question: FilterStrings[filterName].question,
+            field: filterName,
+            value: question
+          })
+        }
       })
     }
-    return questions;
   })
+  return questions;
 }

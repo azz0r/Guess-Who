@@ -4,15 +4,14 @@ import * as PeopleActions from '../../actions/people';
 import * as PlayerActions from '../../actions/players';
 import * as QuestionActions from '../../actions/questions';
 import { connect } from 'react-redux';
-import { slugParse } from './helpers';
+import { slugParse, getQuestions } from './helpers';
 
 class Who extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     people: PropTypes.array.isRequired,
-    players: PropTypes.array.isRequired,
-    questions: PropTypes.array.isRequired
+    players: PropTypes.array.isRequired
   }
 
   componentWillMount() {
@@ -31,6 +30,7 @@ class Who extends Component {
   }
 
   render() {
+    let questions = getQuestions(this.props.people);
     return (
       <div className="row">
         <div className="col-xs-8">
@@ -41,7 +41,7 @@ class Who extends Component {
           <Questions
             active={this.props.players[0].currentTurn && this.state.currentPlayer.chosenPerson}
             onQuestionChosen={this.onQuestionChosen}
-            questions={this.props.questions}
+            questions={questions}
           />
         </div>
       </div>
@@ -51,8 +51,7 @@ class Who extends Component {
 
 export default connect(state => ({
   people: state.people,
-  players: state.players,
-  questions: state.questions
+  players: state.players
 }))(Who)
 
 const Questions = (({ active, questions, onQuestionChosen }) => {

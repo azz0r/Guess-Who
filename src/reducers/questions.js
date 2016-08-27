@@ -1,6 +1,12 @@
-import { getQuestions } from '../components/who/helpers';
+const defaultState = []
 
-export default (state = {}, action) => {
-  console.log(state);
-  return getQuestions()
+export default (state = defaultState, action) => {
+  switch (action.type) {
+    case 'TURN_TAKEN':
+
+      break;
+      default:
+    break;
+  }
+return state
 }
