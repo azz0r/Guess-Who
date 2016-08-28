@@ -70,7 +70,7 @@ export default connect(state => ({
 const Questions = (({ active, questions, onQuestionChosen }) => {
   let activeClass = active ? 'active' : ''
   return (
-    <div className={`row questions ${activeClass}`}>
+    <div className={`row questions ${activeClass} text-center`}>
       <div className="col-xs-16">
         <ul className="list-group">
           {questions.map((question, key) =>
