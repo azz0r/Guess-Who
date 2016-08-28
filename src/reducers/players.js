@@ -6,7 +6,7 @@ export default (state = defaultState, action) => {
       console.log('player', state, action);
       break;
     case 'CHOSE_PERSON':
-      state.chosenPerson = action;
+      state[0].chosenPerson = action.person;
       break;
     default:
       break;

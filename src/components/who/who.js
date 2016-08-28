@@ -15,10 +15,12 @@ class Who extends Component {
     questions: PropTypes.array.isRequired,
   }
 
-  componentWillMount() {
-    this.setState({
-      currentPlayer: this.props.players[0]
-    })
+  onPersonClicked = (person) => {
+    if (!this.props.players[0].chosenPerson) {
+      this.props.dispatch(
+        PlayerActions.chosePerson(person)
+      )
+    }
   }
 
   onQuestionChosen = (question, value) => {
@@ -32,15 +34,21 @@ class Who extends Component {
   }
 
   render() {
+    console.log('render');
     return (
       <div className="row">
         <div className="col-xs-8">
-          <People people={this.props.people} />
+          <People
+            people={this.props.people}
+            onPersonClicked={this.onPersonClicked}
+          />
         </div>
         <div className="col-xs-4">
-          <ChosenPerson person={this.state.currentPlayer.chosenPerson} />
+          <ChosenPerson
+            person={this.props.players[0].chosenPerson}
+          />
           <Questions
-            active={this.props.players[0].currentTurn && this.state.currentPlayer.chosenPerson}
+            active={this.props.players[0].currentTurn}
             onQuestionChosen={this.onQuestionChosen}
             questions={this.props.questions}
           />
@@ -89,35 +97,54 @@ const Question = ({ question, onQuestionChosen }) => {
   )
 }
 
-const People = (({ people }) =>
+const People = (({ people, onPersonClicked }) =>
   <div className="row people-collection">
     {people.map((person, key) =>
-      <Person
-        key={key}
-        person={person}
-      />
+      <div className="col-xs-3">
+        <Person
+          key={key}
+          person={person}
+          onPersonClicked={onPersonClicked}
+        />
+      </div>
     )}
   </div>
 )
 
 const ChosenPerson = ({ person }) => {
-  return (
-    <div>
-      <h2>Your character</h2>
-    </div>
-  );
+  console.log('chosenPerson Render', person.name);
+  if (person) {
+    return (
+      <div className="row">
+        <h2>Your character</h2>
+        <div className="col-xs-12">
+          <Person
+            person={person}
+          />
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h2>Choose your character</h2>
+        <p>Click on the user you wish to choose as your character</p>
+      </div>
+    );
+  }
 }
 
-const Person = ({ person }) => {
+const Person = ({ person, onPersonClicked }) => {
   let slug = slugParse(person.name),
     chosenClass = person.chosen ? 'chosen' : '';
   return (
-    <div className={`${slug} ${chosenClass} person col-xs-3 text-center`}>
+    <div className={`${slug} ${chosenClass} person text-center`}>
       <p>
         <img
           src={`/static/imgs/${slug}.png`}
           title={person.name}
           alt={person.name}
+          onClick={onPersonClicked ? onPersonClicked.bind(this, person) : null}
         />
       </p>
       <h4>
