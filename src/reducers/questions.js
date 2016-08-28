@@ -1,4 +1,5 @@
 import FilterStrings from '../data/questions.json';
+import arrayShuffle from 'array-shuffle';
 
 export default (state = FilterStrings, action) => {
   switch (action.type) {
@@ -8,5 +9,5 @@ export default (state = FilterStrings, action) => {
       default:
     break;
   }
-return state
+  return arrayShuffle(state);
 }

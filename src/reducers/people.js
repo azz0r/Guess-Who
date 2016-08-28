@@ -1,6 +1,7 @@
 import defaultState from '../data/people.json';
+import arrayShuffle from 'array-shuffle';
 
-export default (state = defaultState, action) => {
+export default (state = arrayShuffle(defaultState), action) => {
   switch (action.type) {
     case 'TURN_TAKEN':
        return state.map((person, index) => {
@@ -10,6 +11,7 @@ export default (state = defaultState, action) => {
         return person
       })
     default:
-      return state
+    break;
   }
+  return state
 }
