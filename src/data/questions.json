@@ -2,13 +2,13 @@
   {
     "key": "male",
     "question": "Is your character male",
-    "values": [true, false],
+    "values": [true],
     "appendValue": false
   },
   {
     "key": "hairColor",
     "question": "Is your characters hair colour ",
-    "values": ["blonde", "blond", "brown", "black", "gray"],
+    "values": ["blonde", "brown", "black", "gray"],
     "appendValue": true
   },
   {
@@ -20,37 +20,43 @@
   {
     "key": "hat",
     "question": "Is your character wearing a hat",
-    "values": [true, false],
+    "values": [true],
     "appendValue": false
   },
   {
     "key": "cape",
     "question": "Is your character wearing a cape",
-    "values": [true, false],
+    "values": [true],
     "appendValue": false
   },
   {
     "key": "beard",
     "question": "Does your character have a beard",
-    "values": [true, false],
+    "values": [true],
     "appendValue": false
   },
   {
     "key": "mask",
     "question": "Does your character wear a mask",
-    "values": [true, false],
+    "values": [true],
     "appendValue": false
   },
   {
     "key": "owner",
     "question": "Does your character part own the WWE",
-    "values": [true, false],
+    "values": [true],
     "appendValue": false
   },
   {
     "key": "commentator",
     "question": "Is your character a commentator",
-    "values": [true, false],
+    "values": [true],
+    "appendValue": false
+  },
+  {
+    "key": "champion",
+    "question": "Is your character a champion",
+    "values": [true],
     "appendValue": false
   }
 ]

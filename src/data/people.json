@@ -17,7 +17,7 @@
 	"id": 4,
 	"name": "Charlotte",
 	"male": false,
-	"hairColor": "blonde",
+	"hairColor": "blond",
 	"eyeColor": "green",
 	"champion": true
 }, {
@@ -42,7 +42,7 @@
 	"name": "Mark Henry",
 	"male": true,
 	"hairColor": "brown",
-	"eyeColor": "blue",
+	"eyeColor": "brown",
 	"beard": true
 }, {
 	"id": 9,
