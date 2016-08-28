@@ -36,9 +36,16 @@
 .list-group-item a {
   cursor: pointer;
 }
-a, a:visited {
+a,
+a:visited {
   color: black;
 }
 a:hover {
   color: #999;
+}
+h4 {
+  font-size: 14px;
+}
+.person-chosen .person img {
+  width: 250px;
 }
