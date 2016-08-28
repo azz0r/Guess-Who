@@ -36,6 +36,14 @@ class Who extends Component {
         PlayerActions.turnConfirmed(true),
       ])
     }
+    /*
+    const doesThisPersonHave = (person, question) => {
+      console.log(person.name, person[question.key]);
+      console.log(question.key, question.value);
+      return Boolean((person[question.key]) && (question.value === person[question.key]));
+    }
+    console.log(doesThisPersonHave(this.props.people[0], this.props.questions[0]))
+    */
   }
 
   render() {
