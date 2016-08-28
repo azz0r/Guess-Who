@@ -7,7 +7,7 @@ export default (state = defaultState, action) => {
         if (person[action.question.key] && person[action.question.key] === action.value) {
           person.chosen = true
         }
-        return person;
+        return person
       })
     default:
       return state
