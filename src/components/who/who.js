@@ -1,10 +1,10 @@
-import React, { PropTypes, Component } from 'react';
-import './who.css';
-import * as PeopleActions from '../../actions/people';
-import * as PlayerActions from '../../actions/players';
-import * as QuestionActions from '../../actions/questions';
-import { connect } from 'react-redux';
-import { slugParse } from './helpers';
+import React, { PropTypes, Component } from 'react'
+import './who.css'
+import * as PeopleActions from '../../actions/people'
+import * as PlayerActions from '../../actions/players'
+import * as QuestionActions from '../../actions/questions'
+import { connect } from 'react-redux'
+import { slugParse } from './helpers'
 
 class Who extends Component {
 
@@ -37,7 +37,9 @@ class Who extends Component {
   }
 
   render() {
-    console.log('render');
+    let shouldChooseAPerson = this.props.players[0].chosenPerson
+      ? <PersonChosen person={this.props.players[0].chosenPerson} />
+      : <ChooseAPerson person={this.props.players[0].chosenPerson} />
     return (
       <div className="row">
         <div className="col-xs-8">
@@ -47,9 +49,7 @@ class Who extends Component {
           />
         </div>
         <div className="col-xs-4">
-          <ChosenPerson
-            person={this.props.players[0].chosenPerson}
-          />
+          {shouldChooseAPerson}
           <Questions
             active={this.props.players[0].currentTurn && this.props.players[0].chosenPerson}
             onQuestionChosen={this.onQuestionChosen}
@@ -68,7 +68,7 @@ export default connect(state => ({
 }))(Who)
 
 const Questions = (({ active, questions, onQuestionChosen }) => {
-  let activeClass = active ? 'active' : '';
+  let activeClass = active ? 'active' : ''
   return (
     <div className={`row questions ${activeClass}`}>
       <div className="col-xs-16">
@@ -83,7 +83,7 @@ const Questions = (({ active, questions, onQuestionChosen }) => {
         </ul>
       </div>
     </div>
-  );
+  )
 })
 
 const Question = ({ question, onQuestionChosen }) => {
@@ -113,30 +113,29 @@ const People = (({ people, onPersonClicked }) =>
   </div>
 )
 
-const ChosenPerson = ({ person }) => {
-  console.log('chosenPerson', person);
-  if (person) {
-    return (
-      <div className="row">
-        <h2>Your character</h2>
-        <div className="col-xs-12">
-          <Person person={person} />
-        </div>
+const PersonChosen =  ({ person }) => {
+  return (
+    <div className="row">
+      <h2>Your character</h2>
+      <div className="col-xs-12">
+        <Person person={person} />
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <h2>Choose your character</h2>
-        <p>Click on the user you wish to choose as your character</p>
-      </div>
-    );
-  }
+    </div>
+  )
+}
+
+const ChooseAPerson = () => {
+  return (
+    <div>
+      <h2>Choose your character</h2>
+      <p>Click on the user you wish to choose as your character</p>
+    </div>
+  )
 }
 
 const Person = ({ person, onPersonClicked }) => {
   let slug = slugParse(person.name),
-    chosenClass = person.chosen ? 'chosen' : '';
+    chosenClass = person.chosen ? 'chosen' : ''
   return (
     <div className={`${slug} ${chosenClass} person text-center`}>
       <p>
