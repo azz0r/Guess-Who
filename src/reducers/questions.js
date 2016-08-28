@@ -1,7 +1,7 @@
-import FilterStrings from '../data/questions.json';
+import defaultState from '../data/questions.json';
 import arrayShuffle from 'array-shuffle';
 
-export default (state = FilterStrings, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
     case 'TURN_TAKEN':
 

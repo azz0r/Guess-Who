@@ -27,11 +27,12 @@ class Who extends Component {
     }
   }
 
-  onQuestionChosen = (question, value) => {
+  onQuestionChosen = (question, event) => {
+    event.preventDefault();
     if (this.props.players[0].currentTurn) {
       this.props.dispatch([
-        PeopleActions.turnConfirmed(question, value),
-        QuestionActions.turnConfirmed(question, value),
+        PeopleActions.turnConfirmed(question),
+        QuestionActions.turnConfirmed(question),
         PlayerActions.turnConfirmed(true),
       ])
     }
@@ -88,14 +89,12 @@ const Questions = (({ active, questions, onQuestionChosen }) => {
 })
 
 const Question = ({ question, onQuestionChosen }) => {
-  let questionValue = question.values[(Math.random() * question.values.length) | 0]
-  let append = question.appendValue && ` ${questionValue}`
   return (
     <li className="list-group-item">
       <a href="#"
-        onKeyPress={onQuestionChosen.bind(this, question, questionValue)}
-        onClick={onQuestionChosen.bind(this, question, questionValue)}>
-        {question.question}{append}?
+        onKeyPress={onQuestionChosen.bind(this, question)}
+        onClick={onQuestionChosen.bind(this, question)}>
+        {question.question}
       </a>
     </li>
   )
@@ -133,14 +132,18 @@ const ChooseAPerson = () => {
   )
 }
 
-const NamePlate = ((name) =>
+const NamePlate = (({ name }) =>
   <h4>{name}</h4>
 )
 
 const Person = ({ person, showNameplate = true, onPersonClicked }) => {
   let slug = slugParse(person.name),
-    chosenClass = person.chosen ? 'chosen' : '',
-    nameplate = showNameplate ? NamePlate(person.name) : ''
+    chosenClass = person.chosen
+      ? 'chosen'
+      : '',
+    nameplate = showNameplate
+      ? <NamePlate name={person.name} />
+      : ''
   return (
     <div className={`${slug} ${chosenClass} person text-center`}>
       <p>

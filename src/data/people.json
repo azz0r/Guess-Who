@@ -74,9 +74,16 @@
 	"owner": true
 }, {
 	"id": 13,
+	"name": "Shane McMahon",
+	"male": true,
+	"hairColor": "silver",
+	"eyeColor": "brown",
+	"owner": true
+}, {
+	"id": 13,
 	"name": "Vince McMahon",
 	"male": true,
-	"hairColor": "gray",
+	"hairColor": "silver",
 	"eyeColor": "brown",
 	"owner": true
 }, {

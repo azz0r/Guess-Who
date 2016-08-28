@@ -1,68 +1,79 @@
-[
-  {
-    "key": "male",
-    "question": "Is your character male",
-    "values": [true],
-    "appendValue": false
-  },
-  {
-    "key": "hairColor",
-    "question": "Is your characters hair colour ",
-    "values": ["blonde", "brown", "black", "gray", "red"],
-    "appendValue": true
-  },
-  {
-    "key": "eyeColor",
-    "question": "Is your characters eye colour ",
-    "values": ["blue", "green", "brown"],
-    "appendValue": true
-  },
-  {
-    "key": "hat",
-    "question": "Is your character wearing a hat",
-    "values": [true],
-    "appendValue": false
-  },
-  {
-    "key": "cape",
-    "question": "Is your character wearing a cape",
-    "values": [true],
-    "appendValue": false
-  },
-  {
-    "key": "beard",
-    "question": "Does your character have a beard",
-    "values": [true],
-    "appendValue": false
-  },
-  {
-    "key": "mask",
-    "question": "Does your character wear a mask",
-    "values": [true],
-    "appendValue": false
-  },
-  {
-    "key": "owner",
-    "question": "Does your character part own the WWE",
-    "values": [true],
-    "appendValue": false
-  },
-  {
-    "key": "commentator",
-    "question": "Is your character a commentator",
-    "values": [true],
-    "appendValue": false
-  },
-  {
-    "key": "champion",
-    "question": "Is your character a champion",
-    "values": [true],
-    "appendValue": false
-  },
-  {
-    "key": "fearless",
-    "question": "Is your character fearless",
-    "values": [true],
-    "appendValue": false
-  }
-]
+[{
+	"key": "male",
+	"question": "Is your character male",
+	"value": true,
+	"appendValue": false
+}, {
+	"key": "male",
+	"question": "Is your character female",
+	"value": false,
+	"appendValue": false
+}, {
+	"key": "hairColor",
+	"question": "Is your characters hair colour red?",
+	"value": "red"
+}, {
+	"key": "hairColor",
+	"question": "Is your characters hair colour blonde?",
+	"value": "blonde"
+}, {
+	"key": "hairColor",
+	"question": "Is your characters hair colour brown?",
+	"value": "brown"
+}, {
+	"key": "hairColor",
+	"question": "Is your characters hair colour black?",
+	"value": "black"
+}, {
+	"key": "hairColor",
+	"question": "Is your characters hair colour silver?",
+	"value": "silver"
+}, {
+	"key": "eyeColor",
+	"question": "Is your characters eye colour blue?",
+	"value": "blue"
+}, {
+	"key": "eyeColor",
+	"question": "Is your characters eye colour brown?",
+	"value": "brown"
+}, {
+	"key": "eyeColor",
+	"question": "Is your characters eye colour green?",
+	"value": "green"
+}, {
+	"key": "hat",
+	"question": "Is your character wearing a cap?",
+	"value": true
+}, {
+	"key": "cape",
+	"question": "Is your character wearing a cape?",
+	"value": true
+}, {
+	"key": "beard",
+	"question": "Does your character have a beard?",
+	"value": true
+}, {
+	"key": "mask",
+	"question": "Does your character wear a mask?",
+	"value": true
+}, {
+	"key": "mask",
+	"question": "Is your character maskless?",
+	"value": false
+}, {
+	"key": "owner",
+	"question": "Does your character part own the WWE?",
+	"value": true
+}, {
+	"key": "commentator",
+	"question": "Is your character a commentator?",
+	"value": true
+}, {
+	"key": "champion",
+	"question": "Is your character a champion?",
+	"value": true
+}, {
+	"key": "fearless",
+	"question": "Is your character fearless?",
+	"value": true
+}]
