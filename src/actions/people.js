@@ -1,5 +1,5 @@
 import * as types from './types';
 
-export function turnConfirmed(question, value) {
-  return { type: types.TURN_TAKEN, question, value }
+export function turnConfirmed(question, playerKey) {
+  return { type: types.TURN_TAKEN, question, playerKey }
 }

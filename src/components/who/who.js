@@ -22,7 +22,7 @@ class Who extends Component {
   onPersonClicked = (chosenPerson) => {
     if (!this.props.players[playerIds.human].chosenPerson) {
       let
-        choicesForCPU = this.props.people.filter((person) => person.id !== chosenPerson.id),
+        choicesForCPU = this.props.people[playerIds.human].filter((person) => person.id !== chosenPerson.id),
         personForCPU = choicesForCPU[(Math.random() * choicesForCPU.length) | 0]
       this.props.dispatch([
         PlayerActions.chosePerson(chosenPerson, playerIds.human),
@@ -35,10 +35,12 @@ class Who extends Component {
     event.preventDefault();
     if (this.props.players[playerIds.human].currentTurn) {
       this.props.dispatch([
-        PeopleActions.turnConfirmed(question),
-        QuestionActions.turnConfirmed(question),
-        PlayerActions.turnConfirmed(true),
+        PeopleActions.turnConfirmed(question, playerIds.human),
+        QuestionActions.turnConfirmed(question, playerIds.human),
+        PlayerActions.turnConfirmed(true, playerIds.human),
       ])
+    } else {
+
     }
     /*
     const doesThisPersonHave = (person, question) => {
@@ -51,24 +53,42 @@ class Who extends Component {
   }
 
   render() {
-    let shouldChooseAPerson = this.props.players[playerIds.human].chosenPerson
-      ? <PersonChosen person={this.props.players[playerIds.human].chosenPerson} />
-      : <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />
+    const shouldChooseAPerson = (playerId) => {
+      return this.props.players[playerId].chosenPerson
+        ? <PersonChosen person={this.props.players[playerId].chosenPerson} />
+        : <ChooseAPerson person={this.props.players[playerId].chosenPerson} />
+    }
     return (
-      <div className="row">
-        <div className="col-xs-8">
-          <People
-            people={this.props.people}
-            onPersonClicked={this.onPersonClicked}
-          />
+      <div>
+        <div className="row">
+          <div className="col-xs-8">
+            <People
+              people={this.props.people[playerIds.human]}
+              onPersonClicked={this.onPersonClicked}
+            />
+          </div>
+          <div className="col-xs-4 text-center">
+            {shouldChooseAPerson(playerIds.human)}
+            <Questions
+              active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
+              onQuestionChosen={this.onQuestionChosen}
+              questions={this.props.questions[playerIds.human]}
+            />
+          </div>
         </div>
-        <div className="col-xs-4 text-center">
-          {shouldChooseAPerson}
-          <Questions
-            active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
-            onQuestionChosen={this.onQuestionChosen}
-            questions={this.props.questions[playerIds.human]}
-          />
+        <div className="row">
+          <div className="col-xs-8">
+            <h2>CPU Board</h2>
+          </div>
+          <div className="col-xs-8">
+            <People
+              people={this.props.people[playerIds.bot]}
+              onPersonClicked={this.onPersonClicked}
+            />
+          </div>
+          <div className="col-xs-4 text-center">
+            {shouldChooseAPerson(playerIds.bot)}
+          </div>
         </div>
       </div>
     )
