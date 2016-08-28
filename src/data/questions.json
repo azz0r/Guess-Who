@@ -1,34 +1,50 @@
-{
-  "male": {
+[
+  {
+    "key": "male",
     "question": "Is your character male",
-    "values": [true, false]
+    "values": [true, false],
+    "appendValue": false
   },
-  "hair": {
+  {
+    "key": "hair",
     "question": "Is your character bald",
-    "values": [true, false]
+    "values": [true, false],
+    "appendValue": false
   },
-  "hairColor": {
+  {
+    "key": "hairColor",
     "question": "Is your characters hair colour ",
-    "type": ["blonde", "blond", "brunette", "black"]
+    "values": ["blonde", "blond", "brunette", "black"],
+    "appendValue": true
   },
-  "eyeColor": {
+  {
+    "key": "eyeColor",
     "question": "Is your characters eye colour ",
-    "type": ["blue", "green", "brown"]
+    "values": ["blue", "green", "brown"],
+    "appendValue": true
   },
-  "hat": {
+  {
+    "key": "hat",
     "question": "Is your character wearing a hat",
-    "type": [true, false]
+    "values": [true, false],
+    "appendValue": false
   },
-  "shirtColor": {
+  {
+    "key": "shirtColor",
     "question": "Is your characters top ",
-    "type": ["green", "black", "gray", "purple", "multi-coloured"]
+    "values": ["green", "black", "gray", "purple", "multi-coloured"],
+    "appendValue": true
   },
-  "cape": {
+  {
+    "key": "cape",
     "question": "Is your character wearing a cape",
-    "type": [true, false]
+    "values": [true, false],
+    "appendValue": false
   },
-  "beard": {
+  {
+    "key": "beard",
     "question": "Does your character have a beard",
-    "type": [true, false]
+    "values": [true, false],
+    "appendValue": false
   }
-}
+]

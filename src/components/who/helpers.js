@@ -45,32 +45,3 @@ export function condenseArray(data) {
   }
   return result;
 }
-
-
-export function getQuestions(collection) {
-  let fieldsLength = Object.keys(collection[0]).length,
-    choices = [fieldsLength],
-    questions = [],
-    deduplicatedQuestions = [],
-    fields = getFields(collection[0]);
-
-  // loop the fields and add values to the collection returned
-  fields.forEach((field) => {
-    choices[field] = getValues(collection, field);
-  });
-  delete choices[0];
-
-  fields.forEach((filterName, key) => {
-    if (filterName === 'name' || filterName === 'id') {
-      return;
-    }
-    deduplicatedQuestions = condenseArray(choices[filterName])
-
-    if (deduplicatedQuestions.length > 0) {
-      deduplicatedQuestions.forEach((question, key) => {
-
-      })
-    }
-  })
-  return questions;
-}

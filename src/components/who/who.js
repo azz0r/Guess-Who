@@ -4,14 +4,15 @@ import * as PeopleActions from '../../actions/people';
 import * as PlayerActions from '../../actions/players';
 import * as QuestionActions from '../../actions/questions';
 import { connect } from 'react-redux';
-import { slugParse, getQuestions } from './helpers';
+import { slugParse } from './helpers';
 
 class Who extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     people: PropTypes.array.isRequired,
-    players: PropTypes.array.isRequired
+    players: PropTypes.array.isRequired,
+    questions: PropTypes.array.isRequired,
   }
 
   componentWillMount() {
@@ -20,21 +21,17 @@ class Who extends Component {
     })
   }
 
-  onQuestionChosen = (question) => {
+  onQuestionChosen = (question, value) => {
     if (this.props.players[0].currentTurn) {
       this.props.dispatch([
-        PeopleActions.turnConfirmed(question),
+        PeopleActions.turnConfirmed(question, value),
         PlayerActions.turnConfirmed(true),
-        QuestionActions.turnConfirmed(question),
+        QuestionActions.turnConfirmed(question, value),
       ])
     }
   }
 
   render() {
-    let questions = getQuestions(this.props.people);
-    console.log(
-      JSON.stringify(questions)
-    );
     return (
       <div className="row">
         <div className="col-xs-8">
@@ -45,7 +42,7 @@ class Who extends Component {
           <Questions
             active={this.props.players[0].currentTurn && this.state.currentPlayer.chosenPerson}
             onQuestionChosen={this.onQuestionChosen}
-            questions={questions}
+            questions={this.props.questions}
           />
         </div>
       </div>
@@ -55,7 +52,8 @@ class Who extends Component {
 
 export default connect(state => ({
   people: state.people,
-  players: state.players
+  players: state.players,
+  questions: state.questions,
 }))(Who)
 
 const Questions = (({ active, questions, onQuestionChosen }) => {
@@ -68,7 +66,7 @@ const Questions = (({ active, questions, onQuestionChosen }) => {
             <Question
               key={key}
               onQuestionChosen={onQuestionChosen}
-              values={question}
+              question={question}
             />
           )}
         </ul>
@@ -77,18 +75,15 @@ const Questions = (({ active, questions, onQuestionChosen }) => {
   );
 })
 
-const Question = ({ values, onQuestionChosen }) => {
-  let append = (typeof(values.value) !== 'boolean')
-    ? ` ${values.value}`
-    : '';
+const Question = ({ question, onQuestionChosen }) => {
+  let questionValue = question.values[(Math.random() * question.values.length) | 0]
+  let append = question.appendValue && ` ${questionValue}`
   return (
-    <li
-      className="list-group-item">
-      <a
-        href="#"
-        onKeyPress={onQuestionChosen.bind(this, values)}
-        onClick={onQuestionChosen.bind(this, values)}>
-        {values.question}{append}?
+    <li className="list-group-item">
+      <a href="#"
+        onKeyPress={onQuestionChosen.bind(this, question, questionValue)}
+        onClick={onQuestionChosen.bind(this, question, questionValue)}>
+        {question.question}{append}?
       </a>
     </li>
   )

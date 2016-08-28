@@ -2,9 +2,9 @@ import defaultState from '../data/people.json';
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case 'FILTER_BY':
+    case 'TURN_TAKEN':
        return state.map((person, index) => {
-        if (person[action.question.field] === action.question.value) {
+        if (person[action.question.key] && person[action.question.key] === action.value) {
           person.chosen = true
         }
         return person;
