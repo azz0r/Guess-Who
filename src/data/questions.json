@@ -1,13 +1,7 @@
 [{
 	"key": "male",
 	"question": "Is your character male",
-	"value": true,
-	"appendValue": false
-}, {
-	"key": "male",
-	"question": "Is your character female",
-	"value": false,
-	"appendValue": false
+	"value": true
 }, {
 	"key": "hairColor",
 	"question": "Is your characters hair colour red?",

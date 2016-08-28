@@ -22,8 +22,9 @@ class Who extends Component {
   onPersonClicked = (chosenPerson) => {
     if (!this.props.players[playerIds.human].chosenPerson) {
       let
-        choicesForCPU = this.props.people[playerIds.human].filter((person) => person.id !== chosenPerson.id),
-        personForCPU = choicesForCPU[(Math.random() * choicesForCPU.length) | 0]
+        peopleForCPU = this.props.people[playerIds.human].filter((person) => person.id !== chosenPerson.id),
+        personForCPU = peopleForCPU[(Math.random() * peopleForCPU.length) | 0]
+
       this.props.dispatch([
         PlayerActions.chosePerson(chosenPerson, playerIds.human),
         PlayerActions.chosePerson(personForCPU, playerIds.bot),
