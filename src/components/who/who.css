@@ -13,9 +13,10 @@
   left: 0;
   right: 0;
   content: "\274c";
-  font-size: 100px;
+  font-size: 140px;
   color: red;
   text-align: center;
+  text-shadow: 0 5px 5px white,0 -5px 15px #fff;
 }
 .person.chosen:after {
   content: '\d7';
