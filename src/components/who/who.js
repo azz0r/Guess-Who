@@ -17,9 +17,12 @@ class Who extends Component {
 
   onPersonClicked = (person) => {
     if (!this.props.players[0].chosenPerson) {
-      this.props.dispatch(
-        PlayerActions.chosePerson(person)
-      )
+      // @ TODO logic to make sure we dont choose the same person
+      let personForCPU = this.props.people[(Math.random() * this.props.people.length) | 0]
+      this.props.dispatch([
+        PlayerActions.chosePerson(person, 0),
+        PlayerActions.chosePerson(personForCPU, 1),
+      ])
     }
   }
 
@@ -27,8 +30,8 @@ class Who extends Component {
     if (this.props.players[0].currentTurn) {
       this.props.dispatch([
         PeopleActions.turnConfirmed(question, value),
-        PlayerActions.turnConfirmed(true),
         QuestionActions.turnConfirmed(question, value),
+        PlayerActions.turnConfirmed(true),
       ])
     }
   }
@@ -48,7 +51,7 @@ class Who extends Component {
             person={this.props.players[0].chosenPerson}
           />
           <Questions
-            active={this.props.players[0].currentTurn}
+            active={this.props.players[0].currentTurn && this.props.players[0].chosenPerson}
             onQuestionChosen={this.onQuestionChosen}
             questions={this.props.questions}
           />
@@ -100,9 +103,8 @@ const Question = ({ question, onQuestionChosen }) => {
 const People = (({ people, onPersonClicked }) =>
   <div className="row people-collection">
     {people.map((person, key) =>
-      <div className="col-xs-3">
+      <div className="col-xs-3" key={key}>
         <Person
-          key={key}
           person={person}
           onPersonClicked={onPersonClicked}
         />
@@ -112,15 +114,13 @@ const People = (({ people, onPersonClicked }) =>
 )
 
 const ChosenPerson = ({ person }) => {
-  console.log('chosenPerson Render', person.name);
+  console.log('chosenPerson', person);
   if (person) {
     return (
       <div className="row">
         <h2>Your character</h2>
         <div className="col-xs-12">
-          <Person
-            person={person}
-          />
+          <Person person={person} />
         </div>
       </div>
     );
