@@ -49,7 +49,7 @@ class Who extends Component {
             onPersonClicked={this.onPersonClicked}
           />
         </div>
-        <div className="col-xs-4">
+        <div className="col-xs-4 text-center">
           {shouldChooseAPerson}
           <Questions
             active={this.props.players[0].currentTurn && this.props.players[0].chosenPerson}
@@ -71,7 +71,7 @@ export default connect(state => ({
 const Questions = (({ active, questions, onQuestionChosen }) => {
   let activeClass = active ? 'active' : ''
   return (
-    <div className={`row questions ${activeClass} text-center`}>
+    <div className={`row questions ${(activeClass)}`}>
       <div className="col-xs-16">
         <ul className="list-group">
           {questions.map((question, key) =>
@@ -104,7 +104,7 @@ const Question = ({ question, onQuestionChosen }) => {
 const People = (({ people, onPersonClicked }) =>
   <div className="row people-collection">
     {people.map((person, key) =>
-      <div className="col-xs-3" key={key}>
+      <div className="col-xs-2" key={key}>
         <Person
           person={person}
           onPersonClicked={onPersonClicked}
@@ -114,12 +114,11 @@ const People = (({ people, onPersonClicked }) =>
   </div>
 )
 
-const PersonChosen =  ({ person }) => {
+const PersonChosen = ({ person }) => {
   return (
-    <div className="row">
-      <h2>Your character</h2>
+    <div className="row person-chosen">
       <div className="col-xs-12">
-        <Person person={person} />
+        <Person showNameplate={false} person={person} />
       </div>
     </div>
   )
@@ -134,9 +133,14 @@ const ChooseAPerson = () => {
   )
 }
 
-const Person = ({ person, onPersonClicked }) => {
+const NamePlate = ((name) =>
+  <h4>{name}</h4>
+)
+
+const Person = ({ person, showNameplate = true, onPersonClicked }) => {
   let slug = slugParse(person.name),
-    chosenClass = person.chosen ? 'chosen' : ''
+    chosenClass = person.chosen ? 'chosen' : '',
+    nameplate = showNameplate ? NamePlate(person.name) : ''
   return (
     <div className={`${slug} ${chosenClass} person text-center`}>
       <p>
@@ -147,9 +151,7 @@ const Person = ({ person, onPersonClicked }) => {
           onClick={onPersonClicked ? onPersonClicked.bind(this, person) : null}
         />
       </p>
-      <h4>
-        {person.name}
-      </h4>
+      {nameplate}
     </div>
   )
 }

@@ -17,7 +17,7 @@
 	"id": 4,
 	"name": "Charlotte",
 	"male": false,
-	"hairColor": "blond",
+	"hairColor": "blonde",
 	"eyeColor": "green",
 	"champion": true
 }, {
@@ -59,24 +59,66 @@
 	"eyeColor": "brown",
 	"commentator": true
 }, {
-	"id": 3,
+	"id": 11,
 	"name": "Corey Graves",
 	"male": true,
 	"hairColor": "brown",
 	"eyeColor": "gray",
 	"commentator": true
 }, {
-	"id": 11,
+	"id": 12,
 	"name": "Stephanie McMahon",
 	"male": false,
 	"hairColor": "brown",
 	"eyeColor": "blue",
 	"owner": true
 }, {
-	"id": 11,
-	"name": "Shane McMahon",
+	"id": 13,
+	"name": "Vince McMahon",
 	"male": true,
 	"hairColor": "gray",
 	"eyeColor": "brown",
 	"owner": true
-}]
+}, {
+	"id": 14,
+	"name": "Michael Cole ",
+	"male": true,
+	"hairColor": "black",
+	"eyeColor": "brown",
+	"commentator": true
+}, {
+	"id": 15,
+	"name": "The Rock",
+	"male": true,
+	"eyeColor": "brown",
+	"tattoo": true
+}, {
+	"id": 16,
+	"name": "Enzo Amore",
+	"male": true,
+	"eyeColor": "brown",
+	"hairColor": "blonde",
+	"tattoo": true
+}, {
+	"id": 17,
+	"name": "Eva Marie",
+	"male": false,
+	"eyeColor": "green",
+	"hairColor": "red"
+}, {
+	"id": 17,
+	"name": "Rusev",
+	"male": true,
+	"eyeColor": "brown",
+	"hairColor": "brown",
+	"champion": true
+}, {
+	"id": 18,
+	"name": "Nikki Bella",
+	"male": false,
+	"eyeColor": "brown",
+	"hairColor": "brown",
+	"champion": false,
+	"fearless": true
+}
+]

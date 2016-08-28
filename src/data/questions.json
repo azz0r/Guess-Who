@@ -8,7 +8,7 @@
   {
     "key": "hairColor",
     "question": "Is your characters hair colour ",
-    "values": ["blonde", "brown", "black", "gray"],
+    "values": ["blonde", "brown", "black", "gray", "red"],
     "appendValue": true
   },
   {
@@ -56,6 +56,12 @@
   {
     "key": "champion",
     "question": "Is your character a champion",
+    "values": [true],
+    "appendValue": false
+  },
+  {
+    "key": "fearless",
+    "question": "Is your character fearless",
     "values": [true],
     "appendValue": false
   }
