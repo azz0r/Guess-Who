@@ -1,168 +1,82 @@
 [{
 	"id": 1,
-	"name": "Roman Reigns",
-	"male": true,
-	"hair": true,
-	"hairColor": "black",
-	"eyeColor": "blue",
-	"hat": false,
-	"shirt": true,
-	"shirtColor": "black",
-	"cape": false,
-	"beard": true,
-	"beardColor": "black"
-}, {
-	"id": 2,
 	"name": "John Cena",
 	"male": true,
 	"hair": true,
 	"hairColor": "brown",
 	"eyeColor": "blue",
-	"hat": true,
-	"shirt": false,
-	"shirtColor": false,
-	"cape": false,
-	"beard": false,
-	"beardColor": false
+	"hat": true
 }, {
-	"id": 3,
-	"name": "Steve Austin",
-	"male": true,
-	"hair": false,
-	"hairColor": false,
-	"eyeColor": "blue",
-	"hat": false,
-	"shirt": false,
-	"shirtColor": false,
-	"jacket": true,
-	"cape": false,
-	"beard": true,
-	"beardColor": "blond"
-}, {
-	"id": 4,
+	"id": 2,
 	"name": "Neville",
 	"male": true,
-	"hair": true,
 	"hairColor": "brown",
 	"eyeColor": "green",
-	"hat": false,
-	"shirt": false,
-	"shirtColor": false,
-	"jacket": true,
-	"cape": true,
-	"beard": false,
-	"beardColor": false
+	"cape": true
 }, {
-	"id": 9,
-	"name": "Lana",
-	"male": false,
-	"hair": true,
-	"hairColor": "blonde",
-	"eyeColor": "brown",
-	"hat": false,
-	"shirt": false,
-	"shirtColor": false,
-	"jacket": true,
-	"cape": false,
-	"beard": false,
-	"beardColor": false
-}, {
-	"id": 10,
-	"name": "Cesaro",
-	"male": true,
-	"hair": false,
-	"hairColor": false,
-	"eyeColor": "brown",
-	"hat": false,
-	"shirt": false,
-	"shirtColor": false,
-	"jacket": false,
-	"cape": false,
-	"beard": false,
-	"beardColor": "brown"
-}, {
-	"id": 13,
-	"name": "Corey Graves",
-	"male": true,
-	"hair": true,
-	"hairColor": "brown",
-	"eyeColor": "gray",
-	"hat": false,
-	"shirt": false,
-	"shirtColor": false,
-	"jacket": true	,
-	"cape": false,
-	"beard": false,
-	"beardColor": false
-}, {
-	"id": 10,
-	"name": "Brock Lesnar",
-	"male": true,
-	"hair": true,
-	"hairColor": "blonde",
-	"eyeColor": "blue",
-	"hat": false,
-	"shirt": false,
-	"shirtColor": false,
-	"jacket": false,
-	"cape": false,
-	"beard": false,
-	"beardColor": false
-
-}, {
-	"id": 5,
+	"id": 4,
 	"name": "Charlotte",
 	"male": false,
-	"hair": true,
 	"hairColor": "blonde",
 	"eyeColor": "green",
-	"hat": false,
-	"shirt": false,
-	"shirtColor": false,
-	"jacket": false,
-	"cape": false,
-	"beard": false,
-	"beardColor": false
+	"champion": true
 }, {
-	"id": 6,
-	"name": "Bayley",
-	"male": false,
-	"hair": true,
-	"hairColor": "brown",
-	"eyeColor": "brown",
-	"hat": false,
-	"shirt": false,
-	"shirtColor": false,
-	"jacket": false,
-	"cape": false,
-	"beard": false,
-	"beardColor": false
-}, {
-	"id": 7,
-	"name": "Carmella",
-	"male": false,
-	"hair": true,
-	"hairColor": "blonde",
-	"eyeColor": "brown",
-	"hat": false,
-	"shirt": false,
-	"shirtColor": false,
-	"jacket": false,
-	"cape": false,
-	"beard": false,
-	"beardColor": false
-}, {
-	"id": 8,
+	"id": 5,
 	"name": "Dean Ambrose",
 	"male": true,
-	"hair": true,
 	"hairColor": "brown",
 	"eyeColor": "blue",
-	"hat": false,
-	"shirt": false,
-	"shirtColor": false,
-	"jacket": false,
-	"cape": false,
-	"beard": false,
-	"beardColor": false
+	"champion": true
+}, {
+	"id": 6,
+	"name": "Kane",
+	"male": true,
+	"mask": true
+}, {
+	"id": 7,
+	"name": "Kalisto",
+	"male": true,
+	"mask": true
+}, {
+	"id": 8,
+	"name": "Mark Henry",
+	"male": true,
+	"hairColor": "brown",
+	"eyeColor": "blue",
+	"beard": true
+}, {
+	"id": 9,
+	"name": "Mick Foley",
+	"male": true,
+	"hairColor": "brown",
+	"eyeColor": "brown",
+	"beard": true
+}, {
+	"id": 10,
+	"name": "Mauro",
+	"male": true,
+	"hairColor": "brown",
+	"eyeColor": "brown",
+	"commentator": true
+}, {
+	"id": 3,
+	"name": "Corey Graves",
+	"male": true,
+	"hairColor": "brown",
+	"eyeColor": "gray",
+	"commentator": true
+}, {
+	"id": 11,
+	"name": "Stephanie McMahon",
+	"male": false,
+	"hairColor": "brown",
+	"eyeColor": "blue",
+	"owner": true
+}, {
+	"id": 11,
+	"name": "Shane McMahon",
+	"male": true,
+	"hairColor": "gray",
+	"eyeColor": "brown",
+	"owner": true
 }]
