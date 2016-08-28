@@ -1,13 +1,13 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "name": "Aaron",
     "cpu": false,
     "currentTurn": true,
     "chosenPerson": false
   },
   {
-    "id": 2,
+    "id": 1,
     "name": "CPU",
     "cpu": true,
     "currentTurn": false,

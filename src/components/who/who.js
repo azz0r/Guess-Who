@@ -5,6 +5,10 @@ import * as PlayerActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
 import { connect } from 'react-redux'
 import { slugParse } from './helpers'
+const playerIds = {
+  human: 0,
+  bot: 1
+}
 
 class Who extends Component {
 
@@ -16,20 +20,20 @@ class Who extends Component {
   }
 
   onPersonClicked = (chosenPerson) => {
-    if (!this.props.players[0].chosenPerson) {
+    if (!this.props.players[playerIds.human].chosenPerson) {
       let
         choicesForCPU = this.props.people.filter((person) => person.id !== chosenPerson.id),
         personForCPU = choicesForCPU[(Math.random() * choicesForCPU.length) | 0]
       this.props.dispatch([
-        PlayerActions.chosePerson(chosenPerson, 0),
-        PlayerActions.chosePerson(personForCPU, 1),
+        PlayerActions.chosePerson(chosenPerson, playerIds.human),
+        PlayerActions.chosePerson(personForCPU, playerIds.bot),
       ])
     }
   }
 
   onQuestionChosen = (question, event) => {
     event.preventDefault();
-    if (this.props.players[0].currentTurn) {
+    if (this.props.players[playerIds.human].currentTurn) {
       this.props.dispatch([
         PeopleActions.turnConfirmed(question),
         QuestionActions.turnConfirmed(question),
@@ -47,9 +51,9 @@ class Who extends Component {
   }
 
   render() {
-    let shouldChooseAPerson = this.props.players[0].chosenPerson
-      ? <PersonChosen person={this.props.players[0].chosenPerson} />
-      : <ChooseAPerson person={this.props.players[0].chosenPerson} />
+    let shouldChooseAPerson = this.props.players[playerIds.human].chosenPerson
+      ? <PersonChosen person={this.props.players[playerIds.human].chosenPerson} />
+      : <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />
     return (
       <div className="row">
         <div className="col-xs-8">
@@ -61,9 +65,9 @@ class Who extends Component {
         <div className="col-xs-4 text-center">
           {shouldChooseAPerson}
           <Questions
-            active={this.props.players[0].currentTurn && this.props.players[0].chosenPerson}
+            active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
             onQuestionChosen={this.onQuestionChosen}
-            questions={this.props.questions}
+            questions={this.props.questions[playerIds.human]}
           />
         </div>
       </div>
