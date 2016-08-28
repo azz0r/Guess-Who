@@ -15,12 +15,13 @@ class Who extends Component {
     questions: PropTypes.array.isRequired,
   }
 
-  onPersonClicked = (person) => {
+  onPersonClicked = (chosenPerson) => {
     if (!this.props.players[0].chosenPerson) {
-      // @ TODO logic to make sure we dont choose the same person
-      let personForCPU = this.props.people[(Math.random() * this.props.people.length) | 0]
+      let
+        choicesForCPU = this.props.people.filter((person) => person.id !== chosenPerson.id),
+        personForCPU = choicesForCPU[(Math.random() * choicesForCPU.length) | 0]
       this.props.dispatch([
-        PlayerActions.chosePerson(person, 0),
+        PlayerActions.chosePerson(chosenPerson, 0),
         PlayerActions.chosePerson(personForCPU, 1),
       ])
     }
