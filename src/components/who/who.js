@@ -19,6 +19,13 @@ class Who extends Component {
     questions: PropTypes.array.isRequired,
   }
 
+  componentWillReceiveProps() {
+    console.log(this.props.players[playerIds.bot].currentTurn, 'componentWillReceiveProps');
+    if (this.props.players[playerIds.bot].currentTurn) {
+      this.onsBotTurn()
+    }
+  }
+
   onPersonClicked = (chosenPerson) => {
     if (!this.props.players[playerIds.human].chosenPerson) {
       let
@@ -38,6 +45,13 @@ class Who extends Component {
       : playerIds.bot
   }
 
+  onsBotTurn() {
+    this.onQuestionChosen(
+      this.getBotsQuestion(),
+      false
+    )
+  }
+
   getBotsQuestion = () => {
     let botQuestions = this.props.questions[playerIds.bot];
     return botQuestions[(Math.random() * botQuestions.length) | 0]
@@ -45,7 +59,9 @@ class Who extends Component {
 
   onQuestionChosen = (question, event) => {
     // eslint-disable-next-line
-    event || event.preventDefault();
+    if (event) {
+      event.preventDefault()
+    }
     let submitTurn = (playerId, question) => {
       if (this.props.players[playerId].currentTurn) {
         this.props.dispatch([
@@ -55,9 +71,7 @@ class Who extends Component {
         ])
       }
     }
-    submitTurn(playerIds.human, question)
-    let botQuestion = this.getBotsQuestion()
-    submitTurn(playerIds.bot, botQuestion)
+    submitTurn(this.getCurrentPlayerId(), question)
   }
 
   render() {
@@ -69,18 +83,18 @@ class Who extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-xs-8">
-            <People
-              people={this.props.people[playerIds.human]}
-              onPersonClicked={this.onPersonClicked}
-            />
-          </div>
-          <div className="col-xs-4 text-center">
+          <div className="col-xs-12  col-md-4 col-sm-4 col-lg-4 text-center">
             {shouldChooseAPerson(playerIds.human)}
             <Questions
               active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
               onQuestionChosen={this.onQuestionChosen}
               questions={this.props.questions[playerIds.human]}
+            />
+          </div>
+          <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8">
+            <People
+              people={this.props.people[playerIds.human]}
+              onPersonClicked={this.onPersonClicked}
             />
           </div>
         </div>
@@ -145,7 +159,8 @@ const Question = ({ question, onQuestionChosen }) => {
 const People = (({ people, onPersonClicked }) =>
   <div className="row people-collection">
     {people.map((person, key) =>
-      <div className="col-xs-2" key={key}>
+      <div className="col-xs-6 col-sm-4 col-md-3 col-lg-2"
+        key={key}>
         <Person
           person={person}
           onPersonClicked={onPersonClicked}
@@ -175,7 +190,9 @@ const ChooseAPerson = () => {
 }
 
 const NamePlate = (({ name }) =>
-  <h4>{name}</h4>
+  <h4 className="hidden-xs hidden-sm">
+    {name}
+  </h4>
 )
 
 const Person = ({ person, showNameplate = true, onPersonClicked }) => {
