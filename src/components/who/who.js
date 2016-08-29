@@ -39,13 +39,13 @@ class Who extends Component {
   }
 
   onQuestionChosen = (question, event) => {
-    event.preventDefault();
+    event || event.preventDefault();
     const submitTurn = (playerId, question) => {
       if (this.props.players[playerId].currentTurn) {
         this.props.dispatch([
           PeopleActions.turnConfirmed(question, playerId),
           QuestionActions.turnConfirmed(question, playerId),
-          PlayerActions.turnConfirmed(true, playerId),
+          PlayerActions.turnConfirmed(playerId),
         ])
       }
     }

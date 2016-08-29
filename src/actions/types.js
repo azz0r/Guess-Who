@@ -1,2 +1,3 @@
 export const TURN_TAKEN = 'TURN_TAKEN';
+export const TURN_TAKEN_PLAYER = 'TURN_TAKEN_PLAYER';
 export const CHOSE_PERSON = 'CHOSE_PERSON';
