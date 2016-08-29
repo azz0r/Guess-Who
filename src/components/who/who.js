@@ -32,17 +32,25 @@ class Who extends Component {
     }
   }
 
+  getCurrentPlayerId = () => {
+    return this.props.players[playerIds.human].currentTurn
+      ? playerIds.human
+      : playerIds.bot
+  }
+
   onQuestionChosen = (question, event) => {
     event.preventDefault();
-    if (this.props.players[playerIds.human].currentTurn) {
-      this.props.dispatch([
-        PeopleActions.turnConfirmed(question, playerIds.human),
-        QuestionActions.turnConfirmed(question, playerIds.human),
-        PlayerActions.turnConfirmed(true, playerIds.human),
-      ])
-    } else {
-
+    const submitTurn = (playerId, question) => {
+      if (this.props.players[playerId].currentTurn) {
+        this.props.dispatch([
+          PeopleActions.turnConfirmed(question, playerId),
+          QuestionActions.turnConfirmed(question, playerId),
+          PlayerActions.turnConfirmed(true, playerId),
+        ])
+      }
     }
+    submitTurn(this.getCurrentPlayerId(), question);
+
     /*
     const doesThisPersonHave = (person, question) => {
       console.log(person.name, person[question.key]);
