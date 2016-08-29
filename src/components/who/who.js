@@ -44,6 +44,7 @@ class Who extends Component {
   }
 
   onQuestionChosen = (question, event) => {
+    // eslint-disable-next-line
     event || event.preventDefault();
     let submitTurn = (playerId, question) => {
       if (this.props.players[playerId].currentTurn) {
