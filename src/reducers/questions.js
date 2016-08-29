@@ -1,5 +1,4 @@
 import defaultStateImport from '../data/questions.json';
-import arrayShuffle from 'array-shuffle';
 let defaultState = [
   JSON.parse(JSON.stringify(defaultStateImport)),
   JSON.parse(JSON.stringify(defaultStateImport)),
@@ -13,10 +12,9 @@ export default (state = defaultState, action) => {
           state[action.playerKey][index].chosen = true;
         }
       })
-      return state;
       break;
       default:
     break;
   }
-  return arrayShuffle(state);
+  return state;
 }
