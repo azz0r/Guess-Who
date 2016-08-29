@@ -7,8 +7,13 @@ let defaultState = [
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case 'TURN_TAKEN':
-
+    case 'QUESTION_USED':
+      state[action.playerKey].forEach((question, index) => {
+        if (question === action.question) {
+          state[action.playerKey][index].chosen = true;
+        }
+      })
+      return state;
       break;
       default:
     break;

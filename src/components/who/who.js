@@ -38,27 +38,25 @@ class Who extends Component {
       : playerIds.bot
   }
 
+  getBotsQuestion = () => {
+    let botQuestions = this.props.questions[playerIds.bot];
+    return botQuestions[(Math.random() * botQuestions.length) | 0]
+  }
+
   onQuestionChosen = (question, event) => {
     event || event.preventDefault();
-    const submitTurn = (playerId, question) => {
+    let submitTurn = (playerId, question) => {
       if (this.props.players[playerId].currentTurn) {
         this.props.dispatch([
           PeopleActions.turnConfirmed(question, playerId),
-          QuestionActions.turnConfirmed(question, playerId),
+          QuestionActions.questionUsed(question, playerId),
           PlayerActions.turnConfirmed(playerId),
         ])
       }
     }
-    submitTurn(this.getCurrentPlayerId(), question);
-
-    /*
-    const doesThisPersonHave = (person, question) => {
-      console.log(person.name, person[question.key]);
-      console.log(question.key, question.value);
-      return Boolean((person[question.key]) && (question.value === person[question.key]));
-    }
-    console.log(doesThisPersonHave(this.props.people[0], this.props.questions[0]))
-    */
+    submitTurn(playerIds.human, question)
+    let botQuestion = this.getBotsQuestion()
+    submitTurn(playerIds.bot, botQuestion)
   }
 
   render() {
@@ -130,9 +128,11 @@ const Questions = (({ active, questions, onQuestionChosen }) => {
 })
 
 const Question = ({ question, onQuestionChosen }) => {
+  let questionClasses = question.used ? 'strike-through' : '';
   return (
     <li className="list-group-item">
       <a href="#"
+        className={questionClasses}
         onKeyPress={onQuestionChosen.bind(this, question)}
         onClick={onQuestionChosen.bind(this, question)}>
         {question.question}

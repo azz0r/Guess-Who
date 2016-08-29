@@ -50,3 +50,6 @@ h4 {
 .person-chosen .person img {
   width: 250px;
 }
+.strike-through {
+  text-decoration: line-through;
+}
