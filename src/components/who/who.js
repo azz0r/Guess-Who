@@ -19,8 +19,18 @@ class Who extends Component {
     questions: PropTypes.array.isRequired,
   }
 
-  componentWillReceiveProps() {
-    console.log(this.props.players[playerIds.bot].currentTurn, 'componentWillReceiveProps');
+  componentDidMount() {
+    this.gameTick = setInterval(
+      this.shouldBotTakeTurn,
+      3000
+    )
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.gameTick)
+  }
+
+  shouldBotTakeTurn = () => {
     if (this.props.players[playerIds.bot].currentTurn) {
       this.onsBotTurn()
     }
