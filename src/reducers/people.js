@@ -1,7 +1,9 @@
-import defaultStateImport from '../data/people.json';
+import defaultStateImport from '../data/people.json'
+import arrayShuffle from 'array-shuffle'
+
 let defaultState = [
-  JSON.parse(JSON.stringify(defaultStateImport)),
-  JSON.parse(JSON.stringify(defaultStateImport)),
+  arrayShuffle(JSON.parse(JSON.stringify(defaultStateImport))),
+  arrayShuffle(JSON.parse(JSON.stringify(defaultStateImport))),
 ]
 
 export default (state = defaultState, action) => {
