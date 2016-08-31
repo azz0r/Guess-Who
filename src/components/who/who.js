@@ -72,7 +72,6 @@ class Who extends Component {
   }
 
   onQuestionChosen = (question, event) => {
-    // eslint-disable-next-line
     if (event) {
       event.preventDefault()
     }
@@ -181,7 +180,7 @@ const Question = ({ question, onQuestionChosen }) => {
 const People = (({ people, onPersonClicked }) =>
   <div className="row people-collection">
     {people.map((person, key) =>
-      <div className="col-xs-6 col-sm-4 col-md-3 col-lg-2"
+      <div className="col-xs-6 col-sm-4 col-md-4 col-lg-3"
         key={key}>
         <Person
           person={person}
@@ -211,19 +210,10 @@ const ChooseAPerson = () => {
   )
 }
 
-const NamePlate = (({ name }) =>
-  <h4 className="hidden-xs hidden-sm">
-    {name}
-  </h4>
-)
-
 const Person = ({ person, showNameplate = true, onPersonClicked }) => {
   let slug = slugParse(person.name),
     chosenClass = person.chosen
       ? 'chosen'
-      : '',
-    nameplate = showNameplate
-      ? '' // <NamePlate name={person.name} />
       : ''
   return (
     <div className={`${slug} ${chosenClass} person text-center`}>
@@ -235,7 +225,6 @@ const Person = ({ person, showNameplate = true, onPersonClicked }) => {
           onClick={onPersonClicked ? onPersonClicked.bind(this, person) : null}
         />
       </p>
-      {nameplate}
     </div>
   )
 }
