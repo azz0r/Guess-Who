@@ -67,6 +67,10 @@ class Who extends Component {
     return botQuestions[(Math.random() * botQuestions.length) | 0]
   }
 
+  onQuestionChosenBot = () => {
+    //
+  }
+
   onQuestionChosen = (question, event) => {
     // eslint-disable-next-line
     if (event) {
@@ -91,35 +95,43 @@ class Who extends Component {
         : <ChooseAPerson person={this.props.players[playerId].chosenPerson} />
     }
     return (
-      <div>
-        <div className="row">
-          <div className="col-xs-12  col-md-4 col-sm-4 col-lg-4 text-center">
-            {shouldChooseAPerson(playerIds.human)}
-            <Questions
-              active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
-              onQuestionChosen={this.onQuestionChosen}
-              questions={this.props.questions[playerIds.human]}
-            />
-          </div>
-          <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8">
-            <People
-              people={this.props.people[playerIds.human]}
-              onPersonClicked={this.onPersonClicked}
-            />
+      <div className="row">
+        <div className="col-xs-6 human-board board">
+          <div className="row">
+            <div className="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
+              <h3>Human Board</h3>
+              {shouldChooseAPerson(playerIds.human)}
+              <Questions
+                active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
+                onQuestionChosen={this.onQuestionChosen}
+                questions={this.props.questions[playerIds.human]}
+              />
+            </div>
+            <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8">
+              <People
+                people={this.props.people[playerIds.human]}
+                onPersonClicked={this.onPersonClicked}
+              />
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-xs-8">
-            <h2>CPU Board</h2>
-          </div>
-          <div className="col-xs-8">
-            <People
-              people={this.props.people[playerIds.bot]}
-              onPersonClicked={this.onPersonClicked}
-            />
-          </div>
-          <div className="col-xs-4 text-center">
-            {shouldChooseAPerson(playerIds.bot)}
+        <div className="col-xs-6 bot-board board">
+          <div className="row">
+            <div className="col-xs-8">
+              <People
+                people={this.props.people[playerIds.bot]}
+                onPersonClicked={this.onPersonClicked}
+              />
+            </div>
+            <div className="col-xs-4 text-center">
+              <h3>CPU Board</h3>
+              {shouldChooseAPerson(playerIds.bot)}
+              <Questions
+                active={this.props.players[playerIds.bot].currentTurn && this.props.players[playerIds.human].chosenPerson}
+                onQuestionChosen={this.onQuestionChosenBot}
+                questions={this.props.questions[playerIds.bot]}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -193,7 +205,7 @@ const PersonChosen = ({ person }) => {
 const ChooseAPerson = () => {
   return (
     <div>
-      <h2>Choose your character</h2>
+      <h4>Choose your character</h4>
       <p>Click on the user you wish to choose as your character</p>
     </div>
   )
@@ -211,7 +223,7 @@ const Person = ({ person, showNameplate = true, onPersonClicked }) => {
       ? 'chosen'
       : '',
     nameplate = showNameplate
-      ? <NamePlate name={person.name} />
+      ? '' // <NamePlate name={person.name} />
       : ''
   return (
     <div className={`${slug} ${chosenClass} person text-center`}>
