@@ -30,8 +30,6 @@ class Who extends Component {
     this.onPersonClicked(chosenPerson)
   }
 
-
-
   componentWillUnmount() {
     clearInterval(this.gameTick)
   }
@@ -72,9 +70,7 @@ class Who extends Component {
     return pickRandom(botQuestions)
   }
 
-  onQuestionChosenBot = () => {
-    //
-  }
+  onQuestionChosenBot = () => {}
 
   onQuestionChosen = (question, event=false) => {
     if (event) {
@@ -100,7 +96,7 @@ class Who extends Component {
     }
     return (
       <div className="row">
-        <div className="col-xs-6 human-board board">
+        <div className="col-xs-12 human-board board">
           <div className="row">
             <div className="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
               <h3>Human Board</h3>
@@ -119,7 +115,7 @@ class Who extends Component {
             </div>
           </div>
         </div>
-        <div className="col-xs-6 bot-board board">
+        <div className="col-xs-12 bot-board board">
           <div className="row">
             <div className="col-xs-8">
               <People
