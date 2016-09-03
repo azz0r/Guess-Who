@@ -23,7 +23,7 @@ class Who extends Component {
     )
 
     // dev testing commands
-    let chosenPerson = pickRandom(this.props.players[playerIds.human].people)
+    let chosenPerson = this.props.players[playerIds.human].people.find((person) => person.name === "jorge")
     this.onPersonClicked(chosenPerson)
   }
 
@@ -92,6 +92,10 @@ class Who extends Component {
     }
     return (
       <div className="row">
+        <div className="col-xs-12 alert">
+          Human Turn: {String(this.props.players[playerIds.human].currentTurn)}
+          Bot Turn:{String(this.props.players[playerIds.human].currentTurn)}
+        </div>
         <div className="col-xs-12 human-board board">
           <div className="row">
             <div className="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">

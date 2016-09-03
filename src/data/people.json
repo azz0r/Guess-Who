@@ -145,7 +145,13 @@
 	"eyeColor": "blue",
 	"hairColor": "brown",
 	"champion": false,
-	"fearless": true,
-	"civilian": true
+	"fearless": true
+}, {
+	"id": 20,
+	"name": "jorge",
+	"male": true,
+	"eyeColor": "brown",
+	"hairColor": "brown",
+	"champion": false
 }
 ]
