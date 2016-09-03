@@ -16,6 +16,10 @@ class Who extends Component {
     questions: PropTypes.array.isRequired,
   }
 
+  state = {
+    message: ''
+  }
+
   componentDidMount() {
     this.gameTick = setInterval(
       this.shouldBotTakeTurn,
@@ -32,9 +36,16 @@ class Who extends Component {
   }
 
   shouldBotTakeTurn = () => {
+    let message;
     if (this.props.players[playerIds.bot].currentTurn) {
       this.onsBotTurn()
+      message = "Its the enemies turn to play!";
+    } else {
+      message = "Its your turn to play"
     }
+    this.setState({
+      message
+    })
   }
 
   onPersonClicked = (chosenPerson) => {
@@ -56,10 +67,19 @@ class Who extends Component {
       : playerIds.bot
   }
 
+  getCurrentEnemyId = () => {
+    return this.props.players[playerIds.human].currentTurn
+      ? playerIds.bot
+      : playerIds.human
+  }
+
   onsBotTurn() {
     this.onQuestionChosen(
       this.getBotsQuestion()
     )
+    this.setState({
+      message: "The enemy is choosing their question"
+    })
   }
 
   getBotsQuestion = () => {
@@ -75,13 +95,17 @@ class Who extends Component {
     }
     let submitTurn = (playerId, question) => {
       if (this.props.players[playerId].currentTurn) {
+        let enemyId = this.getCurrentEnemyId()
         this.props.dispatch([
-          PlayersActions.turnConfirmed(question, playerId),
-          QuestionActions.questionUsed(question, playerId),
+          PlayersActions.turnConfirmed(question, playerId, enemyId),
+          QuestionActions.questionUsed(question, playerId, enemyId),
         ])
       }
     }
     submitTurn(this.getCurrentPlayerId(), question)
+    this.setState({
+      message: "Question chosen!"
+    })
   }
 
   render() {
@@ -93,8 +117,7 @@ class Who extends Component {
     return (
       <div className="row">
         <div className="col-xs-12 alert">
-          Human Turn: {String(this.props.players[playerIds.human].currentTurn)}
-          Bot Turn:{String(this.props.players[playerIds.human].currentTurn)}
+          {this.state.message}
         </div>
         <div className="col-xs-12 human-board board">
           <div className="row">
