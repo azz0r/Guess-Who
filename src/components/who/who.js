@@ -17,17 +17,17 @@ class Who extends Component {
   }
 
   state = {
-    message: ''
+    messages: []
   }
 
   componentDidMount() {
     this.gameTick = setInterval(
       this.shouldBotTakeTurn,
-      5000
+      1000
     )
 
     // dev testing commands
-    let chosenPerson = this.props.players[playerIds.human].people.find((person) => person.name === "jorge")
+    let chosenPerson = this.props.players[playerIds.human].people.find((person) => person.name === "azz0r")
     this.onPersonClicked(chosenPerson)
   }
 
@@ -40,12 +40,10 @@ class Who extends Component {
     if (this.props.players[playerIds.bot].currentTurn) {
       this.onsBotTurn()
       message = "Its the enemies turn to play!";
-    } else {
-      message = "Its your turn to play"
+      this.setState({
+        messages: this.state.messages.concat(message)
+      })
     }
-    this.setState({
-      message
-    })
   }
 
   onPersonClicked = (chosenPerson) => {
@@ -74,12 +72,13 @@ class Who extends Component {
   }
 
   onsBotTurn() {
+    let message = 'The enemy is choosing their question'
+    this.setState({
+      messages: this.state.messages.concat(message)
+    })
     this.onQuestionChosen(
       this.getBotsQuestion()
     )
-    this.setState({
-      message: "The enemy is choosing their question"
-    })
   }
 
   getBotsQuestion = () => {
@@ -103,9 +102,9 @@ class Who extends Component {
       }
     }
     this.setState({
-      message: `
-        Question: ${question.question},
-        Answer: ${String(this.doTheyHave(question))}`
+      messages: this.state.messages.concat(
+        `${this.props.players[this.getCurrentPlayerId()].name}: "${question.question}"; ${String(this.doTheyHave(question))}`
+      )
     })
     submitTurn(this.getCurrentPlayerId(), question)
   }
@@ -124,7 +123,13 @@ class Who extends Component {
     return (
       <div className="row">
         <div className="col-xs-12 alert">
-          {this.state.message}
+          <ul>
+            {this.state.messages.map((message) => {
+              return (
+                <li>{message}</li>
+              )
+            })}
+          </ul>
         </div>
         <div className="col-xs-6 human-board board">
           <div className="row">

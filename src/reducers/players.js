@@ -13,16 +13,19 @@ export default (state = defaultState, action) => {
     default:
       break;
     case 'TURN_TAKEN':
+      // switch turns
       newState.forEach((player, key) => {
         newState[key].currentTurn = !newState[key].currentTurn
-        player.people.forEach((person, personKey) => {
-          if (
-            person[action.question.key] &&
-            person[action.question.key] === action.question.value &&
-            person.id !== newState[action.enemyId].chosenPerson.id) {
-            newState[key].people[personKey].chosen = true
-          }
-        })
+      })
+
+      newState[action.playerKey].people.forEach((person, key) => {
+        if (
+          person[action.question.key] &&
+          person[action.question.key] === action.question.value &&
+          person.id !== newState[action.enemyId].chosenPerson.id
+        ) {
+          newState[action.playerKey].people[key].chosen = true
+        }
       })
       return newState;
     case 'CHOSE_PERSON':
