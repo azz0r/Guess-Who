@@ -1,7 +1,7 @@
 import * as types from './types';
 
-export function turnConfirmed(question, playerKey) {
-  return { type: types.TURN_TAKEN, question, playerKey }
+export function turnConfirmed(question, playerKey, enemyId) {
+  return { type: types.TURN_TAKEN, question, playerKey, enemyId }
 }
 
 export function chosePerson(person, playerKey) {
