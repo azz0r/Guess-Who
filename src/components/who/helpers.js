@@ -11,6 +11,10 @@ export function slugParse(string = '') {
     .replace(/^-+|-+$/g, '')  // remove leading, trailing -
 }
 
+export function pickRandom(collection=[]) {
+  return collection[(Math.random() * collection.length)| 0]
+}
+
 /*
   * Get an array of values from the peoples collection
   * @param  {string} field on the object we want to aggregate

@@ -4,7 +4,7 @@ import * as PeopleActions from '../../actions/people'
 import * as PlayerActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
 import { connect } from 'react-redux'
-import { slugParse } from './helpers'
+import { slugParse, pickRandom } from './helpers'
 const playerIds = {
   human: 0,
   bot: 1
@@ -24,7 +24,13 @@ class Who extends Component {
       this.shouldBotTakeTurn,
       3000
     )
+
+    // dev testing commands
+    let chosenPerson = pickRandom(this.props.people[0])
+    this.onPersonClicked(chosenPerson)
   }
+
+
 
   componentWillUnmount() {
     clearInterval(this.gameTick)
@@ -40,7 +46,7 @@ class Who extends Component {
     if (!this.props.players[playerIds.human].chosenPerson) {
       let
         peopleForCPU = this.props.people[playerIds.human].filter((person) => person.id !== chosenPerson.id),
-        personForCPU = peopleForCPU[(Math.random() * peopleForCPU.length) | 0]
+        personForCPU = pickRandom(peopleForCPU)
 
       this.props.dispatch([
         PlayerActions.chosePerson(chosenPerson, playerIds.human),
@@ -57,21 +63,20 @@ class Who extends Component {
 
   onsBotTurn() {
     this.onQuestionChosen(
-      this.getBotsQuestion(),
-      false
+      this.getBotsQuestion()
     )
   }
 
   getBotsQuestion = () => {
     let botQuestions = this.props.questions[playerIds.bot];
-    return botQuestions[(Math.random() * botQuestions.length) | 0]
+    return pickRandom(botQuestions)
   }
 
   onQuestionChosenBot = () => {
     //
   }
 
-  onQuestionChosen = (question, event) => {
+  onQuestionChosen = (question, event=false) => {
     if (event) {
       event.preventDefault()
     }
