@@ -124,9 +124,11 @@ class Who extends Component {
       <div className="row">
         <div className="col-xs-12 alert">
           <ul>
-            {this.state.messages.map((message) => {
+            {this.state.messages.map((message, key) => {
               return (
-                <li>{message}</li>
+                <li key={key}>
+                  {message}
+                </li>
               )
             })}
           </ul>
