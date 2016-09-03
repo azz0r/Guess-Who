@@ -1,7 +1,7 @@
 [
   {
     "id": 0,
-    "name": "Aaron",
+    "name": "Player 1",
     "cpu": false,
     "currentTurn": true,
     "chosenPerson": false
