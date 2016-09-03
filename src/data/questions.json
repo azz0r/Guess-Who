@@ -1,4 +1,8 @@
 [{
+	"key": "wrestler",
+	"question": "Is your character a wrestler?",
+	"value": true
+},{
 	"key": "male",
 	"question": "Is your character male",
 	"value": true

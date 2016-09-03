@@ -5,38 +5,44 @@
 	"hair": true,
 	"hairColor": "brown",
 	"eyeColor": "blue",
-	"hat": true
+	"hat": true,
+	"wrestler": true
 }, {
 	"id": 2,
 	"name": "Neville",
 	"male": true,
 	"hairColor": "brown",
 	"eyeColor": "green",
-	"cape": true
+	"cape": true,
+	"wrestler": true
 }, {
 	"id": 4,
 	"name": "Charlotte",
 	"male": false,
 	"hairColor": "blonde",
 	"eyeColor": "green",
-	"champion": true
+	"champion": true,
+	"wrestler": true
 }, {
 	"id": 5,
 	"name": "Dean Ambrose",
 	"male": true,
 	"hairColor": "brown",
 	"eyeColor": "blue",
-	"champion": true
+	"champion": true,
+	"wrestler": true
 }, {
 	"id": 6,
 	"name": "Kane",
 	"male": true,
-	"mask": true
+	"mask": true,
+	"wrestler": true
 }, {
 	"id": 7,
 	"name": "Kalisto",
 	"male": true,
-	"mask": true
+	"mask": true,
+	"wrestler": true
 }, {
 	"id": 8,
 	"name": "Mark Henry",
@@ -88,7 +94,7 @@
 	"owner": true
 }, {
 	"id": 14,
-	"name": "Michael Cole ",
+	"name": "Michael Cole",
 	"male": true,
 	"hairColor": "black",
 	"eyeColor": "brown",
@@ -98,27 +104,31 @@
 	"name": "The Rock",
 	"male": true,
 	"eyeColor": "brown",
-	"tattoo": true
+	"tattoo": true,
+	"wrestler": true
 }, {
 	"id": 16,
 	"name": "Enzo Amore",
 	"male": true,
 	"eyeColor": "brown",
 	"hairColor": "blonde",
-	"tattoo": true
+	"tattoo": true,
+	"wrestler": true
 }, {
 	"id": 17,
 	"name": "Eva Marie",
 	"male": false,
 	"eyeColor": "green",
-	"hairColor": "red"
+	"hairColor": "red",
+	"wrestler": true
 }, {
 	"id": 17,
 	"name": "Rusev",
 	"male": true,
 	"eyeColor": "brown",
 	"hairColor": "brown",
-	"champion": true
+	"champion": true,
+	"wrestler": true
 }, {
 	"id": 18,
 	"name": "Nikki Bella",
@@ -126,6 +136,16 @@
 	"eyeColor": "brown",
 	"hairColor": "brown",
 	"champion": false,
-	"fearless": true
+	"fearless": true,
+	"wrestler": true
+}, {
+	"id": 19,
+	"name": "azz0r",
+	"male": true,
+	"eyeColor": "blue",
+	"hairColor": "brown",
+	"champion": false,
+	"fearless": true,
+	"civilian": true
 }
 ]
