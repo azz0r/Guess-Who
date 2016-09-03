@@ -102,10 +102,17 @@ class Who extends Component {
         ])
       }
     }
-    submitTurn(this.getCurrentPlayerId(), question)
     this.setState({
-      message: "Question chosen!"
+      message: `
+        Question: ${question.question},
+        Answer: ${String(this.doTheyHave(question))}`
     })
+    submitTurn(this.getCurrentPlayerId(), question)
+  }
+
+  doTheyHave = (question) => {
+    let enemyPerson = this.props.players[this.getCurrentEnemyId()].chosenPerson;
+    return Boolean(enemyPerson[question.key] && enemyPerson[question.key] === question.value)
   }
 
   render() {
@@ -119,7 +126,7 @@ class Who extends Component {
         <div className="col-xs-12 alert">
           {this.state.message}
         </div>
-        <div className="col-xs-12 human-board board">
+        <div className="col-xs-6 human-board board">
           <div className="row">
             <div className="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
               <h3>Human Board</h3>
@@ -138,7 +145,7 @@ class Who extends Component {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 bot-board board">
+        <div className="col-xs-6 bot-board board">
           <div className="row">
             <div className="col-xs-8">
               <People
