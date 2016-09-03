@@ -1,7 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import './who.css'
-import * as PeopleActions from '../../actions/people'
-import * as PlayerActions from '../../actions/players'
+import * as PlayersActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
 import { connect } from 'react-redux'
 import { slugParse, pickRandom } from './helpers'
@@ -9,12 +8,10 @@ const playerIds = {
   human: 0,
   bot: 1
 }
-
 class Who extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    people: PropTypes.array.isRequired,
     players: PropTypes.array.isRequired,
     questions: PropTypes.array.isRequired,
   }
@@ -22,11 +19,11 @@ class Who extends Component {
   componentDidMount() {
     this.gameTick = setInterval(
       this.shouldBotTakeTurn,
-      3000
+      5000
     )
 
     // dev testing commands
-    let chosenPerson = pickRandom(this.props.people[0])
+    let chosenPerson = pickRandom(this.props.players[playerIds.human].people)
     this.onPersonClicked(chosenPerson)
   }
 
@@ -43,12 +40,12 @@ class Who extends Component {
   onPersonClicked = (chosenPerson) => {
     if (!this.props.players[playerIds.human].chosenPerson) {
       let
-        peopleForCPU = this.props.people[playerIds.human].filter((person) => person.id !== chosenPerson.id),
+        peopleForCPU = this.props.players[playerIds.human].people.filter((person) => person.id !== chosenPerson.id),
         personForCPU = pickRandom(peopleForCPU)
 
       this.props.dispatch([
-        PlayerActions.chosePerson(chosenPerson, playerIds.human),
-        PlayerActions.chosePerson(personForCPU, playerIds.bot),
+        PlayersActions.chosePerson(chosenPerson, playerIds.human),
+        PlayersActions.chosePerson(personForCPU, playerIds.bot),
       ])
     }
   }
@@ -79,9 +76,8 @@ class Who extends Component {
     let submitTurn = (playerId, question) => {
       if (this.props.players[playerId].currentTurn) {
         this.props.dispatch([
-          PeopleActions.turnConfirmed(question, playerId),
+          PlayersActions.turnConfirmed(question, playerId),
           QuestionActions.questionUsed(question, playerId),
-          PlayerActions.turnConfirmed(playerId),
         ])
       }
     }
@@ -109,7 +105,7 @@ class Who extends Component {
             </div>
             <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8">
               <People
-                people={this.props.people[playerIds.human]}
+                people={this.props.players[playerIds.human].people}
                 onPersonClicked={this.onPersonClicked}
               />
             </div>
@@ -119,7 +115,7 @@ class Who extends Component {
           <div className="row">
             <div className="col-xs-8">
               <People
-                people={this.props.people[playerIds.bot]}
+                people={this.props.players[playerIds.bot].people}
                 onPersonClicked={this.onPersonClicked}
               />
             </div>
