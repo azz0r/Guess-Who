@@ -16,7 +16,10 @@ export default (state = defaultState, action) => {
       newState.forEach((player, key) => {
         newState[key].currentTurn = !newState[key].currentTurn
         player.people.forEach((person, personKey) => {
-          if (person[action.question.key] && person[action.question.key] === action.question.value) {
+          if (
+            person[action.question.key] &&
+            person[action.question.key] === action.question.value &&
+            person.id !== newState[action.enemyId].chosenPerson.id) {
             newState[key].people[personKey].chosen = true
           }
         })
