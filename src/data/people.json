@@ -49,7 +49,8 @@
 	"male": true,
 	"hairColor": "brown",
 	"eyeColor": "brown",
-	"beard": true
+	"beard": true,
+	"wrestler": true
 }, {
 	"id": 9,
 	"name": "Mick Foley",
