@@ -7,7 +7,7 @@ import createLogger from 'redux-logger';
 const logger = createLogger();
 
 const storeEnhancer = compose(
-  applyMiddleware(batch, logger),
+  applyMiddleware(batch),// logger),
   // persistState(),
   typeof window === 'object' && typeof window.devToolsExtension !== 'undefined'
     ? window.devToolsExtension()
