@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react'
-import './who.css'
 import * as PlayersActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
 import { connect } from 'react-redux'
@@ -26,9 +25,10 @@ class Who extends Component {
       1000
     )
 
-    // dev testing commands
-    let chosenPerson = this.props.players[playerIds.human].people.find((person) => person.name === "azz0r")
-    this.onPersonClicked(chosenPerson)
+    //TODO: Remove this preselection players lines
+    let chosenPerson = this.props.players[playerIds.human].people.find((person) => person.name === "Stephanie McMahon"),
+      chosenCPUPerson = this.props.players[playerIds.human].people.find((person) => person.name === "Rusev")
+    this.onPersonClicked(chosenPerson, chosenCPUPerson)
   }
 
   componentWillUnmount() {
@@ -39,19 +39,22 @@ class Who extends Component {
     let message;
     if (this.props.players[playerIds.bot].currentTurn) {
       this.onsBotTurn()
-      message = "Its the enemies turn to play!";
+      message = "Its the opponents turn to play!";
       this.setState({
         messages: this.state.messages.concat(message)
       })
     }
   }
 
-  onPersonClicked = (chosenPerson) => {
+  //TODO: Remove personForCPU
+  onPersonClicked = (chosenPerson, personForCPU=false) => {
     if (!this.props.players[playerIds.human].chosenPerson) {
-      let
-        peopleForCPU = this.props.players[playerIds.human].people.filter((person) => person.id !== chosenPerson.id),
-        personForCPU = pickRandom(peopleForCPU)
-
+      //TODO: Remove If statement
+      if (!personForCPU) {
+        let
+          peopleForCPU = this.props.players[playerIds.human].people.filter((person) => person.id !== chosenPerson.id),
+          personForCPU = pickRandom(peopleForCPU)
+      }
       this.props.dispatch([
         PlayersActions.chosePerson(chosenPerson, playerIds.human),
         PlayersActions.chosePerson(personForCPU, playerIds.bot),
@@ -120,9 +123,17 @@ class Who extends Component {
         ? <PersonChosen person={this.props.players[playerId].chosenPerson} />
         : <ChooseAPerson person={this.props.players[playerId].chosenPerson} />
     }
+    let winner = false;
+
+    this.props.players.forEach((player, key) => {
+      if (player.people.filter((person) => !person.chosen).length === 1) {
+        winner = key
+      }
+    })
     return (
       <div className="row">
         <div className="col-xs-12 alert">
+          {winner}
           <ul>
             {this.state.messages.map((message, key) => {
               return (
