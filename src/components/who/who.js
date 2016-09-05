@@ -36,13 +36,8 @@ class Who extends Component {
   }
 
   shouldBotTakeTurn = () => {
-    let message;
     if (this.props.players[playerIds.bot].currentTurn) {
       this.onsBotTurn()
-      message = "Its the opponents turn to play!";
-      this.setState({
-        messages: this.state.messages.concat(message)
-      })
     }
   }
 
@@ -75,10 +70,6 @@ class Who extends Component {
   }
 
   onsBotTurn() {
-    let message = 'The enemy is choosing their question'
-    this.setState({
-      messages: this.state.messages.concat(message)
-    })
     this.onQuestionChosen(
       this.getBotsQuestion()
     )
