@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import * as PlayersActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
 import { connect } from 'react-redux'
-import { slugParse, pickRandom } from './helpers'
+import { toSlug, pickRandom } from './helpers'
 const playerIds = {
   human: 0,
   bot: 1
@@ -251,7 +251,7 @@ const ChooseAPerson = () => {
 }
 
 const Person = ({ person, showNameplate = true, onPersonClicked }) => {
-  let slug = slugParse(person.name),
+  let slug = toSlug(person.name),
     chosenClass = person.chosen
       ? 'chosen'
       : ''
