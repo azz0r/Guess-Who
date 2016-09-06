@@ -255,6 +255,11 @@ const Person = ({ person, showNameplate = true, onPersonClicked }) => {
     chosenClass = person.chosen
       ? 'chosen'
       : ''
+  const namePlate = ((name) =>
+    <h4 className="hidden-xs hidden-sm">
+      {name}
+    </h4>
+  )
   return (
     <div className={`${slug} ${chosenClass} person text-center`}>
       <p>
@@ -265,6 +270,7 @@ const Person = ({ person, showNameplate = true, onPersonClicked }) => {
           onClick={onPersonClicked ? onPersonClicked.bind(this, person) : null}
         />
       </p>
+      {namePlate(person.name)}
     </div>
   )
 }
