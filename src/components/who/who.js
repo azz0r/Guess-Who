@@ -204,7 +204,8 @@ const Questions = (({ active, questions, onQuestionChosen }) => {
 })
 
 const Question = ({ question, onQuestionChosen }) => {
-  let questionClasses = question.used ? 'strike-through' : '';
+  let questionClasses = question.used ? 'strike-through ' : '';
+  questionClasses += toSlug(question.question)
   return (
     <li className="list-group-item">
       <a href="#"
