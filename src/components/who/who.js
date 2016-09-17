@@ -198,13 +198,12 @@ class Who extends Component {
 }
 
 export default connect(state => ({
-  people: state.people,
   players: state.players,
   questions: state.questions,
   modal: state.modal,
 }))(Who)
 
-const Questions = (({ active, questions, shuffle=false, limit=false, onQuestionChosen }) => {
+const Questions = (({ active, questions, shuffle = false, limit = false, onQuestionChosen }) => {
   let activeClass = active ? 'active' : ''
   if (shuffle) {
     questions = arrayShuffle(questions)
@@ -248,7 +247,7 @@ const Question = ({ question, onQuestionChosen }) => {
 const People = (({ people, showNameplate, hidePersonsFace, onPersonClicked }) => {
   let
     rowNumber = 1,
-    cardNumber = 1;
+    cardNumber = 0;
   return (
     <div className="board">
       {people.map((person, key) => {
@@ -308,7 +307,7 @@ const Person = ({ person, showNameplate = true, cardNumber='first', hidePersonsF
       ? 'down'
       : 'up'
   const namePlate = ((name) =>
-    <h4 className="hidden-xs hidden-sm">
+    <h4>
       {name}
     </h4>
   )
