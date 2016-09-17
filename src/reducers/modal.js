@@ -6,11 +6,13 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch (action.type) {
     case 'MODAL_TOGGLE':
-      state.open = !state.open
+      console.log('reducer modal toggle')
+      state.open = state.open ? false : true
       state.question = action.question || ''
         break;
       default:
         break;
   }
+  console.log('modal reducer final state', state)
   return state;
 }

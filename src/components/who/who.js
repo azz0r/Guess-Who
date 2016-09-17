@@ -31,7 +31,12 @@ class Who extends Component {
     clearInterval(this.gameTick)
   }
 
-  closeModal = () => {
+  shouldComponentUpdate() {
+    return true
+  }
+
+  onCloseModal = () => {
+    console.log('onCloseModal')
     this.props.dispatch(
       ModalActions.set(false),
     )
@@ -74,7 +79,7 @@ class Who extends Component {
       : playerIds.human
   }
 
-  onsBotTurn() {
+  onsBotTurn = () => {
     let question = this.getBotsQuestion()
     this.props.dispatch(
       ModalActions.set(
@@ -130,16 +135,17 @@ class Who extends Component {
   }
 
   render() {
+    console.log('we hit render')
     let { weHaveAWinner, winnerId } = this._getWinner()
     return (
       <div className="row">
-        <Modal isOpen={this.props.modal.open}>
+        <If condition={this.props.modal.open}>
           {this.props.modal.question}
           <br />
-          <button onClick={this.closeModal}>
-            Close
+          <button onClick={this.onCloseModal}>
+            {String(this.props.modal.open)}
           </button>
-        </Modal>
+        </If>
         <If condition={weHaveAWinner}>
           <div className="winner col-xs-12 text-center">
             {this.props.players[winnerId].name} won the game by narrowing it down to...
@@ -164,6 +170,9 @@ class Who extends Component {
                 ? <PersonChosen person={this.props.players[playerIds.human].chosenPerson} />
                 : <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />}
             </If>
+            <h3>
+              Strategically choose your questions to narrow down your opponents players to just 1
+            </h3>
             <If condition={!weHaveAWinner}>
               <Questions
                 active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
@@ -287,8 +296,8 @@ const PersonChosen = ({ person, hidePersonsFace = false }) => {
 const ChooseAPerson = () => {
   return (
     <div>
-      <h4>Choose your character</h4>
-      <p>Click on the user you wish to choose as your character</p>
+      <h2>Choose your character</h2>
+      <p>Click on the character you wish to represent you, your opponent will be guessing against that character!</p>
     </div>
   )
 }

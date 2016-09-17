@@ -6,7 +6,8 @@
 	"hairColor": "brown",
 	"eyeColor": "blue",
 	"hat": true,
-	"wrestler": true
+	"wrestler": true,
+	"smackdown": true
 }, {
 	"id": 2,
 	"name": "Neville",
@@ -30,20 +31,23 @@
 	"hairColor": "brown",
 	"eyeColor": "blue",
 	"champion": true,
-	"wrestler": true
+	"wrestler": true,
+	"smackdown": true
 }, {
 	"id": 6,
 	"name": "Kane",
 	"eyeColor": "brown",
 	"male": true,
 	"mask": true,
-	"wrestler": true
+	"wrestler": true,
+	"smackdown": true
 }, {
 	"id": 7,
 	"name": "Kalisto",
 	"male": true,
 	"mask": true,
-	"wrestler": true
+	"wrestler": true,
+	"smackdown": true
 }, {
 	"id": 8,
 	"name": "Mark Henry",
@@ -65,7 +69,8 @@
 	"male": true,
 	"hairColor": "brown",
 	"eyeColor": "brown",
-	"commentator": true
+	"commentator": true,
+	"smackdown": true
 }, {
 	"id": 11,
 	"name": "Corey Graves",
@@ -127,7 +132,8 @@
 	"male": false,
 	"eyeColor": "green",
 	"hairColor": "red",
-	"wrestler": true
+	"wrestler": true,
+	"smackdown": true
 }, {
 	"id": 17,
 	"name": "Rusev",
@@ -144,7 +150,9 @@
 	"hairColor": "brown",
 	"champion": false,
 	"fearless": true,
-	"wrestler": true
+	"wrestler": true,
+	"hat": true,
+	"smackdown": true
 }, {
 	"id": 19,
 	"name": "azz0r",

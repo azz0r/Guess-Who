@@ -82,4 +82,8 @@
 	"key": "smackdown",
 	"question": "Is your character on smackdown only?",
 	"value": true
+}, {
+	"key": "smackdown",
+	"question": "Is your character on raw only?",
+	"value": false
 }]
