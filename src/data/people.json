@@ -107,7 +107,8 @@
 	"male": true,
 	"eyeColor": "brown",
 	"tattoo": true,
-	"wrestler": true
+	"wrestler": true,
+	"samoan": true
 }, {
 	"id": 16,
 	"name": "Enzo Amore",
@@ -115,7 +116,8 @@
 	"eyeColor": "brown",
 	"hairColor": "blonde",
 	"tattoo": true,
-	"wrestler": true
+	"wrestler": true,
+	"beard": true
 }, {
 	"id": 17,
 	"name": "Eva Marie",
@@ -150,11 +152,19 @@
 	"fearless": true
 }, {
 	"id": 20,
-	"name": "jorge",
+	"name": "Jorge",
 	"male": true,
 	"eyeColor": "brown",
 	"hairColor": "brown",
 	"champion": false,
 	"beard": true
+}, {
+	"id": 21,
+	"name": "Roman Reigns",
+	"male": true,
+	"eyeColor": "brown",
+	"beard": true,
+	"wrestler": true,
+	"samoan": true
 }
 ]

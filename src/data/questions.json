@@ -74,4 +74,8 @@
 	"key": "fearless",
 	"question": "Is your character fearless?",
 	"value": true
+}, {
+	"key": "samoan",
+	"question": "Is your character samoan?",
+	"value": true
 }]

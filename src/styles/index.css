@@ -6,28 +6,6 @@ body {
 ul {
   padding: 0;
 }
-.person img {
-  width: 100%;
-  transition: all .3s ease-in-out;
-}
-.person img:hover {
-  transform: scale(1.2);
-}
-.person.chosen:after {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  content: "\274c";
-  font-size: 70px;
-  color: red;
-  text-align: center;
-  text-shadow: 0 5px 5px white,0 -5px 15px #fff;
-}
-.person.chosen:after {
-  content: '\d7';
-}
 .questions {
   text-align: center;
   display: none;
@@ -54,9 +32,6 @@ a:hover {
 h4 {
   font-size: 14px;
 }
-.person-chosen .person img {
-  width: 250px;
-}
 .strike-through {
   text-decoration: line-through;
 }
@@ -66,31 +41,31 @@ h4 {
 	transform-style: preserve-3d;
 }
 .board {
-	position: relative;
 	width: 800px;
 	height: 800px;
 	background-color: rgba(27, 58, 145, 1);
-	border-radius: 5px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 0;
 	transform: rotateX(60deg);
 	transform-style: preserve-3d;
+  margin: 0 auto;
 }
-.row {
+.board .card-row {
 	position: relative;
 	transform-style: preserve-3d;
 }
-.first-row {
+.first-card-row {
 	top: 10%;
 }
-.second-row {
+.second-card-row {
 	top: 35%;
 }
-.third-row {
+.third-card-row {
 	top: 55%;
 }
+.fourth-card-row {
+	top: 75%;
+}
 .card {
+  transition: all .3s ease-in-out;
 	border-radius: 3px;
 	border-top: 3px #cce solid;
 	cursor: pointer;
@@ -105,7 +80,7 @@ h4 {
 	transform-origin: bottom;
 	transition: transform 500ms cubic-bezier(.87,-.41,.19,1.44);
 }
-.card.first{
+.card.first {
 	left: 3%;
 }
 .card.second {
@@ -132,10 +107,12 @@ h4 {
 .card.up {
 	transform: rotateY(90deg);
 	transform: rotateX(-90deg);
-
 }
 .avatar {
 	background-color: blue;
+}
+.person-chosen .avatar-img {
+	width: 200px;
 }
 .avatar-img {
 	width: 100%;

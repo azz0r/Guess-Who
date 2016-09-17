@@ -4,7 +4,7 @@ import arrayShuffle from 'array-shuffle'
 import * as PlayersActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
 import { connect } from 'react-redux'
-import { toSlug, pickRandom } from './helpers'
+import { toSlug, pickRandom, getNumberAsString } from './helpers'
 
 const playerIds = {
   human: 0,
@@ -115,17 +115,17 @@ class Who extends Component {
     }
   }
 
-  _getUsedQuestions() {
-    return {
-      botQuestionsUsed: this.props.questions[1].filter((question) => question.used),
-      humanQuestionsUsed: this.props.questions[0].filter((question) => question.used),
-    }
-  }
+  // _getUsedQuestions() {
+  //   return {
+  //     botQuestionsUsed: this.props.questions[1].filter((question) => question.used),
+  //     humanQuestionsUsed: this.props.questions[0].filter((question) => question.used),
+  //   }
+  // }
 
   render() {
     let
-      { weHaveAWinner, winnerId } = this._getWinner(),
-      { botQuestionsUsed, humanQuestionsUsed } = this._getUsedQuestions();
+      { weHaveAWinner, winnerId } = this._getWinner()
+      // { botQuestionsUsed, humanQuestionsUsed } = this._getUsedQuestions(),
     return (
       <div className="row">
         <If condition={weHaveAWinner}>
@@ -134,10 +134,10 @@ class Who extends Component {
             <PersonChosen person={this.props.players[(winnerId === 0 ? 1 : 0)].chosenPerson} />
           </div>
         </If>
-        <div className="col-xs-12 text-center">
+        <div className="col-xs-12 text-center clearfix">
           <a
             href="#"
-            className="btn btn-info"
+            className="btn btn-info cursor-pointer"
             onKeyPress={this.onResetGame}
             onClick={this.onResetGame}>
             {weHaveAWinner
@@ -145,21 +145,6 @@ class Who extends Component {
               : "Reset"}
           </a>
         </div>
-        <If condition={!weHaveAWinner &&
-          humanQuestionsUsed.length > 0 && botQuestionsUsed.length > 0}>
-          <div className="row">
-            <div className="col-offset-lg-4 col-lg-8">
-              <div className="col-xs-6">
-                <h3>Humans Used Questions</h3>
-                <UsedQuestions questions={humanQuestionsUsed} />
-              </div>
-              <div className="col-xs-6">
-                <h3>Bots Used Questions</h3>
-                <UsedQuestions questions={botQuestionsUsed} />
-                </div>
-              </div>
-          </div>
-        </If>
         <div className="row human-board">
           <div className="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
             <If condition={!weHaveAWinner}>
@@ -177,11 +162,13 @@ class Who extends Component {
               />
             </If>
           </div>
-          <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8 board-wrapper">
-            <People
-              people={this.props.players[playerIds.human].people}
-              onPersonClicked={this.onPersonClicked}
-            />
+          <div className="col-xs-8">
+            <div className="board-wrapper">
+              <People
+                people={this.props.players[playerIds.human].people}
+                onPersonClicked={this.onPersonClicked}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -213,6 +200,7 @@ const Questions = (({ active, questions, shuffle=false, limit=false, onQuestionC
   let activeClass = active ? 'active' : ''
   if (shuffle) {
     questions = arrayShuffle(questions)
+    questions = questions.filter((question) => !question.used)
   }
   if (limit) {
     questions = questions.slice(0, limit)
@@ -249,32 +237,51 @@ const Question = ({ question, onQuestionChosen }) => {
   )
 }
 
-const People = (({ people, showNameplate, hidePersonsFace, onPersonClicked }) =>
-  <div className="row board">
-    {people.map((person, key) =>
-      <div className="row first-row" key={key}>
-        <Person
-          showNameplate={showNameplate}
-          person={person}
-          onPersonClicked={onPersonClicked}
-          hidePersonsFace={hidePersonsFace}
-        />
-      </div>
-    )}
-  </div>
-)
+const People = (({ people, showNameplate, hidePersonsFace, onPersonClicked }) => {
+  let
+    rowNumber = 1,
+    cardNumber = 1;
+  return (
+    <div className="board">
+      {people.map((person, key) => {
+        if (cardNumber === 7) {
+          cardNumber = 0;
+          rowNumber++;
+        }
+        cardNumber++
+        return (
+          <div
+            className={`card-row ${getNumberAsString(rowNumber)}-card-row`}
+            key={key}>
+            <Person
+              showNameplate={showNameplate}
+              person={person}
+              cardNumber={getNumberAsString(cardNumber)}
+              onPersonClicked={onPersonClicked}
+              hidePersonsFace={hidePersonsFace}
+            />
+          </div>
+        )
+      })}
+    </div>
+  )
+})
 
 const PersonChosen = ({ person, hidePersonsFace = false }) => {
+  let slug = toSlug(person.name)
   return (
     <div className="row person-chosen">
       <div className="col-xs-12">
-        <Person
-          showNameplate={false}
-          person={person}
-          hidePersonsFace={hidePersonsFace}
-        />
+        <p>
+          <img
+            src={`/static/imgs/${slug}.png`}
+            title={person.name}
+            alt={person.name}
+            className="avatar-img"
+          />
+        </p>
+        </div>
       </div>
-    </div>
   )
 }
 
@@ -287,11 +294,11 @@ const ChooseAPerson = () => {
   )
 }
 
-const Person = ({ person, showNameplate = true, hidePersonsFace = false, onPersonClicked }) => {
+const Person = ({ person, showNameplate = true, cardNumber='first', hidePersonsFace = false, onPersonClicked }) => {
   let slug = toSlug(person.name),
     chosenClass = person.chosen
-      ? 'chosen'
-      : ''
+      ? 'down'
+      : 'up'
   const namePlate = ((name) =>
     <h4 className="hidden-xs hidden-sm">
       {name}
@@ -302,7 +309,7 @@ const Person = ({ person, showNameplate = true, hidePersonsFace = false, onPerso
     person.name = 'hidden'
   }
   return (
-    <div className={`${slug} ${chosenClass} card first text-center`}>
+    <div className={`${slug} ${chosenClass} ${cardNumber} card text-center`}>
       <p>
         <img
           src={`/static/imgs/${slug}.png`}

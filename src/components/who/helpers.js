@@ -4,6 +4,36 @@ export function pickRandomItems(collection, amount) {
   return arrayShuffle(collection).slice(0, 200);//amount);
 }
 
+export function getNumberAsString(number) {
+  let returnValue = 'nothing';
+  switch (number) {
+    case 1:
+      returnValue = 'first'
+    break
+    case 2:
+      returnValue = 'second'
+    break
+    case 3:
+      returnValue = 'third'
+    break
+    case 4:
+      returnValue = 'fourth'
+    break
+    case 5:
+      returnValue = 'fifth'
+    break
+    case 6:
+      returnValue = 'sixth'
+    break
+    case 7:
+      returnValue = 'seventh'
+    break
+    case 8:
+      returnValue = 'eight'
+    break
+  }
+  return returnValue;
+}
 export const toSlug = string => {
   return string.toLowerCase()
     .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
