@@ -1,8 +1,11 @@
 import React, { PropTypes, Component } from 'react'
+import { composeResetReducer } from 'redux-reset-store'
+import arrayShuffle from 'array-shuffle'
 import * as PlayersActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
 import { connect } from 'react-redux'
 import { toSlug, pickRandom } from './helpers'
+
 const playerIds = {
   human: 0,
   bot: 1
@@ -24,11 +27,6 @@ class Who extends Component {
       this.shouldBotTakeTurn,
       1000
     )
-
-    //TODO: Remove this preselection players lines
-    let chosenPerson = this.props.players[playerIds.human].people.find((person) => person.name === "Stephanie McMahon"),
-      chosenCPUPerson = this.props.players[playerIds.human].people.find((person) => person.name === "Rusev")
-    this.onPersonClicked(chosenPerson, chosenCPUPerson)
   }
 
   componentWillUnmount() {
@@ -41,15 +39,21 @@ class Who extends Component {
     }
   }
 
-  //TODO: Remove personForCPU
-  onPersonClicked = (chosenPerson, personForCPU=false) => {
+  onResetGame = () => {
+    this.setState({
+      messages: []
+    })
+    this.props.dispatch({
+      type: 'RESET'
+    })
+  }
+
+  onPersonClicked = (chosenPerson) => {
     if (!this.props.players[playerIds.human].chosenPerson) {
-      //TODO: Remove If statement
-      if (!personForCPU) {
-        let
-          peopleForCPU = this.props.players[playerIds.human].people.filter((person) => person.id !== chosenPerson.id),
-          personForCPU = pickRandom(peopleForCPU)
-      }
+      let
+        peopleForCPU = this.props.players[playerIds.human].people.filter((person) => person.id !== chosenPerson.id),
+        personForCPU = pickRandom(peopleForCPU)
+
       this.props.dispatch([
         PlayersActions.chosePerson(chosenPerson, playerIds.human),
         PlayersActions.chosePerson(personForCPU, playerIds.bot),
@@ -122,60 +126,64 @@ class Who extends Component {
         winnerId = key
       }
     })
+    let botQuestionsUsed = this.props.questions[1].filter((question) => question.used),
+      humanQuestionsUsed = this.props.questions[0].filter((question) => question.used);
     return (
       <div className="row">
-        <div className="col-xs-12 alert">
-          {weHaveAWinner ?
-            <div className="well success alert">
-              {this.props.players[winnerId].name} won the game!
-            </div>
-           : ''}
-          <ul>
-            {this.state.messages.map((message, key) => {
-              return (
-                <li key={key}>
-                  {message}
-                </li>
-              )
-            })}
-          </ul>
+        <If condition={weHaveAWinner}>
+          <div className="winner col-xs-12 text-center">
+            {this.props.players[winnerId].name} won the game by narrowing it down to...
+            <PersonChosen person={this.props.players[(winnerId === 0 ? 1 : 0)].chosenPerson} />
+          </div>
+        </If>
+        <div className="col-xs-12 text-center">
+          <a
+            href="#"
+            className="btn btn-lg btn-info"
+            onKeyPress={this.onResetGame}
+            onClick={this.onResetGame}>
+            Reset
+          </a>
         </div>
-        <div className="col-xs-6 human-board board">
+        <If condition={!weHaveAWinner &&
+          humanQuestionsUsed.length > 0 && botQuestionsUsed.length > 0}>
           <div className="row">
-            <div className="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
-              <h3>Human Board</h3>
-              {shouldChooseAPerson(playerIds.human)}
+            <div className="col-xs-6">
+              <h3>Humans Used Questions</h3>
+              <UsedQuestions questions={humanQuestionsUsed} />
+            </div>
+            <div className="col-xs-6">
+              <h3>Bots Used Questions</h3>
+              <UsedQuestions questions={botQuestionsUsed} />
+            </div>
+          </div>
+        </If>
+        <div className="row human-board board">
+          <div className="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
+            {shouldChooseAPerson(playerIds.human)}
+            <If condition={!weHaveAWinner}>
               <Questions
                 active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
+                limit={5}
+                shuffle
                 onQuestionChosen={this.onQuestionChosen}
                 questions={this.props.questions[playerIds.human]}
               />
-            </div>
-            <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8">
+            </If>
+            <div className="col-xs-12 bot-board board">
+              <h3>Opponents Board</h3>
               <People
-                people={this.props.players[playerIds.human].people}
-                onPersonClicked={this.onPersonClicked}
+                showNameplate={false}
+                hidePersonsFace={true}
+                people={this.props.players[playerIds.bot].people}
               />
             </div>
           </div>
-        </div>
-        <div className="col-xs-6 bot-board board">
-          <div className="row">
-            <div className="col-xs-8">
-              <People
-                people={this.props.players[playerIds.bot].people}
-                onPersonClicked={this.onPersonClicked}
-              />
-            </div>
-            <div className="col-xs-4 text-center">
-              <h3>CPU Board</h3>
-              {shouldChooseAPerson(playerIds.bot)}
-              <Questions
-                active={this.props.players[playerIds.bot].currentTurn && this.props.players[playerIds.human].chosenPerson}
-                onQuestionChosen={this.onQuestionChosenBot}
-                questions={this.props.questions[playerIds.bot]}
-              />
-            </div>
+          <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8">
+            <People
+              people={this.props.players[playerIds.human].people}
+              onPersonClicked={this.onPersonClicked}
+            />
           </div>
         </div>
       </div>
@@ -189,8 +197,28 @@ export default connect(state => ({
   questions: state.questions,
 }))(Who)
 
-const Questions = (({ active, questions, onQuestionChosen }) => {
+const UsedQuestions = ({ questions }) => {
+  return (
+    <ul>
+      {questions.map((question, key) => {
+        return (
+          <li key={key}>
+            {question.question}
+          </li>
+        );
+      })}
+    </ul>
+  )
+}
+
+const Questions = (({ active, questions, shuffle=false, limit=false, onQuestionChosen }) => {
   let activeClass = active ? 'active' : ''
+  if (shuffle) {
+    questions = arrayShuffle(questions)
+  }
+  if (limit) {
+    questions = questions.slice(0, limit)
+  }
   return (
     <div className={`row questions ${(activeClass)}`}>
       <div className="col-xs-16">
@@ -223,25 +251,31 @@ const Question = ({ question, onQuestionChosen }) => {
   )
 }
 
-const People = (({ people, onPersonClicked }) =>
+const People = (({ people, showNameplate, hidePersonsFace, onPersonClicked }) =>
   <div className="row people-collection">
     {people.map((person, key) =>
-      <div className="col-xs-6 col-sm-4 col-md-4 col-lg-3"
+      <div className="col-xs-6 col-sm-4 col-md-4 col-lg-2"
         key={key}>
         <Person
+          showNameplate={showNameplate}
           person={person}
           onPersonClicked={onPersonClicked}
+          hidePersonsFace={hidePersonsFace}
         />
       </div>
     )}
   </div>
 )
 
-const PersonChosen = ({ person }) => {
+const PersonChosen = ({ person, hidePersonsFace = false }) => {
   return (
     <div className="row person-chosen">
       <div className="col-xs-12">
-        <Person showNameplate={false} person={person} />
+        <Person
+          showNameplate={false}
+          person={person}
+          hidePersonsFace={hidePersonsFace}
+        />
       </div>
     </div>
   )
@@ -256,7 +290,7 @@ const ChooseAPerson = () => {
   )
 }
 
-const Person = ({ person, showNameplate = true, onPersonClicked }) => {
+const Person = ({ person, showNameplate = true, hidePersonsFace = false, onPersonClicked }) => {
   let slug = toSlug(person.name),
     chosenClass = person.chosen
       ? 'chosen'
@@ -266,6 +300,10 @@ const Person = ({ person, showNameplate = true, onPersonClicked }) => {
       {name}
     </h4>
   )
+  if (hidePersonsFace) {
+    slug = 'hidden-person'
+    person.name = 'hidden'
+  }
   return (
     <div className={`${slug} ${chosenClass} person text-center`}>
       <p>
@@ -276,7 +314,7 @@ const Person = ({ person, showNameplate = true, onPersonClicked }) => {
           onClick={onPersonClicked ? onPersonClicked.bind(this, person) : null}
         />
       </p>
-      {namePlate(person.name)}
+      {showNameplate ? namePlate(person.name) : ''}
     </div>
   )
 }
