@@ -18,10 +18,6 @@ class Who extends Component {
     questions: PropTypes.array.isRequired,
   }
 
-  state = {
-    messages: []
-  }
-
   componentDidMount() {
     this.gameTick = setInterval(
       this.shouldBotTakeTurn,
@@ -40,9 +36,6 @@ class Who extends Component {
   }
 
   onResetGame = () => {
-    this.setState({
-      messages: []
-    })
     this.props.dispatch({
       type: 'RESET'
     })
@@ -99,11 +92,6 @@ class Who extends Component {
         ])
       }
     }
-    this.setState({
-      messages: this.state.messages.concat(
-        `${this.props.players[this.getCurrentPlayerId()].name}: "${question.question}"; ${String(this.doTheyHave(question))}`
-      )
-    })
     submitTurn(this.getCurrentPlayerId(), question)
   }
 
