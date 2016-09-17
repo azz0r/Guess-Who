@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="header clearfix text-center">
+        <div className="header clearfix">
           <h1>Guess Who</h1>
         </div>
         <PeopleContainer />

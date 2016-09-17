@@ -3,6 +3,9 @@ body {
   padding: 0;
   font-family: 'Noto Sans', sans-serif;
 }
+h1 {
+	font-size: 60px;
+}
 ul {
   padding: 0;
 }
@@ -59,10 +62,10 @@ h4 {
 	top: 35%;
 }
 .third-card-row {
-	top: 55%;
+	top: 60%;
 }
 .fourth-card-row {
-	top: 75%;
+	top: 76%;
 }
 .card {
   transition: all .3s ease-in-out;
@@ -78,31 +81,31 @@ h4 {
 	background-color: #ffe;
 	transform: rotateX(-170deg);
 	transform-origin: bottom;
-	transition: transform 500ms cubic-bezier(.87,-.41,.19,1.44);
+	transition: transform 500ms cubic-bezier(1.87,-.41,.19,1.44);
 }
 .card.first {
-	left: 3%;
+	left: 8%;
 }
 .card.second {
-	left: 15%;
+	left: 21%;
 }
 .card.third {
-	left: 27%;
+	left: 33%;
 }
 .card.fourth {
-	left: 39%;
+	left: 46%;
 }
 .card.fifth {
-	left: 51%;
+	left: 58%;
 }
 .card.sixth {
-	left: 63%;
+	left: 70%;
 }
 .card.seventh {
-	left: 75%;
+	left: 82%;
 }
 .card.eight {
-	left: 87%;
+	left: 94%;
 }
 .card.up {
 	transform: rotateY(90deg);

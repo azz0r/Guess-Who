@@ -138,7 +138,7 @@ class Who extends Component {
     console.log('we hit render')
     let { weHaveAWinner, winnerId } = this._getWinner()
     return (
-      <div className="row">
+      <div>
         <If condition={this.props.modal.open}>
           {this.props.modal.question}
           <br />
@@ -152,10 +152,10 @@ class Who extends Component {
             <PersonChosen person={this.props.players[(winnerId === 0 ? 1 : 0)].chosenPerson} />
           </div>
         </If>
-        <div className="col-xs-12 text-center clearfix">
+        <div className="col-xs-12 clearfix">
           <a
             href="#"
-            className="btn btn-info cursor-pointer"
+            className="btn btn-success cursor-pointer"
             onKeyPress={this.onResetGame}
             onClick={this.onResetGame}>
             {weHaveAWinner
@@ -170,9 +170,6 @@ class Who extends Component {
                 ? <PersonChosen person={this.props.players[playerIds.human].chosenPerson} />
                 : <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />}
             </If>
-            <h3>
-              Strategically choose your questions to narrow down your opponents players to just 1
-            </h3>
             <If condition={!weHaveAWinner}>
               <Questions
                 active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
