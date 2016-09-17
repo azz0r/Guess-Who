@@ -17,10 +17,7 @@ class Who extends Component {
     dispatch: PropTypes.func.isRequired,
     players: PropTypes.array.isRequired,
     questions: PropTypes.array.isRequired,
-  }
-
-  state = {
-    isModalOpen: false
+    modal: PropTypes.array.isRequired,
   }
 
   componentDidMount() {
@@ -128,7 +125,7 @@ class Who extends Component {
     })
     return {
       weHaveAWinner,
-      winnerId
+      winnerId,
     }
   }
 
@@ -136,15 +133,13 @@ class Who extends Component {
     let { weHaveAWinner, winnerId } = this._getWinner()
     return (
       <div className="row">
-        <If condition={this.props.modal.open === true}>
-          <Modal isOpen={this.props.modal.open}>
-            {this.props.modal.question}
-            <br />
-            <button onClick={this.closeModal.bind(this, true)}>
-              Close
-            </button>
-          </Modal>
-        </If>
+        <Modal isOpen={this.props.modal.open}>
+          {this.props.modal.question}
+          <br />
+          <button onClick={this.closeModal}>
+            Close
+          </button>
+        </Modal>
         <If condition={weHaveAWinner}>
           <div className="winner col-xs-12 text-center">
             {this.props.players[winnerId].name} won the game by narrowing it down to...
@@ -199,20 +194,6 @@ export default connect(state => ({
   questions: state.questions,
   modal: state.modal,
 }))(Who)
-
-const UsedQuestions = ({ questions }) => {
-  return (
-    <ul>
-      {questions.map((question, key) => {
-        return (
-          <li key={key}>
-            {question.question}
-          </li>
-        );
-      })}
-    </ul>
-  )
-}
 
 const Questions = (({ active, questions, shuffle=false, limit=false, onQuestionChosen }) => {
   let activeClass = active ? 'active' : ''
