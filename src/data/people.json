@@ -86,14 +86,17 @@
 	"male": true,
 	"hairColor": "silver",
 	"eyeColor": "brown",
-	"owner": true
+	"owner": true,
+	"smackdown": true
 }, {
 	"id": 13,
 	"name": "Vince McMahon",
 	"male": true,
 	"hairColor": "silver",
 	"eyeColor": "brown",
-	"owner": true
+	"owner": true,
+	"smackdown": false,
+	"raw": true
 }, {
 	"id": 14,
 	"name": "Michael Cole",

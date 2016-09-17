@@ -78,4 +78,8 @@
 	"key": "samoan",
 	"question": "Is your character samoan?",
 	"value": true
+}, {
+	"key": "smackdown",
+	"question": "Is your character on smackdown only?",
+	"value": true
 }]
