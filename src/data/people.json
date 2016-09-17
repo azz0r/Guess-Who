@@ -154,6 +154,7 @@
 	"male": true,
 	"eyeColor": "brown",
 	"hairColor": "brown",
-	"champion": false
+	"champion": false,
+	"beard": true
 }
 ]
