@@ -160,7 +160,7 @@ class Who extends Component {
               </div>
           </div>
         </If>
-        <div className="row human-board board">
+        <div className="row human-board">
           <div className="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
             <If condition={!weHaveAWinner}>
               {this.props.players[playerIds.human].chosenPerson
@@ -176,16 +176,8 @@ class Who extends Component {
                 questions={this.props.questions[playerIds.human]}
               />
             </If>
-            <div className="col-xs-12 bot-board board">
-              <h3>Opponents Board</h3>
-              <People
-                showNameplate={false}
-                hidePersonsFace={true}
-                people={this.props.players[playerIds.bot].people}
-              />
-            </div>
           </div>
-          <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8">
+          <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8 board-wrapper">
             <People
               people={this.props.players[playerIds.human].people}
               onPersonClicked={this.onPersonClicked}
@@ -258,10 +250,9 @@ const Question = ({ question, onQuestionChosen }) => {
 }
 
 const People = (({ people, showNameplate, hidePersonsFace, onPersonClicked }) =>
-  <div className="row people-collection">
+  <div className="row board">
     {people.map((person, key) =>
-      <div className="col-xs-6 col-sm-4 col-md-4 col-lg-2"
-        key={key}>
+      <div className="row first-row" key={key}>
         <Person
           showNameplate={showNameplate}
           person={person}
@@ -311,12 +302,13 @@ const Person = ({ person, showNameplate = true, hidePersonsFace = false, onPerso
     person.name = 'hidden'
   }
   return (
-    <div className={`${slug} ${chosenClass} person text-center`}>
+    <div className={`${slug} ${chosenClass} card first text-center`}>
       <p>
         <img
           src={`/static/imgs/${slug}.png`}
           title={person.name}
           alt={person.name}
+          className="avatar-img"
           onClick={onPersonClicked ? onPersonClicked.bind(this, person) : null}
         />
       </p>

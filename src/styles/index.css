@@ -60,3 +60,85 @@ h4 {
 .strike-through {
   text-decoration: line-through;
 }
+/* copy paste */
+.board-wrapper {
+	perspective: 1200px;
+	transform-style: preserve-3d;
+}
+.board {
+	position: relative;
+	width: 800px;
+	height: 800px;
+	background-color: rgba(27, 58, 145, 1);
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	transform: rotateX(60deg);
+	transform-style: preserve-3d;
+}
+.row {
+	position: relative;
+	transform-style: preserve-3d;
+}
+.first-row {
+	top: 10%;
+}
+.second-row {
+	top: 35%;
+}
+.third-row {
+	top: 55%;
+}
+.card {
+	border-radius: 3px;
+	border-top: 3px #cce solid;
+	cursor: pointer;
+	position: absolute;
+	padding-top: 6px;
+	padding-left: 3px;
+	padding-right: 3px;
+	width: 80px;
+	height: 140px;
+	background-color: #ffe;
+	transform: rotateX(-170deg);
+	transform-origin: bottom;
+	transition: transform 500ms cubic-bezier(.87,-.41,.19,1.44);
+}
+.card.first{
+	left: 3%;
+}
+.card.second {
+	left: 15%;
+}
+.card.third {
+	left: 27%;
+}
+.card.fourth {
+	left: 39%;
+}
+.card.fifth {
+	left: 51%;
+}
+.card.sixth {
+	left: 63%;
+}
+.card.seventh {
+	left: 75%;
+}
+.card.eight {
+	left: 87%;
+}
+.card.up {
+	transform: rotateY(90deg);
+	transform: rotateX(-90deg);
+
+}
+.avatar {
+	background-color: blue;
+}
+.avatar-img {
+	width: 100%;
+	height: auto;
+}
+/* copy paste */
