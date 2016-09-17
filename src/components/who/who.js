@@ -112,12 +112,7 @@ class Who extends Component {
     return Boolean(enemyPerson[question.key] && enemyPerson[question.key] === question.value)
   }
 
-  render() {
-    const shouldChooseAPerson = (playerId) => {
-      return this.props.players[playerId].chosenPerson
-        ? <PersonChosen person={this.props.players[playerId].chosenPerson} />
-        : <ChooseAPerson person={this.props.players[playerId].chosenPerson} />
-    }
+  _getWinner() {
     let weHaveAWinner = false,
       winnerId = false;
     this.props.players.forEach((player, key) => {
@@ -126,8 +121,23 @@ class Who extends Component {
         winnerId = key
       }
     })
-    let botQuestionsUsed = this.props.questions[1].filter((question) => question.used),
-      humanQuestionsUsed = this.props.questions[0].filter((question) => question.used);
+    return {
+      weHaveAWinner,
+      winnerId
+    }
+  }
+
+  _getUsedQuestions() {
+    return {
+      botQuestionsUsed: this.props.questions[1].filter((question) => question.used),
+      humanQuestionsUsed: this.props.questions[0].filter((question) => question.used),
+    }
+  }
+
+  render() {
+    let
+      { weHaveAWinner, winnerId } = this._getWinner(),
+      { botQuestionsUsed, humanQuestionsUsed } = this._getUsedQuestions();
     return (
       <div className="row">
         <If condition={weHaveAWinner}>
@@ -139,28 +149,36 @@ class Who extends Component {
         <div className="col-xs-12 text-center">
           <a
             href="#"
-            className="btn btn-lg btn-info"
+            className="btn btn-info"
             onKeyPress={this.onResetGame}
             onClick={this.onResetGame}>
-            Reset
+            {weHaveAWinner
+              ? "Start Another Game?"
+              : "Reset"}
           </a>
         </div>
         <If condition={!weHaveAWinner &&
           humanQuestionsUsed.length > 0 && botQuestionsUsed.length > 0}>
           <div className="row">
-            <div className="col-xs-6">
-              <h3>Humans Used Questions</h3>
-              <UsedQuestions questions={humanQuestionsUsed} />
-            </div>
-            <div className="col-xs-6">
-              <h3>Bots Used Questions</h3>
-              <UsedQuestions questions={botQuestionsUsed} />
-            </div>
+            <div className="col-offset-lg-4 col-lg-8">
+              <div className="col-xs-6">
+                <h3>Humans Used Questions</h3>
+                <UsedQuestions questions={humanQuestionsUsed} />
+              </div>
+              <div className="col-xs-6">
+                <h3>Bots Used Questions</h3>
+                <UsedQuestions questions={botQuestionsUsed} />
+                </div>
+              </div>
           </div>
         </If>
         <div className="row human-board board">
           <div className="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
-            {shouldChooseAPerson(playerIds.human)}
+            <If condition={!weHaveAWinner}>
+              {this.props.players[playerIds.human].chosenPerson
+                ? <PersonChosen person={this.props.players[playerIds.human].chosenPerson} />
+                : <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />}
+            </If>
             <If condition={!weHaveAWinner}>
               <Questions
                 active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
