@@ -114,17 +114,22 @@ class Who extends Component {
         ? <PersonChosen person={this.props.players[playerId].chosenPerson} />
         : <ChooseAPerson person={this.props.players[playerId].chosenPerson} />
     }
-    let winner = false;
-
+    let weHaveAWinner = false,
+      winnerId = false;
     this.props.players.forEach((player, key) => {
       if (player.people.filter((person) => !person.chosen).length === 1) {
-        winner = key
+        weHaveAWinner = true
+        winnerId = key
       }
     })
     return (
       <div className="row">
         <div className="col-xs-12 alert">
-          {winner}
+          {weHaveAWinner ?
+            <div className="well success alert">
+              {this.props.players[winnerId].name} won the game!
+            </div>
+           : ''}
           <ul>
             {this.state.messages.map((message, key) => {
               return (
