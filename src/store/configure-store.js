@@ -1,14 +1,13 @@
 import reducers from '../reducers';
-// import persistState from 'redux-localstorage';
+import persistState from 'redux-localstorage';
+import reduxReset from 'redux-reset'
 import { batch, batching } from 'redux-batch-middleware';
 import { createStore, applyMiddleware, compose } from 'redux';
-import createLogger from 'redux-logger';
-
-const logger = createLogger();
 
 const storeEnhancer = compose(
   applyMiddleware(batch),// logger),
-  // persistState(),
+  persistState(),
+  reduxReset(),
   typeof window === 'object' && typeof window.devToolsExtension !== 'undefined'
     ? window.devToolsExtension()
     : f => f

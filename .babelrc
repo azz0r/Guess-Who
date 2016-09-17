@@ -1,10 +1,11 @@
 {
   "presets": ["es2015", "react", "stage-0"],
   "plugins": [
+    "jsx-control-statements",
     "transform-runtime",
     "transform-decorators-legacy",
     "transform-react-constant-elements",
     "transform-react-inline-elements",
-    "transform-react-remove-prop-types"
+    "transform-react-remove-prop-types",
   ]
 }

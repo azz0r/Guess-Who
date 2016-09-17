@@ -21,6 +21,9 @@ module.exports = {
     require.resolve('./polyfills'),
     path.join(paths.appSrc, 'index')
   ],
+  plugins: [
+    "jsx-control-statements"
+  ],
   output: {
     path: paths.appBuild,
     filename: 'static/js/[name].[chunkhash:8].js',
