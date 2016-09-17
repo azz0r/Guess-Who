@@ -5,8 +5,9 @@ export function pickRandomItems(collection, amount) {
 }
 
 export function getNumberAsString(number) {
-  let returnValue = 'nothing';
+  let returnValue;
   switch (number) {
+    default:
     case 1:
       returnValue = 'first'
     break

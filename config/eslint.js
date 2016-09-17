@@ -21,7 +21,10 @@ module.exports = {
     es6: true,
     node: true
   },
-
+  "globals": {
+    "If": true,
+    "For": true,
+  },
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',

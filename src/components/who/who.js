@@ -1,8 +1,9 @@
 import React, { PropTypes, Component } from 'react'
-import { composeResetReducer } from 'redux-reset-store'
+import Modal from 'react-modal';
 import arrayShuffle from 'array-shuffle'
 import * as PlayersActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
+import * as ModalActions from '../../actions/modal'
 import { connect } from 'react-redux'
 import { toSlug, pickRandom, getNumberAsString } from './helpers'
 
@@ -18,6 +19,10 @@ class Who extends Component {
     questions: PropTypes.array.isRequired,
   }
 
+  state = {
+    isModalOpen: false
+  }
+
   componentDidMount() {
     this.gameTick = setInterval(
       this.shouldBotTakeTurn,
@@ -27,6 +32,12 @@ class Who extends Component {
 
   componentWillUnmount() {
     clearInterval(this.gameTick)
+  }
+
+  closeModal = () => {
+    this.props.dispatch(
+      ModalActions.set(false),
+    )
   }
 
   shouldBotTakeTurn = () => {
@@ -67,8 +78,14 @@ class Who extends Component {
   }
 
   onsBotTurn() {
+    let question = this.getBotsQuestion()
+    this.props.dispatch(
+      ModalActions.set(
+        true,
+        `${this.props.players[this.getCurrentPlayerId()].name} asked ${question.question}`),
+    )
     this.onQuestionChosen(
-      this.getBotsQuestion()
+      question
     )
   }
 
@@ -115,19 +132,19 @@ class Who extends Component {
     }
   }
 
-  // _getUsedQuestions() {
-  //   return {
-  //     botQuestionsUsed: this.props.questions[1].filter((question) => question.used),
-  //     humanQuestionsUsed: this.props.questions[0].filter((question) => question.used),
-  //   }
-  // }
-
   render() {
-    let
-      { weHaveAWinner, winnerId } = this._getWinner()
-      // { botQuestionsUsed, humanQuestionsUsed } = this._getUsedQuestions(),
+    let { weHaveAWinner, winnerId } = this._getWinner()
     return (
       <div className="row">
+        <If condition={this.props.modal.open === true}>
+          <Modal isOpen={this.props.modal.open}>
+            {this.props.modal.question}
+            <br />
+            <button onClick={this.closeModal.bind(this, true)}>
+              Close
+            </button>
+          </Modal>
+        </If>
         <If condition={weHaveAWinner}>
           <div className="winner col-xs-12 text-center">
             {this.props.players[winnerId].name} won the game by narrowing it down to...
@@ -180,6 +197,7 @@ export default connect(state => ({
   people: state.people,
   players: state.players,
   questions: state.questions,
+  modal: state.modal,
 }))(Who)
 
 const UsedQuestions = ({ questions }) => {
