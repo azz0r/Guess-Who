@@ -7,8 +7,6 @@ import configureStore from './store/configure-store';
 
 const store = configureStore();
 
-// console.log(store.getState());
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

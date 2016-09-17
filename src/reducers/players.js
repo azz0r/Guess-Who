@@ -30,23 +30,22 @@ export default (state = defaultState, action) => {
       }
 
       const checkPersonHasValue = (person, key, value) => {
-        return Boolean(person[key] && person[key].value && person[key].value === value)
+        if (person[key] && person[key] && person[key] == value) {
+          return true;
+        }
+        return false;
       }
 
       const setPersonChosen = (playerKey, peopleKey) => {
         newState[playerKey].people[peopleKey].chosen = true
       }
 
-      console.log('would eliminate the enemy', wouldThisEliminateTheEnemy)
-
       newState[action.playerKey].people.forEach((person, key) => {
         let personHasValue = checkPersonHasValue(person, action.question.key, action.question.value);
-        if (
-          (wouldThisEliminateTheEnemy === true && personHasValue === true)
-           ||
-           (wouldThisEliminateTheEnemy === false && personHasValue === false)
-       ) {
-          console.log(wouldThisEliminateTheEnemy, personHasValue, person.name, action.question.question)
+
+        if (wouldThisEliminateTheEnemy === true && personHasValue === false) {
+          setPersonChosen(action.playerKey, key)
+        } else if (wouldThisEliminateTheEnemy === false && personHasValue === true) {
           setPersonChosen(action.playerKey, key)
         }
       })

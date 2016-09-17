@@ -15,7 +15,6 @@ describe('<Who />', () => {
   )
   const wrapper = mainWrapper.find(Who)
   let props = wrapper.find(Who).map(i => i.props());
-  console.log(props)
   it('contains an <Who /> component', () => {
     expect(wrapper.find(Who)).to.have.length(1)
   })
@@ -31,4 +30,9 @@ describe('<Who />', () => {
   it('has enough characters on the bot board', () => {
     expect(wrapper.find('.bot-board .people-collection .person')).to.have.length(21)
   })
+  // it('will click a question and check the results are correct', () => {
+  //   wrapper.find('.human-board .is-your-character-male').simulate('click');
+  //   console.log(wrapper.find('.bot-board .people-collection .person.chosen'))
+  //   expect(wrapper.find('.bot-board .people-collection .person.chosen')).to.have.length(21)
+  // })
 })
