@@ -1,16 +1,28 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans', sans-serif;
-}
-h1 {
-	font-size: 60px;
+  font-family: 'Roboto', sans-serif;
 }
 ul {
   padding: 0;
 }
+.header {
+	background-color: #232828;
+	color: white;
+	font-size: 55px;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+h1 {
+	padding: 0;
+}
+.container-fluid {
+	padding: 0;
+}
+.who-container {
+	padding: 15px;
+}
 .questions {
-  text-align: center;
   display: none;
 }
 .questions.active {
@@ -38,7 +50,6 @@ h4 {
 .strike-through {
   text-decoration: line-through;
 }
-/* copy paste */
 .board-wrapper {
 	perspective: 1200px;
 	transform-style: preserve-3d;
@@ -46,7 +57,7 @@ h4 {
 .board {
 	width: 800px;
 	height: 800px;
-	background-color: rgba(27, 58, 145, 1);
+	background-color: #3b30fe;
 	transform: rotateX(60deg);
 	transform-style: preserve-3d;
   margin: 0 auto;
@@ -56,16 +67,16 @@ h4 {
 	transform-style: preserve-3d;
 }
 .first-card-row {
-	top: 6%;
+	top: 0%;
 }
 .second-card-row {
-	top: 30%;
+	top: 25%;
 }
 .third-card-row {
 	top: 50%;
 }
 .fourth-card-row {
-	top: 70%;
+	top: 75%;
 }
 .card {
   transition: all .3s ease-in-out;
@@ -120,4 +131,28 @@ h4 {
 	height: auto;
 	background-color: black;
 }
-/* copy paste */
+a.btn {
+	background-color: #1f0e9c;
+	color: white;
+	text-align: center;
+  padding: 15;
+  font-weight: bold;
+  width: auto;
+  font-size: 16px;
+}
+a.btn:hover {
+	text-decoration: underline;
+	color: white;
+}
+.zoom-out-5 {
+	zoom: 0.5
+}
+h5 {
+	text-transform: uppercase;
+	font-size: 13px;
+	padding: 7px 15px;
+	text-align: center;
+	background-color: #313838;
+	display: inline-block;
+	color: white;
+}

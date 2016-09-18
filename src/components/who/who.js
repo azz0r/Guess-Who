@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react'
-import Modal from 'react-modal';
 import arrayShuffle from 'array-shuffle'
 import * as PlayersActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
@@ -86,7 +85,9 @@ class Who extends Component {
     this.props.dispatch(
       ModalActions.set(
         true,
-        `${this.props.players[this.getCurrentPlayerId()].name} asked ${question.question}`),
+        `${this.props.players[this.getCurrentPlayerId()].name} asked ${question.question}`,
+        `The answer is ${this.doTheyHave(question)}`,
+      )
     )
     this.onQuestionChosen(
       question
@@ -139,19 +140,31 @@ class Who extends Component {
   render() {
     let { weHaveAWinner, winnerId } = this._getWinner()
     return (
-      <div>
+      <div className="who-container">
         <Choose>
           <When condition={this.props.modal.open && !weHaveAWinner}>
             <div className="row text-center">
               <h2>Opponents turn!</h2>
-              <strong>
+              <h3>
                 {this.props.modal.question}
-              </strong>
-              <p>
-                <button onClick={this.onCloseModal}>
+              </h3>
+              <div className="text-center">
+                <Choose>
+                  <When condition={this.props.modal.answer === true}>
+                    <img src="/static/imgs/yes.png" role="presentation" />
+                  </When>
+                  <Otherwise>
+                    <img src="/static/imgs/no.gif" role="presentation" />
+                  </Otherwise>
+                </Choose>
+              </div>
+              <div>
+                <a
+                  className="btn"
+                  onClick={this.onCloseModal}>
                   Next Turn
-                </button>
-              </p>
+                </a>
+              </div>
             </div>
             <div className="row">
               <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
@@ -160,7 +173,7 @@ class Who extends Component {
                   person={this.props.players[playerIds.human].chosenPerson}
                 />
               </div>
-              <div className="col-xs-8">
+              <div className="col-xs-8 zoom-out-5">
                 <div className="board-wrapper">
                   <People
                     people={this.props.players[playerIds.bot].people}
@@ -179,7 +192,7 @@ class Who extends Component {
               <p>
                 <a
                   href="#"
-                  className="btn btn-success cursor-pointer"
+                  className="btn cursor-pointer"
                   onKeyPress={this.onResetGame}
                   onClick={this.onResetGame}>
                   Play again?
@@ -189,7 +202,7 @@ class Who extends Component {
           </When>
           <When condition={!weHaveAWinner}>
             <div className="row human-board">
-              <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
+              <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4">
                   <Choose>
                     <When condition={this.props.players[playerIds.human].chosenPerson}>
                       <PersonChosen
@@ -211,7 +224,7 @@ class Who extends Component {
                 <div>
                   <a
                     href="#"
-                    className="btn btn-success cursor-pointer"
+                    className="btn cursor-pointer"
                     onKeyPress={this.onResetGame}
                     onClick={this.onResetGame}>Reset Game
                   </a>
@@ -250,7 +263,7 @@ const Questions = (({ active, questions, shuffle = false, limit = false, onQuest
   }
   return (
     <div className={`row questions ${(activeClass)}`}>
-      <div className="col-xs-16">
+      <div className="col-xs-12">
         <ul className="list-group">
           {questions.map((question, key) =>
             <Question

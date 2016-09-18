@@ -1,6 +1,7 @@
 const defaultState = {
   open: false,
-  question: ''
+  question: '',
+  answer: false,
 }
 
 export default (state = defaultState, action) => {
@@ -10,10 +11,8 @@ export default (state = defaultState, action) => {
       return Object.assign({}, {
         open: state.open ? false : true,
         question: action.question || '',
+        answer: action.answer || '',
       })
-    break;
     default:
-    break;
-  }
-  return state;
+      return state;  }
 }
