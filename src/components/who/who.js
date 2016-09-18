@@ -137,12 +137,14 @@ class Who extends Component {
     let { weHaveAWinner, winnerId } = this._getWinner()
     return (
       <div>
-        <If condition={this.props.modal.open}>
-          {this.props.modal.question}
-          <br />
-          <button onClick={this.onCloseModal}>
-            {String(this.props.modal.open)}
-          </button>
+        <If condition={this.props.modal.open === true}>
+          <Modal isOpen={this.props.modal.open}>
+            {this.props.modal.question}
+            <br />
+            <button onClick={this.onCloseModal}>
+              {String(this.props.modal.open)}
+            </button>
+          </Modal>
         </If>
         <If condition={weHaveAWinner}>
           <div className="winner col-xs-12 text-center">
