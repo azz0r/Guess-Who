@@ -78,7 +78,7 @@ h4 {
 	padding-right: 3px;
 	width: 80px;
 	height: 140px;
-	background-color: #ffe;
+	background-color: white;
 	transform: rotateX(-170deg);
 	transform-origin: bottom;
 	transition: transform 500ms cubic-bezier(1.87,-.41,.19,1.44);
