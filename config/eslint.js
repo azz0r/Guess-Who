@@ -24,6 +24,9 @@ module.exports = {
   "globals": {
     "If": true,
     "For": true,
+    "Otherwise": true,
+    "When": true,
+    "Choose": true
   },
   parserOptions: {
     ecmaVersion: 6,
