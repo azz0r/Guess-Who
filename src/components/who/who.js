@@ -142,7 +142,7 @@ class Who extends Component {
             {this.props.modal.question}
             <br />
             <button onClick={this.onCloseModal}>
-              {String(this.props.modal.open)}
+              Next Turn
             </button>
           </Modal>
         </If>
@@ -152,25 +152,17 @@ class Who extends Component {
             <PersonChosen person={this.props.players[(winnerId === 0 ? 1 : 0)].chosenPerson} />
           </div>
         </If>
-        <div className="col-xs-12 clearfix">
-          <a
-            href="#"
-            className="btn btn-success cursor-pointer"
-            onKeyPress={this.onResetGame}
-            onClick={this.onResetGame}>
-            {weHaveAWinner
-              ? "Start Another Game?"
-              : "Reset"}
-          </a>
-        </div>
         <div className="row human-board">
-          <div className="col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
+          <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
             <If condition={!weHaveAWinner}>
-              {this.props.players[playerIds.human].chosenPerson
-                ? <PersonChosen person={this.props.players[playerIds.human].chosenPerson} />
-                : <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />}
-            </If>
-            <If condition={!weHaveAWinner}>
+              <Choose>
+                <When condition={this.props.players[playerIds.human].chosenPerson}>
+                  <PersonChosen person={this.props.players[playerIds.human].chosenPerson} />
+                </When>
+                <Otherwise>
+                  <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />
+                </Otherwise>
+              </Choose>
               <Questions
                 active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
                 limit={5}
@@ -179,6 +171,17 @@ class Who extends Component {
                 questions={this.props.questions[playerIds.human]}
               />
             </If>
+            <div>
+              <a
+                href="#"
+                className="btn btn-success cursor-pointer"
+                onKeyPress={this.onResetGame}
+                onClick={this.onResetGame}>
+                {weHaveAWinner
+                  ? "Start Another Game?"
+                  : "Reset Game"}
+              </a>
+            </div>
           </div>
           <div className="col-xs-8">
             <div className="board-wrapper">

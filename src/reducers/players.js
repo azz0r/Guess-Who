@@ -30,7 +30,7 @@ export default (state = defaultState, action) => {
       }
 
       const checkPersonHasValue = (person, key, value) => {
-        if (person[key] && person[key] && person[key] === value) {
+        if (person[key] && person[key] && person[key] == value) {
           return true;
         }
         return false;
