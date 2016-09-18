@@ -36,7 +36,6 @@ class Who extends Component {
   }
 
   onCloseModal = () => {
-    console.log('onCloseModal')
     this.props.dispatch(
       ModalActions.set(false),
     )
@@ -135,7 +134,6 @@ class Who extends Component {
   }
 
   render() {
-    console.log('we hit render')
     let { weHaveAWinner, winnerId } = this._getWinner()
     return (
       <div>
