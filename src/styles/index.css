@@ -138,10 +138,11 @@ a.btn {
 	background-color: #1f0e9c;
 	color: white;
 	text-align: center;
-  padding: 15;
-  font-weight: bold;
+  padding: 10;
   width: auto;
-  font-size: 16px;
+  font-size: .9em;
+	text-transform: uppercase;
+	border-radius: 0;
 }
 a.btn:hover {
 	text-decoration: underline;

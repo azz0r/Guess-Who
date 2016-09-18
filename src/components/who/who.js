@@ -353,6 +353,7 @@ const ChooseAPerson = () => {
     <div>
       <h2>Choose your character</h2>
       <p>Click on the character you wish to represent you, your opponent will be guessing against that character!</p>
+      <p>Choose your character by clicking them on the board to the right ↪</p>
     </div>
   )
 }
