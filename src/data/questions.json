@@ -39,6 +39,10 @@
 	"question": "Is your characters eye colour green?",
 	"value": "green"
 }, {
+	"key": "eyeColor",
+	"question": "Is your characters eye colour green?",
+	"value": "gray"
+}, {
 	"key": "hat",
 	"question": "Is your character wearing a cap?",
 	"value": true
@@ -85,7 +89,7 @@
 }, {
 	"key": "game",
 	"question": "Is your character the game?",
-	"value": false
+	"value": true
 }, {
 	"key": "it",
 	"question": "Does your character have 'it'?",
@@ -97,5 +101,9 @@
 }, {
 	"key": "indy",
 	"question": "Is your character seen as an indy darling?",
+	"value": true
+}, {
+	"key": "worldsStrongestMan",
+	"question": "Is your character the worlds strongest man?",
 	"value": true
 }]

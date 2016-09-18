@@ -201,7 +201,7 @@ class Who extends Component {
               </p>
             </div>
           </When>
-          <When condition={!weHaveAWinner}>
+          <Otherwise>
             <div className="row human-board">
               <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4">
                   <Choose>
@@ -240,7 +240,7 @@ class Who extends Component {
                 </div>
               </div>
             </div>
-          </When>
+          </Otherwise>
         </Choose>
       </div>
     )

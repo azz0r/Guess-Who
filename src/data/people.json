@@ -52,10 +52,10 @@
 	"id": 8,
 	"name": "Mark Henry",
 	"male": true,
-	"hairColor": "brown",
 	"eyeColor": "brown",
 	"beard": true,
-	"wrestler": true
+	"wrestler": true,
+	"worldsStrongestMan": true
 }, {
 	"id": 9,
 	"name": "Mick Foley",
@@ -100,8 +100,7 @@
 	"hairColor": "silver",
 	"eyeColor": "brown",
 	"owner": true,
-	"smackdown": false,
-	"raw": true
+	"smackdown": false
 }, {
 	"id": 14,
 	"name": "Michael Cole",
@@ -228,6 +227,7 @@
 	"eyeColor": "brown",
 	"hairColor": "blonde",
 	"wrestler": true,
-	"game": true
+	"game": true,
+	"beard": true
 }
 ]
