@@ -137,7 +137,7 @@ class Who extends Component {
     let { weHaveAWinner, winnerId } = this._getWinner()
     return (
       <div>
-        <If condition={this.props.modal.open === true}>
+        <If condition={this.props.modal.open && !weHaveAWinner}>
           <Modal isOpen={this.props.modal.open}>
             {this.props.modal.question}
             <br />
@@ -150,48 +150,54 @@ class Who extends Component {
           <div className="winner col-xs-12 text-center">
             {this.props.players[winnerId].name} won the game by narrowing it down to...
             <PersonChosen person={this.props.players[(winnerId === 0 ? 1 : 0)].chosenPerson} />
-          </div>
-        </If>
-        <div className="row human-board">
-          <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
-            <If condition={!weHaveAWinner}>
-              <Choose>
-                <When condition={this.props.players[playerIds.human].chosenPerson}>
-                  <PersonChosen person={this.props.players[playerIds.human].chosenPerson} />
-                </When>
-                <Otherwise>
-                  <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />
-                </Otherwise>
-              </Choose>
-              <Questions
-                active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
-                limit={5}
-                shuffle
-                onQuestionChosen={this.onQuestionChosen}
-                questions={this.props.questions[playerIds.human]}
-              />
-            </If>
-            <div>
+            <p>
               <a
                 href="#"
                 className="btn btn-success cursor-pointer"
                 onKeyPress={this.onResetGame}
                 onClick={this.onResetGame}>
-                {weHaveAWinner
-                  ? "Start Another Game?"
-                  : "Reset Game"}
+                Play again?
               </a>
+            </p>
+          </div>
+        </If>
+        <If condition={!weHaveAWinner}>
+          <div className="row human-board">
+            <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
+                <Choose>
+                  <When condition={this.props.players[playerIds.human].chosenPerson}>
+                    <PersonChosen person={this.props.players[playerIds.human].chosenPerson} />
+                  </When>
+                  <Otherwise>
+                    <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />
+                  </Otherwise>
+                </Choose>
+                <Questions
+                  active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
+                  limit={5}
+                  shuffle
+                  onQuestionChosen={this.onQuestionChosen}
+                  questions={this.props.questions[playerIds.human]}
+                />
+              <div>
+                <a
+                  href="#"
+                  className="btn btn-success cursor-pointer"
+                  onKeyPress={this.onResetGame}
+                  onClick={this.onResetGame}>Reset Game
+                </a>
+              </div>
+            </div>
+            <div className="col-xs-8">
+              <div className="board-wrapper">
+                <People
+                  people={this.props.players[playerIds.human].people}
+                  onPersonClicked={this.onPersonClicked}
+                />
+              </div>
             </div>
           </div>
-          <div className="col-xs-8">
-            <div className="board-wrapper">
-              <People
-                people={this.props.players[playerIds.human].people}
-                onPersonClicked={this.onPersonClicked}
-              />
-            </div>
-          </div>
-        </div>
+        </If>
       </div>
     )
   }
