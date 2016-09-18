@@ -23,7 +23,7 @@ class Who extends Component {
   componentDidMount() {
     this.gameTick = setInterval(
       this.shouldBotTakeTurn,
-      1000
+      5000
     )
   }
 
@@ -55,13 +55,16 @@ class Who extends Component {
 
   onPersonClicked = (chosenPerson) => {
     if (!this.props.players[playerIds.human].chosenPerson) {
-      let
-        peopleForCPU = this.props.players[playerIds.human].people.filter((person) => person.id !== chosenPerson.id),
-        personForCPU = pickRandom(peopleForCPU)
-
+      let peopleForCPU = this.props.players[playerIds.human].people.filter((person) => person.id !== chosenPerson.id)
       this.props.dispatch([
-        PlayersActions.chosePerson(chosenPerson, playerIds.human),
-        PlayersActions.chosePerson(personForCPU, playerIds.bot),
+        PlayersActions.chosePerson(
+          chosenPerson,
+          playerIds.human,
+        ),
+        PlayersActions.chosePerson(
+          pickRandom(peopleForCPU),
+          playerIds.bot,
+        ),
       ])
     }
   }
@@ -137,67 +140,94 @@ class Who extends Component {
     let { weHaveAWinner, winnerId } = this._getWinner()
     return (
       <div>
-        <If condition={this.props.modal.open && !weHaveAWinner}>
-          <Modal isOpen={this.props.modal.open}>
-            {this.props.modal.question}
-            <br />
-            <button onClick={this.onCloseModal}>
-              Next Turn
-            </button>
-          </Modal>
-        </If>
-        <If condition={weHaveAWinner}>
-          <div className="winner col-xs-12 text-center">
-            {this.props.players[winnerId].name} won the game by narrowing it down to...
-            <PersonChosen person={this.props.players[(winnerId === 0 ? 1 : 0)].chosenPerson} />
-            <p>
-              <a
-                href="#"
-                className="btn btn-success cursor-pointer"
-                onKeyPress={this.onResetGame}
-                onClick={this.onResetGame}>
-                Play again?
-              </a>
-            </p>
-          </div>
-        </If>
-        <If condition={!weHaveAWinner}>
-          <div className="row human-board">
-            <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
-                <Choose>
-                  <When condition={this.props.players[playerIds.human].chosenPerson}>
-                    <PersonChosen person={this.props.players[playerIds.human].chosenPerson} />
-                  </When>
-                  <Otherwise>
-                    <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />
-                  </Otherwise>
-                </Choose>
-                <Questions
-                  active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
-                  limit={5}
-                  shuffle
-                  onQuestionChosen={this.onQuestionChosen}
-                  questions={this.props.questions[playerIds.human]}
+        <Choose>
+          <When condition={this.props.modal.open && !weHaveAWinner}>
+            <div className="row text-center">
+              <h2>Opponents turn!</h2>
+              <strong>
+                {this.props.modal.question}
+              </strong>
+              <p>
+                <button onClick={this.onCloseModal}>
+                  Next Turn
+                </button>
+              </p>
+            </div>
+            <div className="row">
+              <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
+                <h2>Your chosen character</h2>
+                <PersonChosen
+                  person={this.props.players[playerIds.human].chosenPerson}
                 />
-              <div>
+              </div>
+              <div className="col-xs-8">
+                <div className="board-wrapper">
+                  <People
+                    people={this.props.players[playerIds.bot].people}
+                    hidePersonsFace
+                  />
+                </div>
+              </div>
+            </div>
+          </When>
+          <When condition={weHaveAWinner}>
+            <div className="winner col-xs-12 text-center">
+              {this.props.players[winnerId].name} won the game by narrowing it down to...
+              <PersonChosen
+                person={this.props.players[(winnerId === 0 ? 1 : 0)].chosenPerson}
+              />
+              <p>
                 <a
                   href="#"
                   className="btn btn-success cursor-pointer"
                   onKeyPress={this.onResetGame}
-                  onClick={this.onResetGame}>Reset Game
+                  onClick={this.onResetGame}>
+                  Play again?
                 </a>
+              </p>
+            </div>
+          </When>
+          <When condition={!weHaveAWinner}>
+            <div className="row human-board">
+              <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
+                  <Choose>
+                    <When condition={this.props.players[playerIds.human].chosenPerson}>
+                      <PersonChosen
+                        person={this.props.players[playerIds.human].chosenPerson}
+                        hidePersonsFace
+                      />
+                    </When>
+                    <Otherwise>
+                      <ChooseAPerson person={this.props.players[playerIds.human].chosenPerson} />
+                    </Otherwise>
+                  </Choose>
+                  <Questions
+                    active={this.props.players[playerIds.human].currentTurn && this.props.players[playerIds.human].chosenPerson}
+                    limit={5}
+                    shuffle
+                    onQuestionChosen={this.onQuestionChosen}
+                    questions={this.props.questions[playerIds.human]}
+                  />
+                <div>
+                  <a
+                    href="#"
+                    className="btn btn-success cursor-pointer"
+                    onKeyPress={this.onResetGame}
+                    onClick={this.onResetGame}>Reset Game
+                  </a>
+                </div>
+              </div>
+              <div className="col-xs-8">
+                <div className="board-wrapper">
+                  <People
+                    people={this.props.players[playerIds.human].people}
+                    onPersonClicked={this.onPersonClicked}
+                  />
+                </div>
               </div>
             </div>
-            <div className="col-xs-8">
-              <div className="board-wrapper">
-                <People
-                  people={this.props.players[playerIds.human].people}
-                  onPersonClicked={this.onPersonClicked}
-                />
-              </div>
-            </div>
-          </div>
-        </If>
+          </When>
+        </Choose>
       </div>
     )
   }
@@ -280,16 +310,22 @@ const People = (({ people, showNameplate, hidePersonsFace, onPersonClicked }) =>
   )
 })
 
-const PersonChosen = ({ person, hidePersonsFace = false }) => {
-  let slug = toSlug(person.name)
+const PersonChosen = ({ person, hidePersonsFace}) => {
+  let
+    fullName = person.name,
+    slug = toSlug(person.name)
+  if (hidePersonsFace) {
+    slug = 'hidden-person'
+    fullName = 'hidden'
+  }
   return (
     <div className="row person-chosen">
       <div className="col-xs-12">
         <p>
           <img
             src={`/static/imgs/${slug}.png`}
-            title={person.name}
-            alt={person.name}
+            title={fullName}
+            alt={fullName}
             className="avatar-img"
           />
         </p>
@@ -308,10 +344,12 @@ const ChooseAPerson = () => {
 }
 
 const Person = ({ person, showNameplate = true, cardNumber='first', hidePersonsFace = false, onPersonClicked }) => {
-  let slug = toSlug(person.name),
+  let
+    slug = toSlug(person.name),
+    fullName = person.name,
     chosenClass = person.chosen
       ? 'down'
-      : 'up'
+      : 'up';
   const namePlate = ((name) =>
     <h4>
       {name}
@@ -319,20 +357,20 @@ const Person = ({ person, showNameplate = true, cardNumber='first', hidePersonsF
   )
   if (hidePersonsFace) {
     slug = 'hidden-person'
-    person.name = 'hidden'
+    fullName = 'hidden'
   }
   return (
     <div className={`${slug} ${chosenClass} ${cardNumber} card text-center`}>
       <p>
         <img
           src={`/static/imgs/${slug}.png`}
-          title={person.name}
-          alt={person.name}
+          title={fullName}
+          alt={fullName}
           className="avatar-img"
           onClick={onPersonClicked ? onPersonClicked.bind(this, person) : null}
         />
       </p>
-      {showNameplate ? namePlate(person.name) : ''}
+      {showNameplate ? namePlate(fullName) : ''}
     </div>
   )
 }

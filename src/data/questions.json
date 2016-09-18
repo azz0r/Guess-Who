@@ -4,7 +4,7 @@
 	"value": true
 },{
 	"key": "male",
-	"question": "Is your character male",
+	"question": "Is your character male?",
 	"value": true
 }, {
 	"key": "hairColor",
@@ -80,10 +80,22 @@
 	"value": true
 }, {
 	"key": "smackdown",
-	"question": "Is your character on smackdown only?",
+	"question": "Is your character on smackdown?",
 	"value": true
 }, {
-	"key": "smackdown",
-	"question": "Is your character on raw only?",
+	"key": "game",
+	"question": "Is your character the game?",
 	"value": false
+}, {
+	"key": "it",
+	"question": "Does your character have 'it'?",
+	"value": true
+}, {
+	"key": "tagChamp",
+	"question": "Is your character a W W E TAG TEAM CHAMPION?",
+	"value": true
+}, {
+	"key": "indy",
+	"question": "Is your character seen as an indy darling?",
+	"value": true
 }]

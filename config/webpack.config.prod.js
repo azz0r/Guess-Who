@@ -59,9 +59,29 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        include: paths.appSrc,
         loader: 'babel',
-        query: require('./babel.prod')
+        include: [
+          paths.appSrc
+        ],
+        query: {
+          // https://github.com/babel/babel-loader#options
+          cacheDirectory: true,
+          // https://babeljs.io/docs/usage/options/
+          babelrc: false,
+          presets: [
+            'react',
+            'es2015',
+            'stage-0'
+          ],
+          plugins: [
+            'transform-runtime',
+            'transform-decorators-legacy',
+            'jsx-control-statements',
+            'transform-react-constant-elements',
+            'transform-react-inline-elements',
+            'transform-react-remove-prop-types'
+          ]
+        }
       },
       {
         test: /\.css$/,

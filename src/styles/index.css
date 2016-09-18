@@ -56,16 +56,16 @@ h4 {
 	transform-style: preserve-3d;
 }
 .first-card-row {
-	top: 10%;
+	top: 6%;
 }
 .second-card-row {
-	top: 35%;
+	top: 30%;
 }
 .third-card-row {
-	top: 60%;
+	top: 50%;
 }
 .fourth-card-row {
-	top: 76%;
+	top: 70%;
 }
 .card {
   transition: all .3s ease-in-out;
@@ -73,9 +73,7 @@ h4 {
 	border-top: 3px #cce solid;
 	cursor: pointer;
 	position: absolute;
-	padding-top: 6px;
-	padding-left: 3px;
-	padding-right: 3px;
+	padding: 5px;
 	width: 80px;
 	height: 140px;
 	background-color: white;
@@ -120,5 +118,6 @@ h4 {
 .avatar-img {
 	width: 100%;
 	height: auto;
+	background-color: black;
 }
 /* copy paste */

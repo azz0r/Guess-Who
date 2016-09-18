@@ -177,5 +177,57 @@
 	"beard": true,
 	"wrestler": true,
 	"samoan": true
+}, {
+	"id": 22,
+	"name": "Becky Lynch",
+	"male": false,
+	"eyeColor": "green",
+	"hairColor": "red",
+	"champion": false,
+	"wrestler": true,
+	"smackdown": true
+}, {
+	"id": 23,
+	"name": "Kevin Owens",
+	"male": true,
+	"eyeColor": "brown",
+	"hairColor": "brown",
+	"champion": true,
+	"smackdown": false,
+	"indy": true
+}, {
+	"id": 24,
+	"name": "Chris Jericho",
+	"male": true,
+	"eyeColor": "blue",
+	"hairColor": "blonde",
+	"smackdown": false,
+	"it": true
+}, {
+	"id": 25,
+	"name": "Big E",
+	"male": true,
+	"eyeColor": "brown",
+	"beard": true,
+	"wrestler": true,
+	"champion": true,
+	"smackdown": false,
+	"tagChamp": true
+}, {
+	"id": 26,
+	"name": "Dana Brooke",
+	"male": false,
+	"eyeColor": "blue",
+	"hairColor": "blonde",
+	"wrestler": true,
+	"smackdown": false
+}, {
+	"id": 27,
+	"name": "HHH",
+	"male": true,
+	"eyeColor": "brown",
+	"hairColor": "blonde",
+	"wrestler": true,
+	"game": true
 }
 ]
