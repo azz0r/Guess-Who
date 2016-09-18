@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+	font-size: 1.5em;
 }
 ul {
   padding: 0;
@@ -9,12 +10,15 @@ ul {
 .header {
 	background-color: #232828;
 	color: white;
-	font-size: 55px;
 	padding: 15px;
 	margin-bottom: 15px;
 }
 h1 {
 	padding: 0;
+	font-size: 3em;
+}
+h2 {
+	font-size: 2em;
 }
 .container-fluid {
 	padding: 0;
@@ -24,18 +28,16 @@ h1 {
 }
 .questions {
   display: none;
+	padding-left: 15px;
+	list-style: none;
 }
 .questions.active {
   display: inline-block;
 }
 .questions.active li {
   cursor: pointer;
-}
-.list-group-item {
-  border: 0;
-}
-.list-group-item a {
-  cursor: pointer;
+	list-style-type: none;
+	line-height: 2em;
 }
 a,
 a:visited {
@@ -45,7 +47,7 @@ a:hover {
   color: #999;
 }
 h4 {
-  font-size: 14px;
+  font-size: 1em;
 }
 .strike-through {
   text-decoration: line-through;
@@ -131,6 +133,7 @@ h4 {
 	height: auto;
 	background-color: black;
 }
+a.btn:focus,
 a.btn {
 	background-color: #1f0e9c;
 	color: white;

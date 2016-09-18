@@ -144,7 +144,7 @@ class Who extends Component {
         <Choose>
           <When condition={this.props.modal.open && !weHaveAWinner}>
             <div className="row text-center">
-              <h2>Opponents turn!</h2>
+              <h3>Opponents turn!</h3>
               <h3>
                 {this.props.modal.question}
               </h3>
@@ -158,11 +158,12 @@ class Who extends Component {
                   </Otherwise>
                 </Choose>
               </div>
+              <br />
               <div>
                 <a
                   className="btn"
                   onClick={this.onCloseModal}>
-                  Next Turn
+                  Your Turn
                 </a>
               </div>
             </div>
@@ -264,7 +265,7 @@ const Questions = (({ active, questions, shuffle = false, limit = false, onQuest
   return (
     <div className={`row questions ${(activeClass)}`}>
       <div className="col-xs-12">
-        <ul className="list-group">
+        <ul>
           {questions.map((question, key) =>
             <Question
               key={key}
@@ -282,7 +283,7 @@ const Question = ({ question, onQuestionChosen }) => {
   let questionClasses = question.used ? 'strike-through ' : '';
   questionClasses += toSlug(question.question)
   return (
-    <li className="list-group-item">
+    <li>
       <a href="#"
         className={questionClasses}
         onKeyPress={onQuestionChosen.bind(this, question)}
