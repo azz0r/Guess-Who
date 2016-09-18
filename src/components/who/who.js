@@ -169,13 +169,13 @@ class Who extends Component {
               </div>
             </div>
             <div className="row">
-              <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4 text-center">
+              <div className="sidebar col-xs-12 col-md-3 col-sm-3 col-lg-3 text-center">
                 <h2>Your chosen character</h2>
                 <PersonChosen
                   person={this.props.players[playerIds.human].chosenPerson}
                 />
               </div>
-              <div className="col-xs-8 zoom-out-5">
+              <div className="col-xs-9 zoom-out-5">
                 <div className="board-wrapper">
                   <People
                     people={this.props.players[playerIds.bot].people}
@@ -204,7 +204,7 @@ class Who extends Component {
           </When>
           <Otherwise>
             <div className="row human-board">
-              <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4">
+              <div className="sidebar col-xs-12 col-md-3 col-sm-3 col-lg-3">
                   <Choose>
                     <When condition={this.props.players[playerIds.human].chosenPerson}>
                       <PersonChosen
@@ -232,7 +232,7 @@ class Who extends Component {
                   </a>
                 </div>
               </div>
-              <div className="col-xs-8">
+              <div className="col-xs-9">
                 <div className="board-wrapper">
                   <People
                     people={this.props.players[playerIds.human].people}
