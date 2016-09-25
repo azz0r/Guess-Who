@@ -65,18 +65,22 @@ export const ChooseAPerson = () => {
   )
 }
 
-export const Person = ({ person, showNameplate = true, cardNumber='first', hidePersonsFace = false, onPersonClicked }) => {
-  let
-    slug = toSlug(person.name),
+export const Nameplate = (({ name }) =>
+  <h4>
+    {name}
+  </h4>
+)
+
+export const Person = ({
+  person,
+  showNameplate = true,
+  cardNumber = 'first',
+  hidePersonsFace = false,
+  onPersonClicked
+}) => {
+  let slug = toSlug(person.name),
     fullName = person.name,
-    chosenClass = person.chosen
-      ? 'down'
-      : 'up';
-  const namePlate = ((name) =>
-    <h4>
-      {name}
-    </h4>
-  )
+    chosenClass = person.chosen ? 'down' : 'up';
   if (hidePersonsFace) {
     slug = 'hidden-person'
     fullName = 'hidden'
@@ -92,7 +96,9 @@ export const Person = ({ person, showNameplate = true, cardNumber='first', hideP
           onClick={onPersonClicked ? onPersonClicked.bind(this, person) : null}
         />
       </p>
-      {showNameplate ? namePlate(fullName) : ''}
+      <If condition={showNameplate}>
+        <Nameplate name={fullName} />
+      </If>
     </div>
   )
 }
