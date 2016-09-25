@@ -2,7 +2,6 @@ import React from 'react'
 import Presentation from './who.presentation'
 import * as PlayersActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
-import * as ModalActions from '../../actions/modal'
 import { connect } from 'react-redux'
 import { pickRandom } from './helpers'
 
@@ -17,7 +16,6 @@ class Who extends React.Component {
     dispatch: React.PropTypes.func.isRequired,
     players: React.PropTypes.array.isRequired,
     questions: React.PropTypes.array.isRequired,
-    modal: React.PropTypes.array.isRequired,
   }
 
   componentDidMount() {
@@ -33,12 +31,6 @@ class Who extends React.Component {
 
   shouldComponentUpdate() {
     return true
-  }
-
-  onCloseModal = () => {
-    this.props.dispatch(
-      ModalActions.set(false),
-    )
   }
 
   shouldBotTakeTurn = () => {
@@ -83,13 +75,6 @@ class Who extends React.Component {
 
   onsBotTurn = () => {
     let question = this.getBotsQuestion()
-    this.props.dispatch(
-      ModalActions.set(
-        true,
-        `${this.props.players[this.getCurrentPlayerId()].name} asked ${question.question}`,
-        `The answer is ${this.doTheyHave(question)}`,
-      )
-    )
     this.onQuestionChosen(
       question
     )
@@ -144,7 +129,6 @@ class Who extends React.Component {
         {...this.props}
         winner={this._getWinner()}
         onResetGame={this.onResetGame}
-        onCloseModal={this.onCloseModal}
         onPersonClicked={this.onPersonClicked}
         onQuestionChosen={this.onQuestionChosen}
        />
@@ -155,5 +139,4 @@ class Who extends React.Component {
 export default connect(state => ({
   players: state.players,
   questions: state.questions,
-  modal: state.modal,
 }))(Who)
