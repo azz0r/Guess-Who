@@ -1,9 +1,3 @@
-import arrayShuffle from 'array-shuffle';
-
-export function pickRandomItems(collection, amount) {
-  return arrayShuffle(collection).slice(0, 200);//amount);
-}
-
 export function getNumberAsString(number) {
   let returnValue;
   switch (number) {
