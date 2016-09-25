@@ -104,18 +104,16 @@ class Who extends React.Component {
     return Boolean(enemyPerson[question.key] && enemyPerson[question.key] === question.value)
   }
 
-  _getWinner() {
-    let hasWinner = false,
-      id = false;
+  _getWinner(awarded = false, id = false) {
     this.props.players.forEach((player, key) => {
       if (player.people.filter((person) => !person.chosen).length === 1) {
-        hasWinner = true
         id = key
+        awarded = true
       }
     })
     return {
-      hasWinner,
       id,
+      awarded
     }
   }
 
