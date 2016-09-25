@@ -10,7 +10,8 @@ export default (state = defaultState, action) => {
     case 'QUESTION_USED':
       state[action.playerKey].forEach((question, index) => {
         if (question === action.question) {
-          state[action.playerKey][index].used = true;
+          state[action.playerKey][index].used = true
+          state[action.playerKey][index].usedAt = new Date().getTime()          
         }
       })
       break;
