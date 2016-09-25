@@ -2,16 +2,12 @@ import React from 'react'
 import { Questions } from './questions'
 import { People, ChooseAPerson, PersonChosen } from './people'
 
-const playerIds = {
-  human: 0,
-  bot: 1
-}
-
 export default class WhoPresentation extends React.Component {
 
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     players: React.PropTypes.array.isRequired,
+    playerIds: React.PropTypes.array.isRequired,
     questions: React.PropTypes.array.isRequired,
     winner: React.PropTypes.object.isRequired,
     onResetGame: React.PropTypes.func.isRequired,
@@ -20,8 +16,7 @@ export default class WhoPresentation extends React.Component {
   }
 
   render() {
-    const humanPlayer = this.props.players[playerIds.human],
-      botPlayer = this.props.players[playerIds.bot];
+    const humanPlayer = this.props.players[this.props.playerIds.human]
     return (
       <div className="who-container">
         <div className="row human-board">
@@ -42,7 +37,7 @@ export default class WhoPresentation extends React.Component {
                 limit={5}
                 shuffle
                 onQuestionChosen={this.props.onQuestionChosen}
-                questions={this.props.questions[playerIds.human]}
+                questions={this.props.questions[this.props.playerIds.human]}
               />
             <div>
               <a

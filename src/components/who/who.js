@@ -1,14 +1,10 @@
 import React from 'react'
-import Presentation from './who.presentation'
+import Presentation from './presentation'
 import * as PlayersActions from '../../actions/players'
 import * as QuestionActions from '../../actions/questions'
 import { connect } from 'react-redux'
 import { pickRandom } from './helpers'
-
-const playerIds = {
-  human: 0,
-  bot: 1
-}
+import { playerIds } from './players'
 
 class Who extends React.Component {
 
@@ -128,6 +124,7 @@ class Who extends React.Component {
       <Presentation
         {...this.props}
         winner={this._getWinner()}
+        playerIds={playerIds}
         onResetGame={this.onResetGame}
         onPersonClicked={this.onPersonClicked}
         onQuestionChosen={this.onQuestionChosen}
