@@ -1,9 +1,9 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import { expect } from 'chai';
-import Who from './who';
-import configureStore from '../../store/configure-store';
-import { Provider } from 'react-redux';
+import React from 'react'
+import { mount } from 'enzyme'
+import { expect } from 'chai'
+import Who from './who'
+import configureStore from '../../store/configure-store'
+import { Provider } from 'react-redux'
 
 const store = configureStore()
 
