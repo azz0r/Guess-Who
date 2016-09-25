@@ -40,38 +40,3 @@ export const toSlug = (string) => {
 export const pickRandom = (collection = []) => {
   return collection[(Math.random() * collection.length)| 0]
 }
-
-/*
-  * Get an array of values from the peoples collection
-  * @param  {string} field on the object we want to aggregate
-  * @return {array} returns an array of fields
-*/
-export function getValues(collection, field) {
-  return collection.map((object) => {
-    return object[field];
-  })
-}
-
-/*
-  * Takes an object and generates a new array of the fields on that object
-  * @return {array} returns an array of fields
-*/
-export function getFields(obj) {
-  let fields = [];
-  for (const key of Object.keys(obj)) {
-    fields.push(key);
-  }
-  return fields;
-}
-
-export function condenseArray(data) {
-  let result = [];
-  if (data && data.length > 0) {
-    data.forEach(function (elem) {
-      if (result.indexOf(elem) === -1) {
-        result.push(elem);
-      }
-    });
-  }
-  return result;
-}
