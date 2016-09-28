@@ -1,12 +1,13 @@
 import React from 'react'
 import { toSlug, getNumberAsString } from './helpers'
 
-export const People = (({ people, showNameplate, hidePersonsFace, onPersonClicked }) => {
+export const People = (({ people, showNameplate, hidePersonsFace, flatBoard, onPersonClicked }) => {
   let
     rowNumber = 1,
-    cardNumber = 0;
+    cardNumber = 0,
+    flatBoardClass = flatBoard ? 'flat' : '';
   return (
-    <div className="board">
+    <div className={`board ${flatBoardClass}`}>
       {people.map((person, key) => {
         if (cardNumber === 7) {
           cardNumber = 0;
