@@ -7,6 +7,10 @@ export default class Search extends React.Component {
 
   displayName = 'Search'
 
+  static propTypes = {
+    onSearchUpdated: React.propTypes.func.isRequired
+  }
+
   state = {
     venues: []
   }
