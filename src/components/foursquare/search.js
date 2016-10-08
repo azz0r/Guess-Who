@@ -41,19 +41,28 @@ export default class Search extends React.Component {
     return (
       <div className="row">
         <div className="col-xs-12 search">
-          <input
-            type="text"
-            className="search__field"
-            onKeyUp={this.onSearch}
-            onKeyPress={this.onSearch}
-          />
-          <button
-            type="Submit"
-            className="search__button"
-            onClick={this.onSearch}
-            onKeyPress={this.onSearch}>
-          Search
-          </button>
+          <form className="search" role="search">
+            <div className="input-group add-on">
+              <input
+                className="form-control search__field"
+                placeholder="Search"
+                name="search__field"
+                id="search__field"
+                type="text"
+                onKeyUp={this.onSearch}
+                onKeyPress={this.onSearch}
+              />
+              <div className="input-group-btn">
+                <button
+                  className="search__button btn btn-default"
+                  type="submit"
+                  onClick={this.onSearch}
+                  onKeyPress={this.onSearch}>
+                  <i className="glyphicon glyphicon-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     )
