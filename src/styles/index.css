@@ -1,162 +1,26 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
 	font-size: 1.5em;
 }
 ul {
   padding: 0;
 }
-.header {
-	background-color: #232828;
-	color: white;
-	padding: 15px;
-	margin-bottom: 15px;
+h1, h2, h3, h4 {
+  padding: 0;
 }
 h1 {
-	padding: 0;
-	font-size: 3em;
+  font-size: 3em;
 }
 h2 {
 	font-size: 2em;
 }
-.container-fluid {
-	padding: 0;
+h4 {
+  font-size: 1em;
 }
-.who-container {
-	padding: 15px;
-}
-.questions {
-  display: none;
-	padding-left: 15px;
-	list-style: none;
-}
-.questions.active {
-  display: inline-block;
-}
-.questions.active li {
-  cursor: pointer;
-	list-style-type: none;
-	line-height: 2em;
-}
-a,
-a:visited {
+a, a:visited {
   color: black;
 }
 a:hover {
   color: #999;
-}
-h4 {
-  font-size: 1em;
-}
-.strike-through {
-  text-decoration: line-through;
-}
-.board-wrapper {
-	perspective: 1200px;
-	transform-style: preserve-3d;
-}
-.board {
-	width: 800px;
-	height: 800px;
-	background-color: #3b30fe;
-	transform: rotateX(60deg);
-	transform-style: preserve-3d;
-  margin: 0 auto;
-}
-.board .card-row {
-	position: relative;
-	transform-style: preserve-3d;
-}
-.first-card-row {
-	top: 0%;
-}
-.second-card-row {
-	top: 25%;
-}
-.third-card-row {
-	top: 50%;
-}
-.fourth-card-row {
-	top: 75%;
-}
-.card {
-  transition: all .3s ease-in-out;
-	border-radius: 3px;
-	border-top: 3px #cce solid;
-	cursor: pointer;
-	position: absolute;
-	padding: 5px;
-	width: 80px;
-	height: 140px;
-	background-color: white;
-	transform: rotateX(-170deg);
-	transform-origin: bottom;
-	transition: transform 500ms cubic-bezier(1.87,-.41,.19,1.44);
-}
-.card.first {
-	left: 8%;
-}
-.card.second {
-	left: 21%;
-}
-.card.third {
-	left: 33%;
-}
-.card.fourth {
-	left: 46%;
-}
-.card.fifth {
-	left: 58%;
-}
-.card.sixth {
-	left: 70%;
-}
-.card.seventh {
-	left: 82%;
-}
-.card.eight {
-	left: 94%;
-}
-.card.up {
-	transform: rotateY(90deg);
-	transform: rotateX(-90deg);
-}
-.avatar {
-	background-color: blue;
-}
-.person-chosen .avatar-img {
-	width: 200px;
-}
-.avatar-img {
-	width: 100%;
-	height: auto;
-	background-color: black;
-}
-a.btn:focus,
-a.btn {
-	background-color: #1f0e9c;
-	color: white;
-	text-align: center;
-  padding: 10;
-  width: auto;
-  font-size: .9em;
-	text-transform: uppercase;
-	border-radius: 0;
-}
-a.btn:hover {
-	text-decoration: underline;
-	color: white;
-}
-.zoom-out-5 {
-	zoom: 0.5
-}
-h5 {
-	text-transform: uppercase;
-	font-size: 13px;
-	padding: 7px 15px;
-	text-align: center;
-	background-color: #313838;
-	display: inline-block;
-	color: white;
 }

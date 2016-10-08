@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import './app.css';
-import PeopleContainer from '../who/who';
+import React, { Component } from 'react'
+import './app.css'
+import FourSquare from '../foursquare/foursquare'
 
 class App extends Component {
   render() {
     return (
-      <div className="container-fluid">
-        <div className="header">
-          <h1>Guess Who</h1>
-        </div>
-        <PeopleContainer />
+      <div className="container">
+        <header className="header">
+          <h1>FourSquare Search</h1>
+        </header>
+        <FourSquare />
       </div>
-    );
+    )
   }
 }
 

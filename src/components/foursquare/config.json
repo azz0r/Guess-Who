@@ -1,0 +1,8 @@
+{
+  "clientId": "WLJ4BLHFK5VYWRC0SRJSA3EAH5SFCIJRFID00A4H0AKEFKYZ",
+  "clientSecret": "2YPJE2PTCMR2MYXODUPB1SNJDTZAYVGP2DINHM1XCVDCPUEQ",
+  "style": "foursquare",
+  "version": "20140806",
+  "apiUrl": "https://api.foursquare.com/v2/venues/search",
+  "v": "20140806"
+}
