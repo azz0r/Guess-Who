@@ -12,11 +12,6 @@ export default class Venues extends React.Component {
   render() {
     return (
       <div className="col-xs-12 venues">
-      <If condition={this.state.venues.length > 0}>
-        <h2 className="search__result-count">
-          Results for "{this.state.query}" ({this.state.venues.length})
-        </h2>
-      </If>
         <ul className="list-group venues__list">
           {this.props.venues.map((venue) => {
             venue = venue.venue // 4² convenience

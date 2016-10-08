@@ -30,8 +30,8 @@ export default class FourSquare extends React.Component {
               query={this.state.query}
               total={this.state.venues.length}
             />
+            <Venues venues={this.state.venues} />
           </If>
-          <Venues venues={this.state.venues} />
         </div>
       </div>
       )
