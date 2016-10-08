@@ -26,7 +26,6 @@ function resolveApp(relativePath) {
 module.exports = {
   appBuild: resolveApp('build'),
   appHtml: resolveApp('index.html'),
-  appFavicon: resolveApp('favicon.ico'),
   appImgs: resolveApp('src/imgs'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
