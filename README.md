@@ -1,7 +1,7 @@
 # FourSquare popular locations
- * React codebase forked initially from: https://www.npmjs.com/package/create-react-redux-app
+ * React codebase forked initially from: https://www.npmjs.com/package/create-react-redux-app (which is forked from create-react-app)
  * Heavily modified for Guess-who game
- * Branched for Whitbread test
+ * Branched for Whitbread test (now named foursquare-react-popular-locations)
 
 ### 📕 Index
  * [Installing](#installing)
