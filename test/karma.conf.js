@@ -79,6 +79,10 @@ module.exports = function(config) {
             test: /\.json$/,
             loader: 'json',
           },
+          {
+            test: /\.css$/,
+            loader: "style-loader!css-loader"
+          },
         ],
         noParse: [
           /node_modules\/sinon\//,
