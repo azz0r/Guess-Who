@@ -5,7 +5,10 @@
 .search {} /* Block */
 .search__field {} /* Element */
 
-.venues {} /* Block */
+.venues {  /* Block */
+  padding-left: 0;
+  padding-right: 0;
+}
 .venues__list {} /* Element */
 .venues__venue {} /* Element */
 
