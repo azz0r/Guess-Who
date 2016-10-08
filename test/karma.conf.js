@@ -68,7 +68,6 @@ module.exports = function(config) {
               ],
               plugins: [
                 'transform-runtime',
-                'transform-decorators-legacy',
                 'transform-react-constant-elements',
                 'transform-react-inline-elements',
                 'transform-react-remove-prop-types'

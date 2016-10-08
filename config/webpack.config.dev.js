@@ -70,7 +70,6 @@ module.exports = {
           ],
           plugins: [
             'transform-runtime',
-            'transform-decorators-legacy',
             'jsx-control-statements',
             'transform-react-constant-elements',
             'transform-react-inline-elements',
