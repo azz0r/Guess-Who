@@ -41,11 +41,6 @@ export default class Search extends React.Component {
   render() {
     return (
       <div className="row search">
-        <If condition={this.state.venues.length > 0}>
-          <h2 className="search__result-count">
-            Results for "{this.state.query}" ({this.state.venues.length})
-          </h2>
-        </If>
         <div className="col-xs-12">
           <form className="search" role="search">
             <div className="input-group add-on">

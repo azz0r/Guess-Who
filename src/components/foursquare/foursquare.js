@@ -1,6 +1,7 @@
 import React from 'react'
 import Venues from './venues'
 import Search from './search'
+import ResultsHeader from './results-header'
 import './foursquare.css'
 
 export default class FourSquare extends React.Component {
@@ -24,6 +25,12 @@ export default class FourSquare extends React.Component {
       <div className="foursquare">
         <div className="row foursquare__results">
           <Search onSearchUpdated={this.onSearchUpdated} />
+          <If condition={this.state.venues.length > 0}>
+            <ResultsHeader
+              query={this.state.query}
+              total={this.state.venues.length}
+            />
+          </If>
           <Venues venues={this.state.venues} />
         </div>
       </div>
