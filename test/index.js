@@ -3,8 +3,6 @@ import Minimist from 'minimist';
 import Mocha from 'mocha';
 import Glob from 'glob';
 import './utils/dom';
-import configureStore from '../src/store/configure-store';
-const store = configureStore();
 
 const argv = Minimist(process.argv.slice(2), {
   alias: {
