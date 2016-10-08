@@ -12,7 +12,8 @@ export default class Search extends React.Component {
   }
 
   state = {
-    venues: []
+    query: '',
+    venues: [],
   }
 
   componentWillMount() {
@@ -20,7 +21,7 @@ export default class Search extends React.Component {
       let query = event.target.value
 
       this.openRequest = request.get(`
-        ${config.apiUrl}?query=${query}&client_id=${config.clientId}&client_secret=${config.clientSecret}&style=${config.style}&v=${config.v}&near=${config.near}`)
+        ${config.apiUrl}?query=${query}&client_id=${config.clientId}&client_secret=${config.clientSecret}&style=${config.style}&v=${config.v}&near=${config.near}&venuePhotos=1`)
         .accept('json')
         .end((err, res) => {
           if(err) return
@@ -29,18 +30,23 @@ export default class Search extends React.Component {
             venues, query
           })
         })
-    }, 500);
+    }, 500)
   }
 
   onSearch = (event) => {
-    event.persist();
-    this.delayedCallback(event);
+    event.persist()
+    this.delayedCallback(event)
   }
 
   render() {
     return (
-      <div className="row">
-        <div className="col-xs-12 search">
+      <div className="row search">
+        <If condition={this.state.venues.length > 0}>
+          <h2 className="search__result-count">
+            Results for "{this.state.query}" ({this.state.venues.length})
+          </h2>
+        </If>
+        <div className="col-xs-12">
           <form className="search" role="search">
             <div className="input-group add-on">
               <input

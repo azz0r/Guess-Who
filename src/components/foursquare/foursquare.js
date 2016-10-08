@@ -23,9 +23,6 @@ export default class FourSquare extends React.Component {
     return (
       <div className="foursquare">
         <div className="row foursquare__results">
-          <h2 className="foursquare__header">
-            Results ({this.state.venues.length})
-          </h2>
           <Search onSearchUpdated={this.onSearchUpdated} />
           <Venues venues={this.state.venues} />
         </div>

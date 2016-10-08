@@ -1,16 +1,35 @@
+/* ---- 4² ---- */
 .foursquare {}
+
 .foursquare__results {}
+
 .foursquare__header {}
 
+
+/* ---- Search ---- */
 .search {} /* Block */
 .search__field {} /* Element */
 
+
+/* ---- Venues ---- */
 .venues {  /* Block */
   padding-left: 0;
   padding-right: 0;
 }
 .venues__list {} /* Element */
-.venues__venue {} /* Element */
+.venues__venue {
+  border-radius: none;
+} /* Element */
 
+
+/* ---- Venue ---- */
 .venue {} /* Block */
+
 .venue__name {} /* Element */
+
+.venue__checkins {
+  float : right;
+}
+.venue__rating {
+  float: right;
+}
