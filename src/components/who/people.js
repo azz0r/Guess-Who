@@ -1,5 +1,6 @@
 import React from 'react'
 import { toSlug, getNumberAsString } from './helpers'
+import constants from '../../constants/constants'
 
 export const People = (({ people, showNameplate, hidePersonsFace, onPersonClicked }) => {
   let
@@ -44,7 +45,7 @@ export const PersonChosen = ({ person, hidePersonsFace}) => {
       <div className="col-xs-12">
         <p>
           <img
-            src={`/static/imgs/${slug}.png`}
+            src={`${constants.baseUrl}static/imgs/${slug}.png`}
             title={fullName}
             alt={fullName}
             className="avatar-img"
@@ -89,7 +90,7 @@ export const Person = ({
     <div className={`${slug} ${chosenClass} ${cardNumber} card text-center`}>
       <p>
         <img
-          src={`/static/imgs/${slug}.png`}
+          src={`${constants.baseUrl}static/imgs/${slug}.png`}
           title={fullName}
           alt={fullName}
           className="avatar-img"
