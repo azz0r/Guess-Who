@@ -13,10 +13,7 @@ export default class FourSquare extends React.Component {
   }
 
   componentWillMount() {
-    console.log('componentWillMount')
-
     this.delayedCallback = _debounce((event) => {
-      console.log('debounce')
       let query = event.target.value
 
       this.openRequest = request.get(`
@@ -29,7 +26,7 @@ export default class FourSquare extends React.Component {
             venues
           })
         })
-    }, 1000);
+    }, 500);
   }
 
   onSearch = (event) => {
