@@ -1,7 +1,18 @@
 {
-  "name": "create-react-app-with-redux",
+  "name": "guess-who",
+  "scripts": {
+    "start": "node ./scripts/start.js",
+    "build": "node ./scripts/build.js",
+    "test": "cross-env NODE_ENV=test babel-node test/index.js",
+    "test:coverage": "cross-env NODE_ENV=test babel-node ./node_modules/istanbul/lib/cli.js cover test/index.js",
+    "test:karma": "karma start test/karma.conf.js --single-run",
+    "test:unit": "cross-env NODE_ENV=test babel-node test/index.js unit",
+    "test:unit:cover": "nyc cross-env NODE_ENV=test babel test/index.js unit",
+    "test:unit:watch": "cross-env NODE_ENV=test babel-node test/watch.js unit"
+  },
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://github.com/azz0r/guess-who",
   "devDependencies": {
     "app-module-path": "^1.1.0",
     "autoprefixer": "6.3.7",
@@ -77,16 +88,6 @@
     "redux-batch-middleware": "^0.2.0",
     "redux-localstorage": "^0.4.1",
     "redux-reset": "^0.2.0"
-  },
-  "scripts": {
-    "start": "node ./scripts/start.js",
-    "build": "node ./scripts/build.js",
-    "test": "cross-env NODE_ENV=test babel-node test/index.js",
-    "test:coverage": "cross-env NODE_ENV=test babel-node ./node_modules/istanbul/lib/cli.js cover test/index.js",
-    "test:karma": "karma start test/karma.conf.js --single-run",
-    "test:unit": "cross-env NODE_ENV=test babel-node test/index.js unit",
-    "test:unit:cover": "nyc cross-env NODE_ENV=test babel test/index.js unit",
-    "test:unit:watch": "cross-env NODE_ENV=test babel-node test/watch.js unit"
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"
