@@ -14,13 +14,15 @@ export default class Venues extends React.Component {
   render() {
     return (
       <div className="col-xs-12 venues">
-        {this.props.venues.map((venue) => {
-          return (
-            <div className="venues__venue">
-              <Venue {...venue.venue} />
-            </div>
-          )
-        })}
+        <ul className="list-group venues__list">
+          {this.props.venues.map((venue) => {
+            return (
+              <li className="list-group-item venues__venue">
+                <Venue {...venue.venue} />
+              </li>
+            )
+          })}
+        </ul>
       </div>
     )
   }
