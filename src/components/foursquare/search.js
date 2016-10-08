@@ -36,16 +36,16 @@ export default class Search extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-xs-12 square-search">
+        <div className="col-xs-12 search">
           <input
             type="text"
-            className="square-search__field"
+            className="search__field"
             onKeyUp={this.onSearch}
             onKeyPress={this.onSearch}
           />
           <button
             type="Submit"
-            className="square-search__button"
+            className="search__button"
             onClick={this.onSearch}
             onKeyPress={this.onSearch}>
           Search

@@ -1,3 +1,12 @@
-.square-search {} /* Block */
-.square-search__field {} /* Element */
-.square-search--full {} /* Modifier */
+.foursquare {}
+.foursquare__results {}
+.foursquare__header {}
+
+.search {} /* Block */
+.search__field {} /* Element */
+
+.venues {} /* Block */
+.venues__venue {} /* Element */
+
+.venue {} /* Block */
+.venue__name {} /* Element */

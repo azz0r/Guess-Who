@@ -21,15 +21,13 @@ export default class FourSquare extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="row">
-          <h2>
+      <div className="foursquare">
+        <div className="row foursquare__results">
+          <h2 className="foursquare__header">
             Results ({this.state.venues.length})
           </h2>
           <Search onSearchUpdated={this.onSearchUpdated} />
-          <div className="col-xs-12">
-            <Venues venues={this.state.venues} />
-          </div>
+          <Venues venues={this.state.venues} />
         </div>
       </div>
       )

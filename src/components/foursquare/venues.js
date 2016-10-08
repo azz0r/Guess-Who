@@ -12,12 +12,13 @@ export default class Venues extends React.Component {
 
 
   render() {
-    console.log('venues render', this.props)
     return (
-      <div className="col-xs-12">
+      <div className="col-xs-12 venues">
         {this.props.venues.map((venue) => {
           return (
-            <Venue {...venue.venue} />
+            <div className="venues__venue">
+              <Venue {...venue.venue} />
+            </div>
           )
         })}
       </div>
