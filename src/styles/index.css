@@ -64,6 +64,22 @@ h4 {
 	transform-style: preserve-3d;
   margin: 0 auto;
 }
+.board-2d .board {
+	height: 240px;
+	transform: inherit;
+	transform-style: inherit;
+	margin: auto;
+	padding: 5px;
+	width: 90%;
+}
+.board-2d .card.up {
+	transform: rotateX(0deg);
+	height: 50px;
+	width: 50px;
+}
+.board-2d .card.down {
+	display: none;
+}
 .board .card-row {
 	position: relative;
 	transform-style: preserve-3d;

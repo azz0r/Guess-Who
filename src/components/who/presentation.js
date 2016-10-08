@@ -17,6 +17,7 @@ export default class WhoPresentation extends React.Component {
 
   render() {
     const humanPlayer = this.props.players[this.props.playerIds.human]
+    const botPlayer = this.props.players[this.props.playerIds.bot]
     const resetButton = (
       <a
         href="#"
@@ -38,30 +39,50 @@ export default class WhoPresentation extends React.Component {
           </When>
           <Otherwise>
             <div className="row human-board">
-              <div className="sidebar col-xs-12 col-md-3 col-sm-3 col-lg-3">
-                  <Choose>
-                    <When condition={humanPlayer.chosenPerson}>
-                      <PersonChosen
-                        person={humanPlayer.chosenPerson}
-                        hidePersonsFace={!this.props.winner.awarded}
-                      />
-                    </When>
-                    <Otherwise>
-                      <ChooseAPerson person={humanPlayer.chosenPerson} />
-                    </Otherwise>
-                  </Choose>
-                  <Questions
-                    active={humanPlayer.currentTurn && humanPlayer.chosenPerson}
-                    limit={5}
-                    shuffle
-                    onQuestionChosen={this.props.onQuestionChosen}
-                    questions={this.props.questions[this.props.playerIds.human]}
-                  />
-                <div>
-                  {resetButton}
+              <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4">
+                <div className="row">
+                  <div className="col-xs-5">
+                    <Choose>
+                      <When condition={humanPlayer.chosenPerson}>
+                        <PersonChosen
+                          person={humanPlayer.chosenPerson}
+                          hidePersonsFace={!this.props.winner.awarded}
+                        />
+                      </When>
+                      <Otherwise>
+                        <ChooseAPerson person={humanPlayer.chosenPerson} />
+                      </Otherwise>
+                    </Choose>
+                  </div>
+                  <div className="col-xs-7">
+                    <Questions
+                      active={humanPlayer.currentTurn && humanPlayer.chosenPerson}
+                      limit={5}
+                      shuffle
+                      onQuestionChosen={this.props.onQuestionChosen}
+                      questions={this.props.questions[this.props.playerIds.human]}
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-xs-12">
+                    {resetButton}
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-xs-12 board-wrapper board-2d">
+                    <h3>Opponents Board</h3>
+                    <People
+                      people={botPlayer.people}
+                      hidePersonsFace={true}
+                      showNameplate={false}
+                      onPersonClicked={() => {}}
+                      hide-
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="col-xs-9">
+              <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8">
                 <div className="board-wrapper">
                   <People
                     people={humanPlayer.people}
