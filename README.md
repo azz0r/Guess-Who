@@ -8,7 +8,7 @@
  * [Unit Testing](#unit-tests)
 
 
-## 🖥 <a name="installing"> Installing</a>
+## 🖥 <a name="installing">Installing</a>
 ```
 npm cache clean;
 npm install
@@ -17,7 +17,7 @@ npm run start;
 
 ## 🚀 <a name="launching">Launching</a>
 * Development stack ```npm run start```
-* Build production stack ```npm run build:production```
+* Build production stack ```npm run build```
 
 ## 💪 <a name="unit-testing">Unit Testing</a>
 Powered by Mocha, Chai, Enzyme, Sinon.
