@@ -41,19 +41,21 @@ export default class WhoPresentation extends React.Component {
             <div className="row human-board">
               <div className="sidebar col-xs-12 col-md-4 col-sm-4 col-lg-4">
                 <div className="row">
-                  <div className="col-xs-5">
-                    <Choose>
-                      <When condition={humanPlayer.chosenPerson}>
+                  <Choose>
+                    <When condition={humanPlayer.chosenPerson}>
+                      <div className="col-xs-5">
                         <PersonChosen
                           person={humanPlayer.chosenPerson}
                           hidePersonsFace={!this.props.winner.awarded}
                         />
-                      </When>
-                      <Otherwise>
+                      </div>
+                    </When>
+                    <Otherwise>
+                      <div className="col-xs-12">
                         <ChooseAPerson person={humanPlayer.chosenPerson} />
-                      </Otherwise>
-                    </Choose>
-                  </div>
+                      </div>
+                    </Otherwise>
+                  </Choose>
                   <div className="col-xs-7">
                     <Questions
                       active={humanPlayer.currentTurn && humanPlayer.chosenPerson}
@@ -69,18 +71,21 @@ export default class WhoPresentation extends React.Component {
                     {resetButton}
                   </div>
                 </div>
-                <div className="row">
-                  <div className="col-xs-12 board-wrapper board-2d">
-                    <h3>Opponents Board</h3>
-                    <People
-                      people={botPlayer.people}
-                      hidePersonsFace={true}
-                      showNameplate={false}
-                      onPersonClicked={() => {}}
-                      hide-
-                    />
+                <If condition={botPlayer.chosenPerson}>
+                  <div className="row">
+                    <div className="col-xs-12 board-wrapper board-2d">
+                      <h3>Opponents Board</h3>
+                      <p>Your opponent is guessing against <strong>{botPlayer.chosenPerson.name}</strong> who you chose</p>
+                      <People
+                        people={botPlayer.people}
+                        hidePersonsFace={true}
+                        showNameplate={false}
+                        onPersonClicked={() => {}}
+                        hide-
+                      />
+                    </div>
                   </div>
-                </div>
+                </If>
               </div>
               <div className="col-xs-12 col-md-8 col-sm-8 col-lg-8">
                 <div className="board-wrapper">
