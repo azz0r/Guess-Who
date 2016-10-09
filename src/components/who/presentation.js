@@ -59,7 +59,7 @@ export default class WhoPresentation extends React.Component {
                   <div className="col-xs-7">
                     <Questions
                       active={humanPlayer.currentTurn && humanPlayer.chosenPerson}
-                      limit={5}
+                      limit={8}
                       shuffle
                       onQuestionChosen={this.props.onQuestionChosen}
                       questions={this.props.questions[this.props.playerIds.human]}
