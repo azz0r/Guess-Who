@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './app.css';
-import Who from '../who/who';
+import PeopleContainer from '../who/who';
 
 class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <Who />
+        <div className="header">
+          <h1>Guess Who</h1>
+        </div>
+        <PeopleContainer />
       </div>
     );
   }

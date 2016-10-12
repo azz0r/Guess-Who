@@ -1,0 +1,233 @@
+[{
+	"id": 1,
+	"name": "John Cena",
+	"male": true,
+	"hair": true,
+	"hairColor": "brown",
+	"eyeColor": "blue",
+	"hat": true,
+	"wrestler": true,
+	"smackdown": true
+}, {
+	"id": 2,
+	"name": "Neville",
+	"male": true,
+	"hairColor": "brown",
+	"eyeColor": "green",
+	"cape": true,
+	"wrestler": true
+}, {
+	"id": 4,
+	"name": "Charlotte",
+	"male": false,
+	"hairColor": "blonde",
+	"eyeColor": "green",
+	"champion": true,
+	"wrestler": true
+}, {
+	"id": 5,
+	"name": "Dean Ambrose",
+	"male": true,
+	"hairColor": "brown",
+	"eyeColor": "blue",
+	"champion": true,
+	"wrestler": true,
+	"smackdown": true
+}, {
+	"id": 6,
+	"name": "Kane",
+	"eyeColor": "brown",
+	"male": true,
+	"mask": true,
+	"wrestler": true,
+	"smackdown": true
+}, {
+	"id": 7,
+	"name": "Kalisto",
+	"male": true,
+	"mask": true,
+	"wrestler": true,
+	"smackdown": true
+}, {
+	"id": 8,
+	"name": "Mark Henry",
+	"male": true,
+	"eyeColor": "brown",
+	"beard": true,
+	"wrestler": true,
+	"worldsStrongestMan": true
+}, {
+	"id": 9,
+	"name": "Mick Foley",
+	"male": true,
+	"hairColor": "brown",
+	"eyeColor": "brown",
+	"beard": true
+}, {
+	"id": 10,
+	"name": "Mauro",
+	"male": true,
+	"hairColor": "brown",
+	"eyeColor": "brown",
+	"commentator": true,
+	"smackdown": true
+}, {
+	"id": 11,
+	"name": "Corey Graves",
+	"male": true,
+	"hairColor": "brown",
+	"eyeColor": "gray",
+	"commentator": true
+}, {
+	"id": 12,
+	"name": "Stephanie McMahon",
+	"male": false,
+	"hairColor": "brown",
+	"eyeColor": "blue",
+	"owner": true
+}, {
+	"id": 13,
+	"name": "Shane McMahon",
+	"male": true,
+	"hairColor": "silver",
+	"eyeColor": "brown",
+	"owner": true,
+	"smackdown": true
+}, {
+	"id": 13,
+	"name": "Vince McMahon",
+	"male": true,
+	"hairColor": "silver",
+	"eyeColor": "brown",
+	"owner": true,
+	"smackdown": false
+}, {
+	"id": 14,
+	"name": "Michael Cole",
+	"male": true,
+	"hairColor": "black",
+	"eyeColor": "brown",
+	"commentator": true
+}, {
+	"id": 15,
+	"name": "The Rock",
+	"male": true,
+	"eyeColor": "brown",
+	"tattoo": true,
+	"wrestler": true,
+	"samoan": true
+}, {
+	"id": 16,
+	"name": "Enzo Amore",
+	"male": true,
+	"eyeColor": "brown",
+	"hairColor": "blonde",
+	"tattoo": true,
+	"wrestler": true,
+	"beard": true
+}, {
+	"id": 17,
+	"name": "Eva Marie",
+	"male": false,
+	"eyeColor": "green",
+	"hairColor": "red",
+	"wrestler": true,
+	"smackdown": true
+}, {
+	"id": 17,
+	"name": "Rusev",
+	"male": true,
+	"eyeColor": "brown",
+	"hairColor": "brown",
+	"champion": true,
+	"wrestler": true
+}, {
+	"id": 18,
+	"name": "Nikki Bella",
+	"male": false,
+	"eyeColor": "brown",
+	"hairColor": "brown",
+	"champion": false,
+	"fearless": true,
+	"wrestler": true,
+	"hat": true,
+	"smackdown": true
+}, {
+	"id": 19,
+	"name": "azz0r",
+	"male": true,
+	"eyeColor": "blue",
+	"hairColor": "brown",
+	"champion": false,
+	"fearless": true
+}, {
+	"id": 20,
+	"name": "Jorge",
+	"male": true,
+	"eyeColor": "brown",
+	"hairColor": "brown",
+	"champion": false,
+	"beard": true
+}, {
+	"id": 21,
+	"name": "Roman Reigns",
+	"male": true,
+	"eyeColor": "brown",
+	"beard": true,
+	"wrestler": true,
+	"samoan": true
+}, {
+	"id": 22,
+	"name": "Becky Lynch",
+	"male": false,
+	"eyeColor": "green",
+	"hairColor": "red",
+	"champion": false,
+	"wrestler": true,
+	"smackdown": true
+}, {
+	"id": 23,
+	"name": "Kevin Owens",
+	"male": true,
+	"eyeColor": "brown",
+	"hairColor": "brown",
+	"champion": true,
+	"smackdown": false,
+	"indy": true
+}, {
+	"id": 24,
+	"name": "Chris Jericho",
+	"male": true,
+	"eyeColor": "blue",
+	"hairColor": "blonde",
+	"smackdown": false,
+	"it": true
+}, {
+	"id": 25,
+	"name": "Big E",
+	"male": true,
+	"eyeColor": "brown",
+	"beard": true,
+	"wrestler": true,
+	"champion": true,
+	"smackdown": false,
+	"tagChamp": true
+}, {
+	"id": 26,
+	"name": "Dana Brooke",
+	"male": false,
+	"eyeColor": "blue",
+	"hairColor": "blonde",
+	"wrestler": true,
+	"smackdown": false
+}, {
+	"id": 27,
+	"name": "HHH",
+	"male": true,
+	"eyeColor": "brown",
+	"hairColor": "blonde",
+	"wrestler": true,
+	"game": true,
+	"beard": true
+}
+]

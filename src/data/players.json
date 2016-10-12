@@ -1,0 +1,16 @@
+[
+  {
+    "id": 0,
+    "name": "Player 1",
+    "cpu": false,
+    "currentTurn": true,
+    "chosenPerson": false
+  },
+  {
+    "id": 1,
+    "name": "CPU",
+    "cpu": true,
+    "currentTurn": false,
+    "chosenPerson": false
+  }
+]
