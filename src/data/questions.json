@@ -4,7 +4,7 @@
 	"value": true
 },{
 	"key": "male",
-	"question": "Is your character male?",
+	"question": "Is your character male? ♂",
 	"value": true
 }, {
 	"key": "hairColor",
@@ -56,11 +56,11 @@
 	"value": true
 }, {
 	"key": "mask",
-	"question": "Does your character wear a mask?",
+	"question": "Does your character wear a mask? 🎭",
 	"value": true
 }, {
 	"key": "mask",
-	"question": "Is your character maskless?",
+	"question": "Is your character maskless? 🎭",
 	"value": false
 }, {
 	"key": "owner",
