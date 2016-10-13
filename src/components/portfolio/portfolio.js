@@ -2,6 +2,7 @@ import React from 'react'
 import Introduction from './subcomponents/introduction'
 import Skills from './subcomponents/skills/skills'
 import Jobs from './subcomponents/jobs/jobs'
+import NotableExperience from './subcomponents/notable-experience'
 import Responsibilities from './subcomponents/responsibilities'
 
 export default class Home extends React.Component {
@@ -12,10 +13,12 @@ export default class Home extends React.Component {
     return (
       <section id="home" className="home">
         <h1>Aaron Lote</h1>
-        <Introduction />
-        <br />
         <div className="row">
           <div className="col-lg-8">
+            <Introduction />
+            <hr />
+            <NotableExperience />
+            <hr />
             <h3>
               Recent Experience
             </h3>

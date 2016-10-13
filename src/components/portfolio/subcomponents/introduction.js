@@ -7,7 +7,7 @@ export default class Introduction extends React.Component {
   render() {
     return (
       <div id="introduction" className="row">
-        <div className="col-lg-8">
+        <div className="col-lg-12">
           <p>
             I am a London based senior web developer with
             10 years commercial
