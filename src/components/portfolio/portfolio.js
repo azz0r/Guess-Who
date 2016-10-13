@@ -11,7 +11,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <section id="home" className="home">
-        <br />
+        <h1>Aaron Lote</h1>
         <Introduction />
         <br />
         <div className="row">
