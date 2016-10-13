@@ -25,8 +25,18 @@ export default class Home extends React.Component {
             </h3>
             <Jobs />
           </div>
-          <div className="col-lg-4 sidebar">
+          <div className="col-lg-4 hidden-xs hidden-sm sidebar">
             <Sticky>
+              <p>
+                <a href="https://www.github.com/azz0r" target="_blank">
+                  github.com/azz0r
+                </a>
+              </p>
+              <p>
+                <a href="mailto:aaron.lote@gmail.com">
+                  aaron.lote@gmail.com
+                </a>
+              </p>
               <h3>Responsibilities</h3>
               <Responsibilities />
               <br />
