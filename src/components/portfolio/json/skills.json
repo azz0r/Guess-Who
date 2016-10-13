@@ -1,43 +1,23 @@
 [
   {
-    "title": "Javascript (OOP)",
-    "length": "10 Years+"
-  },
-  {
     "title": "React",
-    "length": "1 Years~"
+    "length": "1.5+ Years"
   },
   {
-    "title": "Backbone JS",
-    "length": "4 Years"
+    "title": "BackboneJS",
+    "length": "2+ Years"
   },
   {
     "title": "SASS & LESS",
-    "length": "2 Years+"
-  },
-  {
-    "title": "PHP (OOP)",
-    "length": "10 Years+"
+    "length": "2+ Years"
   },
   {
     "title": "SQL / MYSQL",
-    "length": "10 Years+"
+    "length": "5+ Years"
   },
   {
     "title": "CSS",
-    "length": "10 Years+"
-  },
-  {
-    "title": "Zend Framework 1.11",
-    "length": "5 Years"
-  },
-  {
-    "title": "jQuery",
-    "length": "7 Years+"
-  },
-  {
-    "title": "SVN",
-    "length": "6 Years+"
+    "length": "10+ Years"
   },
   {
     "title": "GIT",
@@ -45,18 +25,10 @@
   },
   {
     "title": "mongoDB",
-    "length": "3 Years"
-  },
-  {
-    "title": "Silverback & Selenium",
-    "length": "2 years+"
+    "length": "2+ Years"
   },
   {
     "title": "Agile Development",
-    "length": "4 Years+"
-  },
-  {
-    "title": "eCommerce systems",
-    "length": "3 years+"
+    "length": "5+ Years"
   }
 ]

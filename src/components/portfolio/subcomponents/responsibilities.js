@@ -12,17 +12,15 @@ export default class Responsibilities extends React.Component {
       'Web Development Manager',
       'Scrum Master',
       'Director of Technology',
-      'IT Support',
-      'Team Management',
+      'Team Leader',
       'Project Specifications & Budget',
       'Strategy & Planning',
-      'Risk Assessment',
-      'Infrastructure Development',
+      'Technical Advisor',
     ]
     return (
       <div id="jobs" className="row">
         <div className="col-lg-12">
-          {responsibilities.map ((responsibility, key) => {
+          {responsibilities.map((responsibility, key) => {
             return (
               <p
                 key={key}
