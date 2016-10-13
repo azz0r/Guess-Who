@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "alias": "Marko Media",
+    "url": "http://www.markcomedia.com",
+    "role": "Web Development Manager",
+    "responsibilities": "Hiring, Team Management, PHP Code Base Engineering & Maintenance",
+    "from": "January 2007",
+    "to": "September 2009",
+    "location": "Croydon, London, UK",
+    "description": "<ul><li>As a PHP developer, excelled at delivering new features more rapidly than expected; was recognized as the stronger developer on a distributed team.</li><li>Was granted request to rewrite their <strong>entire framework</strong> using my own <strong>methodologies</strong>, as I expected their system would be unable to cope with the large amount of traffic the site was beginning to generate. Managed this remotely with a team in Rotherham while opening up an office in London. Was then tasked with building a team of 10 web developers, achieved in two months.</li><li>Having built the team, was then given control of managing the entire framework and its future development to create exciting new features.</li></ul>"
+  },
+  {
+    "id": 2,
+    "alias": "LF",
+    "role": "Project Lead",
+    "responsibilities": "Zend Framework, Testing, eCommerce & High Level Project Specifications",
+    "url": "",
+    "from": "September 2009",
+    "to": "April 2011",
+    "location": "Soho, London, UK",
+    "description": "<ul><li>Created a video on demand system using the Zend Framework and Wowza Media Service that allowed users to buy monthly memberships or per minute credits across multiple currencies. <strong>Achieved this in 5 months after given an 8 month timeline</strong>.</li><li>Created an affiliate management system that would give clients real time information on streaming information, achieved in 2 months. Was then tasked with creating a white label system for these clients, the result which was eventually bought by a large retail chain.</li><li>Daily tasks included installing Interspire Email Marketer and migrating <strong>Interspire Shopping Cart to Magento</strong>, a difficult 3 month project that taught me extensively on database engineering and table conversion.</li></ul>"
+  },
+  {
+    "id": 3,
+    "alias": "theAudience",
+    "url": "http://www.theAudience.com",
+    "role": "Web Development Manager",
+    "responsibilities": "PHP Coder & Engineer, Team Manager, Test Manager & Scrum Master",
+    "from": "March 2011",
+    "to": "March 2013",
+    "location": "Soho, London, UK & Shoreditch, London UK & Hollywood, Los Angeles",
+    "description": "<ul><li>Tasked with creating a custom CMS that would enable a growing team to creating curated content for clients.</li><li>Given free reign to build a team housed in the WME offices, a key investor. Built a team of freelancers & worked tirelessly to <strong>develop a system with shifting priorities</strong>. Successfully delivered in 9 months, it became a vital part of growing the business, leading to a massive expansion for the UK branch of theAudience.</li><li>Engineered a custom PHP API to create <strong>rapid prototypes</strong> and teamed it with Zend Framework codebase for the front end initially.</li><li>Switched the front end to use cutting edge technology such as alpha <strong>BackboneJS, RequireJS, UnderscoreJS and mongoDB</strong>. Expanded the system into a client facing CMS as a key stake holder and develop</li><li>Daily tasks included managing the team development, developing both JS and PHP code, running daily stand ups & planning sessions and reporting back to the project manager.</li></ul>"
+  },
+  {
+    "id": 4,
+    "alias": "theAudience",
+    "url": "http://www.theAudience.com",
+    "role": "Technical Product Owner",
+    "responsibilities": "Team Management, PHP & JS Code Sign Off, Project Specifications & Budget",
+    "from": "March 2013",
+    "to": "August 2013",
+    "location": "Shoreditch, London UK & Hollywood, Los Angeles",
+    "description": "<ul><li>Following the successful launch and support of an internal CMS, I was tasked with determining end user needs to create a feedback loop for writing solid project specifications for the development team.</li><li>Generated detailed wireframes and specification documents based on user and <strong>stakeholder requirements</strong>. Also led high level pointing sessions and <strong>large scale planning</strong> to visually sell to stakeholders the expense of their decisions.</li><li>Continued to guide the new web development manager, coding daily with the team and reviewing code for project releases.</li></ul>"
+  },
+  {
+    "id": 5,
+    "alias": "theAudience",
+    "url": "http://www.theAudience.com",
+    "role": "Director of Technology",
+    "responsibilities": "IT Support, Development & Project Advice",
+    "from": "August 2013",
+    "to": "May 2014",
+    "location": "Soho, London, UK & Shoreditch, London UK & Hollywood, Los Angeles",
+    "description": "<ul><li>Ensured that all users had a seamless experience during a transition between IT support companies.</li><li>Daily responsibilities included engaging with other tech companies, <strong>overseeing internal projects</strong> and providing <strong>top level feedback and guidance</strong> while developing internal apps.</li><li>Built an in house systems that could streamline HR management internally.</li></ul>"
+  },
+  {
+    "id": 6,
+    "alias": "BT",
+    "url": "http://productsandservices.com/products",
+    "role": "Front End Development Lead",
+    "responsibilities": "Scrum Master, Recruitment Manager, Code Quality Manager, Project Manager",
+    "from": "July 2014",
+    "to": "Current",
+    "location": "St Pauls, London, UK",
+    "description": "<ul><li>Creates and enforces <strong>Front End Development Standards</strong></li><li><strong>Hired</strong> two development teams to handle many large projects.</li><li>Interfaces with many executives to handle requirements and direction.</li><li>Implements <strong>Agile</strong> into BT core development principles.</li><li>Creates and directs BT’s job standards for Front End Development.</li></ul>"
+  }
+]

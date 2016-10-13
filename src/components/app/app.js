@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
-import './app.css';
-import Who from '../who/who';
+import React, { Component } from 'react'
+import './app.css'
+import Portfolio from '../portfolio/portfolio'
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <Who />
+        <Portfolio />
       </div>
-    );
+    )
   }
 }
-
-export default App;
