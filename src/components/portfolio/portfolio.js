@@ -4,6 +4,7 @@ import Skills from './subcomponents/skills/skills'
 import Jobs from './subcomponents/jobs/jobs'
 import NotableExperience from './subcomponents/notable-experience'
 import Responsibilities from './subcomponents/responsibilities'
+import { Sticky } from 'react-sticky';
 
 export default class Home extends React.Component {
 
@@ -24,12 +25,14 @@ export default class Home extends React.Component {
             </h3>
             <Jobs />
           </div>
-          <div className="col-lg-4">
-            <h3>Responsibilities</h3>
-            <Responsibilities />
-            <br />
-            <h3>Skills</h3>
-            <Skills />
+          <div className="col-lg-4 sidebar">
+            <Sticky>
+              <h3>Responsibilities</h3>
+              <Responsibilities />
+              <br />
+              <h3>Skills</h3>
+              <Skills />
+            </Sticky>
           </div>
         </div>
       </section>
