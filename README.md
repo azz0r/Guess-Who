@@ -1,4 +1,4 @@
-!Guess Who! 👳🏼‍👷🏻‍👮🏾👼🏽👩🏽👱🏻👦🏿
+AaronLote.Com
 ====
 
 
@@ -33,7 +33,4 @@ Powered by Mocha, Chai, Enzyme, Sinon.
 * Run unit tests ```npm run test:unit```
 * Run unit tests with watch, any changes result in a re-run ```npm run test:unit:watch```
 
-Tests are written by creating .spec. files inside the component directory, e.g.
-
-```/src/components/button/expand.js``` pairs with ```/src/components/button/expand.spec.js```
-```/src/components/brands/brands.js``` pairs with ```/src/components/brands/brands.spec.js```
+Tests are written by creating .spec. files inside the component directory.

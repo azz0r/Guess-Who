@@ -1,5 +1,5 @@
 {
-  "name": "guess-who",
+  "name": "azz0r.github.io",
   "scripts": {
     "start": "node ./scripts/start.js",
     "build": "node ./scripts/build.js",
@@ -12,7 +12,7 @@
   },
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://github.com/azz0r/guess-who",
+  "homepage": "https://github.com/azz0r/azz0r.github.io",
   "devDependencies": {
     "app-module-path": "^1.1.0",
     "autoprefixer": "6.3.7",
