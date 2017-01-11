@@ -75,7 +75,7 @@ export default class WhoPresentation extends React.Component {
                   <div className="row">
                     <div className="col-xs-12 board-wrapper board-2d">
                       <h3>Opponents Board</h3>
-                      <p>Your opponent is guessing against <strong>{botPlayer.chosenPerson.name}</strong> who you chose</p>
+                      <p>Your opponent is guessing against <strong>{humanPlayer.chosenPerson.name}</strong> who you chose</p>
                       <People
                         people={botPlayer.people}
                         hidePersonsFace={true}
