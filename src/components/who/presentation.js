@@ -19,8 +19,7 @@ export default class WhoPresentation extends React.Component {
     const humanPlayer = this.props.players[this.props.playerIds.human]
     const botPlayer = this.props.players[this.props.playerIds.bot]
     const resetButton = (
-      <a
-        href="#"
+      <a href="#"
         className="btn cursor-pointer"
         onKeyPress={this.props.onResetGame}
         onClick={this.props.onResetGame}>
@@ -48,11 +47,19 @@ export default class WhoPresentation extends React.Component {
                           person={humanPlayer.chosenPerson}
                           hidePersonsFace={!this.props.winner.awarded}
                         />
+                        <br />
+                        <div>
+                          {resetButton}
+                        </div>
                       </div>
                     </When>
                     <Otherwise>
                       <div className="col-xs-12">
                         <ChooseAPerson person={humanPlayer.chosenPerson} />
+                        <br />
+                        <div>
+                          {resetButton}
+                        </div>
                       </div>
                     </Otherwise>
                   </Choose>
@@ -64,11 +71,6 @@ export default class WhoPresentation extends React.Component {
                       onQuestionChosen={this.props.onQuestionChosen}
                       questions={this.props.questions[this.props.playerIds.human]}
                     />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-xs-12">
-                    {resetButton}
                   </div>
                 </div>
                 <If condition={botPlayer.chosenPerson}>
