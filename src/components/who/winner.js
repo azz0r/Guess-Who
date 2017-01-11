@@ -5,7 +5,7 @@ export const Winner = (({ player, person }) => {
     <div className="winner">
       <div className="col-xs-12">
         <h2>{player.name} has won!</h2>
-        <p>{person.name} was the chosen character!</p>
+        <p>{person.name} was the chosen character and they eliminated all other possibilities!</p>
       </div>
     </div>
   )
